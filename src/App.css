@@ -1,42 +1,62 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+/* Custom styles */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navigation {
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navigation ul {
+  @apply flex justify-center gap-8 bg-gray-100 p-4 rounded-lg;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.navigation li {
+  @apply list-none relative;
 }
 
-.card {
-  padding: 2em;
+.navigation a {
+  @apply text-gray-700 font-bold py-2 px-4 rounded transition-colors hover:bg-gray-200;
 }
 
-.read-the-docs {
-  color: #888;
+.program-button {
+  @apply text-gray-700 font-bold py-2 px-4 rounded transition-colors hover:bg-gray-200 bg-transparent border-none cursor-pointer flex items-center gap-1;
+}
+
+.arrow {
+  @apply transition-transform duration-300;
+}
+
+.arrow.rotate {
+  @apply rotate-180;
+}
+
+.dropdown-menu {
+  @apply absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-10;
+}
+
+.dropdown-menu li {
+  @apply block w-full text-left;
+}
+
+.dropdown-menu a {
+  @apply block py-2 px-4 text-gray-700 hover:bg-gray-100;
+}
+
+.page {
+  @apply min-h-[50vh] flex flex-col items-center justify-center;
+}
+
+.page h1 {
+  @apply mb-4 text-3xl font-bold text-gray-800;
+}
+
+.page p {
+  @apply text-lg text-gray-600;
 }
