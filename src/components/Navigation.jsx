@@ -25,6 +25,8 @@ const Navigation = () => {
     { name: 'Donate', path: '/donate' },
     { name: 'Services', path: '/services' },
     { name: 'Support', path: '/support' },
+    {name: 'Contact', path: '/contact' },
+  
   ];
 
   const programItems = [
@@ -87,7 +89,7 @@ const Navigation = () => {
           {/* Mission CTA Button */}
           <Link 
             to="/mission" 
-            className="bg-[#FFDE59] border-2 border-black px-5 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
+            className="bg-[#2c6492] border-2 border-black px-5 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
           >
             OUR MISSION
           </Link>
