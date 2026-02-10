@@ -1,32 +1,33 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { Menu, ChevronDown, Trophy, Zap, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const Navigation = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const VoltageFootballNav = () => {
+  const [ballX, setBallX] = useState(-100);
+  const [ballRotate, setBallRotate] = useState(0);
+  const [isBouncing, setIsBouncing] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef(null);
 
-  // Close dropdown on click outside
+  const PRIMARY_BLUE = "#224e72";
+  
+  // Spring physics for the ball trail
+  const trailX = useSpring(ballX, { stiffness: 50, damping: 20 });
+
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Donate', path: '/donate' },
     { name: 'Services', path: '/services' },
     { name: 'Support', path: '/support' },
-    {name: 'Contact', path: '/contact' },
-  
+    { name: 'Contact', path: '/contact' },
   ];
 
   const programItems = [
@@ -36,120 +37,185 @@ const Navigation = () => {
     { name: 'Training', path: '/services/training' },
   ];
 
+  const handleInteraction = (e) => {
+    if (!navRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const navRect = navRef.current.getBoundingClientRect();
+    
+    // Exact center calculation
+    const centerPoint = rect.left - navRect.left + rect.width / 2 - 14;
+    setBallX(centerPoint);
+    setBallRotate(prev => prev + 360); 
+    
+    setIsBouncing(true);
+    setTimeout(() => setIsBouncing(false), 400);
+  };
+
   return (
-    <nav className="fixed top-0 w-full z-[100] bg-white border-b-2 border-black px-6 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
-        {/* LOGO */}
-        <Link to="/" className="text-2xl font-black tracking-tighter uppercase">
-          LOGO<span className="text-fuchsia-600">.</span>
+    <nav className={`fixed top-0 w-full z-[300] transition-all duration-700 px-6 ${scrolled ? 'py-2' : 'py-8'}`}>
+      <div 
+        ref={navRef}
+        className={`max-w-[1400px] mx-auto relative flex justify-between items-center p-4 rounded-2xl border-b-[6px] transition-all duration-500 overflow-visible ${
+          scrolled 
+          ? 'bg-[#0a0f1e]/90 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
+          : 'bg-[#12182d] shadow-[0_15px_30px_rgba(0,0,0,0.4)]'
+        }`}
+        style={{ borderColor: PRIMARY_BLUE }}
+      >
+        {/* --- PHYSICS FOOTBALL & LIGHTING --- */}
+        <motion.div
+          animate={{ 
+            x: ballX, 
+            rotate: ballRotate,
+            y: isBouncing ? -35 : 0,
+            scale: isBouncing ? 1.4 : 1
+          }}
+          transition={{ 
+            x: { type: "spring", stiffness: 80, damping: 12 },
+            y: { type: "spring", stiffness: 500, damping: 15 },
+            scale: { duration: 0.2 }
+          }}
+          className="absolute top-[-22px] z-50 pointer-events-none hidden lg:block"
+        >
+          <div className="relative w-8 h-8 bg-white rounded-full border-2 border-black flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+            <Activity className="absolute text-black/10 w-full h-full p-1" />
+            <div className="w-3 h-3 bg-black rounded-full" />
+          </div>
+          
+          {/* Energy Pulse on "Kick" */}
+          <AnimatePresence>
+            {isBouncing && (
+              <motion.div 
+                initial={{ scale: 0, opacity: 1 }}
+                animate={{ scale: 3, opacity: 0 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 rounded-full border-2"
+                style={{ borderColor: PRIMARY_BLUE }}
+              />
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Floating Trail behind the ball */}
+        <motion.div 
+          style={{ x: trailX }}
+          className="absolute top-0 h-1 w-12 blur-sm rounded-full pointer-events-none opacity-50"
+          style={{ backgroundColor: PRIMARY_BLUE, x: trailX }}
+        />
+
+        {/* LOGO SECTION */}
+        <Link to="/" className="flex items-center gap-3 group z-20">
+          <motion.div 
+            whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+            className="p-2.5 rounded-xl shadow-lg transition-all"
+            style={{ backgroundColor: PRIMARY_BLUE }}
+          >
+            <Trophy className="text-white" size={22} />
+          </motion.div>
+          <div className="flex flex-col">
+            <span className="text-2xl font-[1000] italic text-white uppercase tracking-tighter leading-none">
+              WAWU<span style={{ color: PRIMARY_BLUE }}>.</span>
+            </span>
+            <span className="text-[8px] font-black text-white/40 tracking-[0.3em] uppercase">Foundation</span>
+          </div>
         </Link>
 
-        {/* DESKTOP MENU */}
-        <div className="hidden lg:flex items-center gap-8 font-bold uppercase text-sm tracking-widest">
+        {/* MAIN NAVIGATION LINKS */}
+        <div className="hidden lg:flex items-center gap-1 z-20">
           {navLinks.map((link) => (
-            <Link key={link.name} to={link.path} className="hover:text-fuchsia-600 transition-colors">
-              {link.name}
+            <Link 
+              key={link.name} 
+              to={link.path}
+              onMouseEnter={handleInteraction}
+              className="relative px-5 py-2 group"
+            >
+              <motion.span 
+                className="relative z-10 text-[11px] font-[900] text-white/50 group-hover:text-white uppercase tracking-widest transition-colors"
+              >
+                {link.name}
+              </motion.span>
+              {/* Magnetic Hover Background */}
+              <motion.div 
+                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-10 -z-10 transition-opacity"
+                style={{ backgroundColor: PRIMARY_BLUE }}
+              />
             </Link>
           ))}
 
-          {/* Program Dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button 
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-1 font-bold uppercase hover:text-fuchsia-600"
-            >
-              Program <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+          {/* DYNAMIC DROPWDOWN */}
+          <div 
+            className="relative" 
+            onMouseEnter={(e) => { handleInteraction(e); setDropdownOpen(true); }}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button className="flex items-center gap-1 px-5 py-2 text-[11px] font-[900] text-white/50 uppercase tracking-widest hover:text-white transition-all">
+              Programs <ChevronDown size={14} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             
             <AnimatePresence>
               {dropdownOpen && (
-                <motion.ul 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full left-0 mt-4 bg-white border-2 border-black p-4 min-w-[200px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                <motion.div 
+                  initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute top-full left-0 mt-5 bg-[#0a0f1e] border-b-4 p-3 w-60 rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.8)] border-x-2 border-white/5"
+                  style={{ borderBottomColor: PRIMARY_BLUE }}
                 >
-                  {programItems.map((item) => (
-                    <li key={item.name} className="mb-2 last:mb-0">
+                  <div className="grid grid-cols-1 gap-1">
+                    {programItems.map((item) => (
                       <Link 
+                        key={item.name} 
                         to={item.path} 
-                        className="block hover:translate-x-1 transition-transform"
-                        onClick={() => setDropdownOpen(false)}
+                        className="group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all"
                       >
-                        {item.name}
+                        <span className="text-[10px] font-bold text-white/40 group-hover:text-white uppercase tracking-widest">{item.name}</span>
+                        <Zap size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: PRIMARY_BLUE }} />
                       </Link>
-                    </li>
-                  ))}
-                </motion.ul>
+                    ))}
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Mission CTA Button */}
-          <Link 
-            to="/mission" 
-            className="bg-[#2c6492] border-2 border-black px-5 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
-          >
-            OUR MISSION
-          </Link>
-        </div>
-
-        {/* MOBILE HAMBURGER */}
-        <button className="lg:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
-        </button>
-      </div>
-
-      {/* MOBILE DRAWER */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
+          {/* ACTION BUTTON */}
           <motion.div 
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[74px] bg-white lg:hidden flex flex-col p-8 gap-6 overflow-y-auto"
+            className="ml-6"
+            onMouseEnter={handleInteraction}
+            whileHover={{ scale: 1.05, x: 5 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                className="text-3xl font-black uppercase"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="border-t-2 border-black pt-6">
-              <p className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-xs">Programs</p>
-              <div className="grid grid-cols-1 gap-4">
-                {programItems.map((item) => (
-                  <Link 
-                    key={item.name} 
-                    to={item.path} 
-                    className="text-xl font-bold"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
             <Link 
-              to="/mission" 
-              className="mt-auto bg-fuchsia-500 text-white text-center border-2 border-black py-4 font-black text-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-              onClick={() => setIsMobileMenuOpen(false)}
+              to="/donate" 
+              className="relative px-10 py-3.5 rounded-full font-[1000] text-[12px] uppercase tracking-widest italic overflow-hidden flex items-center gap-2 group"
+              style={{ 
+                backgroundColor: scrolled ? PRIMARY_BLUE : 'white',
+                color: scrolled ? 'white' : '#12182d'
+              }}
             >
-              OUR MISSION
+              <Zap size={14} fill="currentColor" className="group-hover:animate-pulse" />
+              <span className="relative z-10">Donate</span>
+              
+              {/* Shine Effect */}
+              <motion.div 
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                className="absolute top-0 left-0 w-1/2 h-full bg-white/20 skew-x-12 pointer-events-none"
+              />
             </Link>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+
+        {/* MOBILE MENU ICON */}
+        <motion.button 
+          whileTap={{ scale: 0.8 }}
+          className="lg:hidden p-2 rounded-lg bg-white/5 text-white"
+        >
+          <Menu size={28} />
+        </motion.button>
+      </div>
     </nav>
   );
 };
 
-export default Navigation;
+export default VoltageFootballNav;
