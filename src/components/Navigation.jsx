@@ -31,10 +31,9 @@ const VoltageFootballNav = () => {
   ];
 
   const programItems = [
-    { name: 'Web Design', path: '/services/web-design' },
-    { name: 'App Development', path: '/services/app-development' },
-    { name: 'Consulting', path: '/services/consulting' },
-    { name: 'Training', path: '/services/training' },
+    { name: 'INL', path: '/services/web-design' },
+    { name: 'Quest', path: '/services/app-development' },
+    
   ];
 
   const handleInteraction = (e) => {
@@ -52,7 +51,7 @@ const VoltageFootballNav = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-[300] transition-all duration-700 px-6 ${scrolled ? 'py-2' : 'py-8'}`}>
+    <nav className={`fixed top-14 w-full z-[300] transition-all duration-700 px-6 ${scrolled ? 'py-2' : 'py-8'}`}>
       <div 
         ref={navRef}
         className={`max-w-[1400px] mx-auto relative flex justify-between items-center p-4 rounded-2xl border-b-[6px] transition-all duration-500 overflow-visible ${

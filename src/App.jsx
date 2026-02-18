@@ -13,6 +13,7 @@ import Consulting from './pages/Consulting';
 import Training from './pages/Training';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Support from './pages/Support';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,6 +30,7 @@ function App() {
         <Route path="/services/app-development" element={<AppDevelopment />} />
         <Route path="/services/consulting" element={<Consulting />} />
         <Route path="/services/training" element={<Training />} />
+        <Route path='/support' element={<Support />} />
       </Routes>
       <Footer />
     </div>
