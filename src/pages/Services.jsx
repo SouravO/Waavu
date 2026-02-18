@@ -53,7 +53,7 @@ const ServicesDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-4 lg:p-8 font-sans selection:bg-[#224e72] overflow-hidden relative pt-30">
+    <div className="min-h-screen bg-[#050505] text-white p-4 lg:p-8 font-sans selection:bg-[#224e72] overflow-hidden relative pt-30 md:pt-40">
       
       {/* BACKGROUND AMBIENCE */}
       <div className="fixed inset-0 z-0">
@@ -85,7 +85,7 @@ const ServicesDashboard = () => {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 h-full lg:h-[calc(100vh-4rem)]">
         
         {/* LEFT COLUMN: MODULE SELECTOR */}
-        <div className="lg:col-span-4 flex flex-col justify-center items-center gap-4 overflow-y-auto pr-2 custom-scrollbar">
+        <div className="lg:col-span-4 flex flex-col justify-center items-center gap-4 overflow-y-auto pr-2 custom-scrollbar md:pt-10">
           <div className="mb-8 text-center">
             <h1 className="text-4xl font-black italic tracking-tighter uppercase leading-none mb-2">
               Service<br /><span className="text-[#224e72]">Modules</span>

@@ -66,7 +66,8 @@ const VoltageFootballNav = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-[300] transition-transform duration-300 px-6 ${scrolled ? 'py-2' : 'py-8'} ${!visible ? '-translate-y-full' : 'translate-y-0'}`}>
+// Change this line in your VoltageFootballNav component:
+<nav className={`fixed top-0 left-0 right-0 w-full z-[9999] transition-transform duration-300 px-6 ${scrolled ? 'py-2' : 'py-8'} ${!visible ? '-translate-y-full' : 'translate-y-0'}`}>
       <div
         ref={navRef}
         className={`max-w-[1400px] mx-auto relative flex justify-between items-center p-4 rounded-2xl border-b-[6px] transition-all duration-500 overflow-visible ${
