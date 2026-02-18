@@ -9,15 +9,30 @@ const VoltageFootballNav = () => {
   const [isBouncing, setIsBouncing] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   const PRIMARY_BLUE = "#224e72";
-  
+
   // Spring physics for the ball trail
   const trailX = useSpring(ballX, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -51,12 +66,12 @@ const VoltageFootballNav = () => {
   };
 
   return (
-    <nav className={`fixed top-14 w-full z-[300] transition-all duration-700 px-6 ${scrolled ? 'py-2' : 'py-8'}`}>
-      <div 
+    <nav className={`fixed top-0 w-full z-[300] transition-transform duration-300 px-6 ${scrolled ? 'py-2' : 'py-8'} ${!visible ? '-translate-y-full' : 'translate-y-0'}`}>
+      <div
         ref={navRef}
         className={`max-w-[1400px] mx-auto relative flex justify-between items-center p-4 rounded-2xl border-b-[6px] transition-all duration-500 overflow-visible ${
-          scrolled 
-          ? 'bg-[#0a0f1e]/90 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
+          scrolled
+          ? 'bg-[#0a0f1e]/90 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
           : 'bg-[#12182d] shadow-[0_15px_30px_rgba(0,0,0,0.4)]'
         }`}
         style={{ borderColor: PRIMARY_BLUE }}
@@ -97,7 +112,6 @@ const VoltageFootballNav = () => {
 
         {/* Floating Trail behind the ball */}
         <motion.div 
-          style={{ x: trailX }}
           className="absolute top-0 h-1 w-12 blur-sm rounded-full pointer-events-none opacity-50"
           style={{ backgroundColor: PRIMARY_BLUE, x: trailX }}
         />
@@ -206,13 +220,124 @@ const VoltageFootballNav = () => {
         </div>
 
         {/* MOBILE MENU ICON */}
-        <motion.button 
+        <motion.button
           whileTap={{ scale: 0.8 }}
-          className="lg:hidden p-2 rounded-lg bg-white/5 text-white"
+          className="lg:hidden p-2 rounded-lg bg-white/5 text-white relative z-50"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <Menu size={28} />
+          <AnimatePresence mode="wait">
+            {mobileMenuOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Activity size={24} style={{ color: PRIMARY_BLUE }} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Menu size={28} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.button>
       </div>
+
+      {/* MOBILE MENU DROPDOWN */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -20 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden absolute top-full left-0 right-0 mx-6 mt-2 bg-[#0a0f1e]/95 backdrop-blur-xl rounded-2xl border-b-4 overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.8)]"
+            style={{ borderBottomColor: PRIMARY_BLUE }}
+          >
+            <div className="flex flex-col p-4 space-y-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl text-[13px] font-[900] text-white/50 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              {/* Programs Dropdown for Mobile */}
+              <div className="border-t border-white/10 pt-2">
+                <button
+                  onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                  className="w-full px-4 py-3 flex items-center justify-between rounded-xl text-[13px] font-[900] text-white/50 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
+                >
+                  Programs
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${mobileDropdownOpen ? 'rotate-180' : ''}`}
+                    style={{ color: PRIMARY_BLUE }}
+                  />
+                </button>
+                <AnimatePresence>
+                  {mobileDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 pt-2 space-y-1">
+                        {programItems.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.path}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobileDropdownOpen(false);
+                            }}
+                            className="flex items-center justify-between px-4 py-2 rounded-lg text-[11px] font-bold text-white/40 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
+                          >
+                            {item.name}
+                            <Zap size={12} style={{ color: PRIMARY_BLUE }} />
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Donate Button for Mobile */}
+              <motion.div
+                className="pt-2 border-t border-white/10"
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  to="/donate"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full py-4 rounded-full font-[1000] text-[12px] uppercase tracking-widest italic text-center overflow-hidden flex items-center justify-center gap-2"
+                  style={{
+                    backgroundColor: PRIMARY_BLUE,
+                    color: 'white'
+                  }}
+                >
+                  <Zap size={14} fill="currentColor" />
+                  <span>Donate</span>
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

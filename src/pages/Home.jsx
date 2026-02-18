@@ -19,17 +19,7 @@ const WAWUVelvet = () => {
   return (
     <div ref={containerRef} className="bg-white text-[#1a1a1a] font-['Poppins',sans-serif] selection:bg-[#2c518a] selection:text-white">
       {/* MINIMALIST HUD */}
-      <nav className="fixed top-0 w-full p-10 flex justify-between items-center z-[110] mix-blend-difference">
-        <div className="flex items-center gap-2">
-           <div className="w-10 h-[1px] bg-[#2c518a]" />
-           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">WAWU_FOUNDATION</span>
-        </div>
-        <div className="flex gap-10 text-[10px] font-bold uppercase tracking-widest opacity-60 text-white cursor-pointer">
-          <span>About Us</span>
-          <span>Initiatives</span>
-          <span>Contact</span>
-        </div>
-      </nav>
+
 
       <section className="relative h-[800vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
