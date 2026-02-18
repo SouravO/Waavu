@@ -14,6 +14,10 @@ import Training from './pages/Training';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Support from './pages/Support';
+import TalentIdentification from './pages/TalentIdentification';
+import ComprehensiveSupport from './pages/ComprehensiveSupport';
+import ProfessionalTraining from './pages/ProfessionalTraining';
+import MentorshipGuidance from './pages/MentorshipGuidance';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +34,10 @@ function App() {
         <Route path="/services/app-development" element={<AppDevelopment />} />
         <Route path="/services/consulting" element={<Consulting />} />
         <Route path="/services/training" element={<Training />} />
+        <Route path="/services/talent-identification" element={<TalentIdentification />} />
+        <Route path="/services/comprehensive-support" element={<ComprehensiveSupport />} />
+        <Route path="/services/professional-training" element={<ProfessionalTraining />} />
+        <Route path="/services/mentorship-guidance" element={<MentorshipGuidance />} />
         <Route path='/support' element={<Support />} />
       </Routes>
       <Footer />
