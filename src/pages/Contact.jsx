@@ -1,242 +1,224 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Target, Activity, ChevronRight, Trophy, Cpu, Zap, Crosshair } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, MapPin, Phone, Send, Trophy, Target, Users, Clock } from 'lucide-react';
 
-const CyberFootball = () => {
-  const [power, setPower] = useState(0);
-  const [isStriking, setIsStriking] = useState(false);
-  const [showGoal, setShowGoal] = useState(false);
-  const [stats, setStats] = useState({ name: 'UNIT_01', num: '10' });
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  useEffect(() => {
-    if (isStriking) return;
-    const interval = setInterval(() => {
-      setPower(p => (p >= 100 ? 0 : p + 2));
-    }, 30);
-    return () => clearInterval(interval);
-  }, [isStriking]);
-
-  const handleStrike = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (isStriking) return;
-    setIsStriking(true);
-    
-    // Sequence: Strike -> Impact -> Reset
-    setTimeout(() => {
-      setShowGoal(true);
-      setTimeout(() => {
-        setIsStriking(false);
-        setShowGoal(false);
-      }, 2500);
-    }, 800);
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-950 text-white font-sans overflow-hidden flex items-center justify-center p-6">
-      
-      {/* UPDATED BLUE CYBER AMBIENCE */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Radial Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black opacity-100" />
-        
-        {/* Floating Tech Icons */}
-        <div className="absolute top-10 left-10"><Cpu size={40} className="text-indigo-500/10" /></div>
-        <div className="absolute bottom-10 right-10"><Zap size={40} className="text-indigo-500/10" /></div>
-        
-        {/* Digital Grid in Indigo */}
-        <div className="absolute inset-0" 
-             style={{ 
-               backgroundImage: 'linear-gradient(#6366f108 1px, transparent 1px), linear-gradient(90deg, #6366f108 1px, transparent 1px)', 
-               backgroundSize: '40px 40px' 
-             }} 
-        />
+    <div className="relative min-h-screen bg-black text-white font-sans overflow-hidden">
+      {/* TACTICAL BACKGROUND */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(180deg, #0a0f1e 0%, #224e72 40%, #000000 100%)'
+        }}
+      >
+        {/* Field Markings Overlay */}
+        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50%" cy="50%" r="200" fill="none" stroke="white" strokeWidth="2" strokeDasharray="10 10" />
+          <rect x="20%" y="30%" width="60%" height="40%" fill="none" stroke="white" strokeWidth="2" />
+          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="white" strokeWidth="4" />
+        </svg>
+
+        {/* Interactive Glow */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#98ff98]/5 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#224e72]/20 blur-[150px] rounded-full pointer-events-none" />
       </div>
 
-      <main className="relative z-10 w-full max-w-5xl h-[580px] bg-zinc-950 border border-slate-800 rounded-2xl flex flex-row overflow-hidden shadow-[0_0_50px_-12px_rgba(30,41,59,0.5)]">
-        
-        {/* LEFT PANEL */}
-        <section className="w-[35%] p-8 flex flex-col justify-between border-r border-zinc-800 bg-zinc-950/50 backdrop-blur-md">
-          <div className="space-y-6">
-            <header className="flex items-center gap-3">
-              <div className="p-2 bg-emerald-500/10 rounded-lg">
-                <Crosshair className="text-emerald-500" size={20} />
-              </div>
-              <div>
-                <h1 className="text-sm font-black tracking-[0.2em] uppercase">Tactical_OS</h1>
-                <p className="text-[8px] text-zinc-500 font-mono">v4.0.2-STRIKE</p>
-              </div>
-            </header>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
+        {/* HEADER SECTION */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 bg-[#98ff98] text-black px-4 py-2 text-[10px] font-black uppercase italic mb-6"
+          >
+            <Target size={14} /> Get In Touch
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-6xl md:text-8xl font-black text-white italic leading-[0.85] tracking-tighter uppercase mb-4"
+          >
+            CONTACT <span className="text-[#98ff98]">US</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-white/40 text-sm font-bold uppercase tracking-widest max-w-2xl mx-auto"
+          >
+            Building the Future, One Pitch at a Time
+          </motion.p>
+        </div>
 
-            <form onSubmit={handleStrike} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-[9px] font-bold text-zinc-500 tracking-widest uppercase">Striker_ID</label>
-                <input 
-                  type="text"
-                  placeholder="NAME"
-                  className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg p-3 text-xs focus:border-emerald-500 outline-none transition-all font-mono placeholder:text-zinc-700"
-                  onChange={(e) => setStats({...stats, name: e.target.value.toUpperCase() || 'UNIT_01'})}
-                />
-              </div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* CONTACT FORM */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white/5 border border-white/10 p-8 backdrop-blur-md"
+          >
+            <h2 className="text-2xl font-black text-white italic uppercase mb-8 flex items-center gap-3">
+              <Send size={20} className="text-[#98ff98]" />
+              Send Message
+            </h2>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1.5">
-                  <label className="text-[9px] font-bold text-zinc-500 uppercase">Squad#</label>
-                  <input 
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Name</label>
+                  <input
                     type="text"
-                    placeholder="10"
-                    className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg p-3 text-xs focus:border-emerald-500 outline-none font-mono"
-                    onChange={(e) => setStats({...stats, num: e.target.value || '10'})}
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full bg-black/30 border border-white/10 rounded-lg p-4 text-white text-sm focus:border-[#98ff98] outline-none transition-all placeholder:text-white/20"
+                    placeholder="Your Name"
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-[9px] font-bold text-zinc-500 uppercase">Status</label>
-                  <div className="w-full bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-3 text-[10px] text-emerald-500 font-bold">READY</div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-black/30 border border-white/10 rounded-lg p-4 text-white text-sm focus:border-[#98ff98] outline-none transition-all placeholder:text-white/20"
+                    placeholder="your@email.com"
+                  />
                 </div>
               </div>
 
-              <button 
-                disabled={isStriking}
-                className="group relative w-full h-14 bg-emerald-500 hover:bg-emerald-400 rounded-lg overflow-hidden transition-all active:scale-95 mt-4 disabled:opacity-50"
-              >
-                <span className="relative z-10 text-black text-xs font-black flex items-center justify-center gap-2">
-                  {isStriking ? 'CALCULATING TRAJECTORY...' : 'INIT_STRIKE'} <ChevronRight size={16} />
-                </span>
-              </button>
-            </form>
-          </div>
-
-          <div className="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800/50">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-tighter">Power_Output</span>
-              <span className="text-[10px] font-mono text-emerald-400">{power}%</span>
-            </div>
-            <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden p-[2px]">
-              <motion.div 
-                className="h-full bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"
-                animate={{ width: `${power}%` }}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* RIGHT PANEL: THE FIELD */}
-        <section className="w-[65%] relative bg-[#020402] overflow-hidden perspective-1000">
-          
-          {/* Pitch 3D Floor */}
-          <div className="absolute inset-0" 
-               style={{ 
-                 backgroundImage: 'repeating-linear-gradient(0deg, #0a150a 0, #0a150a 40px, #050a05 40px, #050a05 80px)',
-                 transform: 'perspective(600px) rotateX(45deg)',
-                 transformOrigin: 'bottom',
-                 height: '150%',
-                 bottom: '-20%'
-               }} 
-          />
-
-          {/* GOAL POST & NET */}
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] h-40">
-            <div className="absolute inset-0 border-t-4 border-l-4 border-r-4 border-white/60 rounded-t-sm shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                <div className="w-full h-full opacity-20" 
-                     style={{ 
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L10 20 Z' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")`,
-                        backgroundSize: '12px 12px'
-                     }} 
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Subject</label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full bg-black/30 border border-white/10 rounded-lg p-4 text-white text-sm focus:border-[#98ff98] outline-none transition-all placeholder:text-white/20"
+                  placeholder="What's this about?"
                 />
-            </div>
-            <div className="absolute bottom-0 left-[-20%] right-[-20%] h-[2px] bg-white/10" />
-          </div>
+              </div>
 
-          {/* DYNAMIC SHADOW */}
-          <motion.div
-            className="absolute left-1/2 bg-black/60 blur-md rounded-full"
-            animate={isStriking ? {
-              bottom: '80%',
-              scale: 0.2,
-              opacity: 0.1,
-              width: 20,
-              height: 10
-            } : {
-              bottom: 60,
-              scale: 1,
-              opacity: 0.6,
-              width: 60,
-              height: 20
-            }}
-            style={{ x: '-50%' }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full bg-black/30 border border-white/10 rounded-lg p-4 text-white text-sm focus:border-[#98ff98] outline-none transition-all placeholder:text-white/20 resize-none"
+                  placeholder="Your message..."
+                />
+              </div>
 
-          {/* THE BALL */}
-          <motion.div
-            initial={{ bottom: 60, x: '-50%', scale: 1 }}
-            animate={isStriking ? { 
-              bottom: ['15%', '85%', '82%'],
-              x: ['-50%', '-10%', '5%'],
-              scale: [1, 0.4, 0.35],
-              rotate: 1080
-            } : { 
-              bottom: 60, 
-              x: '-50%',
-              scale: 1,
-              rotate: 0
-            }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-1/2 z-30"
-          >
-            <div className="relative w-16 h-16 rounded-full bg-white shadow-2xl border-2 border-zinc-400">
-               <div className="absolute inset-0" 
-                    style={{ 
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 10 L40 30 L20 40 L0 30 L0 10 Z' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E")`,
-                        backgroundSize: '30px 30px' 
-                    }} />
-               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/60 rounded-full" />
-            </div>
-            
-            <AnimatePresence>
-              {!isStriking && (
-                <motion.div 
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                  className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-zinc-900/90 backdrop-blur-md text-[10px] px-3 py-1.5 border border-emerald-500/30 rounded-full font-mono shadow-xl"
-                >
-                  {stats.name} <span className="text-emerald-500 font-bold ml-1">#{stats.num}</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                className="group relative w-full h-14 bg-[#98ff98] hover:bg-[#88ee88] rounded-lg overflow-hidden transition-all"
+              >
+                <span className="relative z-10 text-black text-xs font-black flex items-center justify-center gap-2 uppercase tracking-widest">
+                  Send Message <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </motion.button>
+            </form>
           </motion.div>
 
-          {/* GOAL OVERLAY */}
-          <AnimatePresence>
-            {showGoal && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
-                className="absolute inset-0 z-40 bg-emerald-950/20 backdrop-blur-md flex flex-col items-center justify-center"
+          {/* CONTACT INFO */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="space-y-6"
+          >
+            {/* INFO CARDS */}
+            {[
+              { icon: Mail, label: 'Email', value: 'contact@waavufoundation.org', sub: 'We respond within 24 hours' },
+              { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567', sub: 'Mon-Fri, 9AM-6PM EST' },
+              { icon: MapPin, label: 'Location', value: 'Global Operations', sub: 'Building pitches worldwide' },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+                className="bg-white/5 border border-white/10 p-6 backdrop-blur-md hover:border-[#98ff98]/30 transition-all group"
               >
-                <motion.div
-                  initial={{ y: 20 }} animate={{ y: 0 }}
-                  className="bg-zinc-950 border-2 border-emerald-500 p-8 rounded-2xl flex flex-col items-center shadow-[0_0_50px_rgba(16,185,129,0.2)]"
-                >
-                  <Trophy size={64} className="text-yellow-500 mb-4 animate-bounce" />
-                  <h2 className="text-6xl font-black italic tracking-tighter text-white uppercase leading-none">Goal!</h2>
-                  <div className="mt-4 flex items-center gap-4 text-xs font-mono">
-                    <span className="text-zinc-500">POWER: {power}%</span>
-                    <span className="text-emerald-500 underline decoration-2 underline-offset-4 tracking-wider">CRITICAL_STRIKE</span>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-[#98ff98]/10 rounded-lg group-hover:bg-[#98ff98]/20 transition-all">
+                    <item.icon size={24} className="text-[#98ff98]" />
                   </div>
-                </motion.div>
+                  <div className="flex-1">
+                    <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">{item.label}</p>
+                    <p className="text-xl font-black text-white italic">{item.value}</p>
+                    <p className="text-[10px] text-white/30 font-bold uppercase tracking-wider mt-1">{item.sub}</p>
+                  </div>
+                </div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            ))}
 
-          {/* HUD ELEMENTS */}
-          <div className="absolute top-6 right-6">
-            <div className="flex items-center gap-2 text-[10px] font-mono text-emerald-500/60 bg-black/60 px-3 py-1.5 rounded-full border border-emerald-500/20 backdrop-blur-sm">
-              <span className="animate-pulse">OS_ONLINE</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+            {/* STATS SECTION */}
+            <div className="grid grid-cols-2 gap-4 mt-8">
+              {[
+                { label: 'Response Time', value: '< 24hrs', icon: Clock },
+                { label: 'Projects', value: '75+', icon: Trophy },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.7 + i * 0.1 }}
+                  className="bg-white/5 border border-white/10 p-6 backdrop-blur-md"
+                >
+                  <stat.icon size={20} className="text-[#98ff98] mb-3" />
+                  <p className="text-3xl font-black text-white italic">{stat.value}</p>
+                  <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest">{stat.label}</p>
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </section>
-      </main>
+
+            {/* CTA BOX */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="relative bg-[#224e72] p-8 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
+              <div className="relative z-10">
+                <Trophy size={32} className="text-[#98ff98] mb-4" />
+                <h3 className="text-xl font-black text-white italic uppercase mb-2">Want to Make an Impact?</h3>
+                <p className="text-white/60 text-sm font-bold mb-4">Join our mission to build the future of football.</p>
+                <a href="/donate" className="inline-block bg-white text-black px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#98ff98] transition-colors">
+                  Donate Now
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CyberFootball;
+export default ContactPage;

@@ -76,7 +76,7 @@ const FootballSystem = () => {
   return (
     <div 
       ref={containerRef}
-      className="flex flex-col lg:flex-row min-h-screen lg:h-screen w-screen overflow-x-hidden lg:overflow-hidden font-sans bg-black select-none"
+      className="flex flex-col lg:flex-row min-h-screen lg:h-screen w-screen overflow-x-hidden lg:overflow-hidden font-sans bg-black select-none pt-10"
     >
       {/* GLOBAL HUD */}
       <div className="fixed top-8 left-8 z-50 mix-blend-difference text-white pointer-events-none">

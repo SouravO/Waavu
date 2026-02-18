@@ -53,7 +53,7 @@ const ServicesDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-4 lg:p-8 font-sans selection:bg-[#224e72] overflow-hidden relative">
+    <div className="min-h-screen bg-[#050505] text-white p-4 lg:p-8 font-sans selection:bg-[#224e72] overflow-hidden relative pt-30">
       
       {/* BACKGROUND AMBIENCE */}
       <div className="fixed inset-0 z-0">
