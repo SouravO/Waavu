@@ -119,18 +119,10 @@ const VoltageFootballNav = () => {
 
         {/* LOGO SECTION */}
         <Link to="/" className="flex items-center gap-3 group z-20">
-          <motion.div 
-            whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-            className="p-2.5 rounded-xl shadow-lg transition-all"
-            style={{ backgroundColor: PRIMARY_BLUE }}
-          >
-            <Trophy className="text-white" size={22} />
-          </motion.div>
+        
           <div className="flex flex-col">
-            <span className="text-2xl font-[1000] italic text-white uppercase tracking-tighter leading-none">
-              WAWU<span style={{ color: PRIMARY_BLUE }}>.</span>
-            </span>
-            <span className="text-[8px] font-black text-white/40 tracking-[0.3em] uppercase">Foundation</span>
+            {/* logo */}
+           <img src="/assets/logo/Logo.png" alt="Voltage Football Logo" className="w-30 h-auto -mb-1" />
           </div>
         </Link>
 

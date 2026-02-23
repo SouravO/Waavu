@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Target, Users, ArrowUpRight, Instagram, Twitter } from 'lucide-react';
+import { Trophy, Target, Users, ArrowUpRight, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 
 const StadiumTacticalFooter = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -87,8 +87,13 @@ const StadiumTacticalFooter = () => {
             <div className="space-y-2">
               <p className="text-white font-black text-xs uppercase tracking-widest italic">Follow the Game</p>
               <div className="flex gap-4 text-white/40">
-                <Instagram className="hover:text-white transition-colors cursor-pointer" size={20} />
-                <Twitter className="hover:text-white transition-colors cursor-pointer" size={20} />
+              <a href="https://www.linkedin.com/in/wawu-foundation">
+                <Linkedin className="hover:text-white transition-colors cursor-pointer" size={20} />
+              </a>
+              <a href="https://youtube.com/@wawu.foundation?si=ttkPTwfNFnR4k06S">
+              
+                <Youtube className="hover:text-white transition-colors cursor-pointer" size={20} />
+              </a>
               </div>
             </div>
             <div className="space-y-2 border-l border-white/10 pl-10">
