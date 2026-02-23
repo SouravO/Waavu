@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Users, Zap, ArrowUpRight, BarChart2, Radio } from 'lucide-react';
+import { Trophy, Users, Zap, ArrowUpRight, BarChart2, Radio, Search, Target, Link as LinkIcon, Globe, Layout, Eye, MapPin } from 'lucide-react';
 
 const INLLNeoGlass = () => {
   return (
@@ -43,6 +43,128 @@ const INLLNeoGlass = () => {
           <p className="mt-8 max-w-2xl mx-auto text-slate-400 text-lg md:text-xl font-light leading-relaxed">
             The India Next Legend League is a high-performance ecosystem designed to bridge the gap between raw potential and global professional football.
           </p>
+        </div>
+      </section>
+
+      {/* --- ABOUT THE TOURNAMENT --- */}
+      <section className="px-6 py-12 max-w-5xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-8">
+            About the <span className="text-cyan-500">Tournament</span>
+          </h2>
+          <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
+            India's Next Legend League (INLL) is WAWU's flagship football tournament designed to discover and nurture the best football talents from across the nation. This premier platform empowers aspiring players to showcase their skills, gain national visibility, and receive comprehensive support to achieve their dreams of becoming professional footballers.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* --- WHY INLL? --- */}
+      <section className="px-6 py-20 bg-white/5 border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-4">
+              Why <span className="text-cyan-500">INLL?</span>
+            </h2>
+            <p className="text-slate-400 text-lg font-light">
+              Discover what makes INLL the ultimate platform for football excellence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: <Search className="w-8 h-8" />, 
+                title: "Scout Hidden Talents", 
+                desc: "Identifying promising players from grassroots levels across India." 
+              },
+              { 
+                icon: <Target className="w-8 h-8" />, 
+                title: "Competitive Platform", 
+                desc: "Providing an opportunity for players to showcase their skills on a national stage." 
+              },
+              { 
+                icon: <LinkIcon className="w-8 h-8" />, 
+                title: "Professional Connections", 
+                desc: "Linking talents with professional training, mentors, and sponsors for career growth." 
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-cyan-500/50 transition-all group"
+              >
+                <div className="text-cyan-500 mb-6 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h4 className="text-xl font-bold uppercase italic mb-3">{item.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- TOURNAMENT HIGHLIGHTS --- */}
+      <section className="px-6 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-4">
+              Tournament <span className="text-cyan-500">Highlights</span>
+            </h2>
+            <p className="text-slate-400 text-lg font-light">
+              Experience the pinnacle of football competition with unprecedented opportunities.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { 
+                icon: <Globe className="w-6 h-6" />, 
+                title: "Nationwide Reach", 
+                desc: "The tournament will be organized across India, ensuring inclusivity from villages to cities." 
+              },
+              { 
+                icon: <Layout className="w-6 h-6" />, 
+                title: "Competitive Format", 
+                desc: "Teams will compete in a league format to provide maximum exposure to every player." 
+              },
+              { 
+                icon: <Eye className="w-6 h-6" />, 
+                title: "WAWU Representatives", 
+                desc: "WAWU scouts will be present at every tournament to identify and select promising talents." 
+              },
+              { 
+                icon: <MapPin className="w-6 h-6" />, 
+                title: "Multiple Cities", 
+                desc: "Tournaments held across major cities to ensure wide participation and accessibility." 
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex items-start gap-6 p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+              >
+                <div className="w-12 h-12 shrink-0 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold uppercase italic mb-2">{item.title}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

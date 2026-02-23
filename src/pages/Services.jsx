@@ -57,45 +57,7 @@ const ServicesDashboard = () => {
       path: "/services/mentorship-guidance"
     }
   ];
-  // const modules = [
-  //   {
-  //     id: "BIO-01",
-  //     title: "Bio-Metric Scouting",
-  //     description: "Advanced physiological assessment and talent mapping for grassroots athletes using wearable telemetry.",
-  //     icon: <Dna size={24} />,
-  //     color: "#224e72",
-  //     image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=2000&auto=format&fit=crop",
-  //     specs: ["VO2 Max Tracking", "Mechanical Analysis", "Growth Projection"]
-  //   },
-  //   {
-  //     id: "TAC-02",
-  //     title: "Tactical Playbook",
-  //     description: "Comprehensive youth development curriculum based on elite professional standards and AI-driven spatial logic.",
-  //     icon: <Terminal size={24} />,
-  //     color: "#1a3a54",
-  //     image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2000&auto=format&fit=crop",
-  //     specs: ["Positioning IQ", "Set-Piece Logic", "Decision Matrix"]
-  //   },
-  //   {
-  //     id: "OPS-03",
-  //     title: "Infrastructure Ops",
-  //     description: "Transforming underserved community grounds into professional-grade, tech-enabled sporting facilities.",
-  //     icon: <Maximize size={24} />,
-  //     color: "#224e72",
-  //     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop",
-  //     specs: ["Smart Turf Install", "Eco-Lighting", "Safety Audit"]
-  //   },
-  //   {
-  //     id: "ENG-04",
-  //     title: "Impact Engineering",
-  //     description: "Quantifying social change through structured sports participation and high-yield corporate CSR integration.",
-  //     icon: <ShieldCheck size={24} />,
-  //     color: "#1a3a54",
-  //     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000&auto=format&fit=crop",
-  //     specs: ["SROI Metrics", "Education Pathways", "Career Mentoring"]
-  //   }
-  // ];
-
+ 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#224e72] overflow-x-hidden relative pt-20 md:pt-24">
 
@@ -146,7 +108,7 @@ const ServicesDashboard = () => {
                 onClick={() => navigate(module.path)}
                 onMouseEnter={() => setFocusedIndex(idx)}
                 whileHover={{ x: 8, scale: 1.02 }}
-                className={`relative cursor-pointer p-5 lg:p-6 border transition-all duration-300 overflow-hidden rounded-lg ${
+                className={`relative cursor-pointer p-5 lg:p-6 border transition-all duration-300 overflow-hidden rounded-lg flex-1 ${
                   focusedIndex === idx
                     ? 'border-[#224e72] ring-1 ring-[#224e72]/50 shadow-lg shadow-[#224e72]/20'
                     : 'border-white/10 hover:border-white/30'
@@ -173,7 +135,7 @@ const ServicesDashboard = () => {
                   <div className="absolute inset-0 bg-black/60" />
                 </div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 ">
                   <div className="flex justify-between items-start">
                     <span className="text-[10px] font-black opacity-60 tracking-widest">{module.id}</span>
                     {focusedIndex === idx ? (
@@ -195,19 +157,19 @@ const ServicesDashboard = () => {
           </div>
 
           {/* RIGHT COLUMN: DATA DISPLAY */}
-          <div className="lg:col-span-7 bg-white/5 border border-white/10 backdrop-blur-xl rounded-lg relative overflow-hidden group min-h-[600px] lg:min-h-[700px]">
-            <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20" />
+          <div className="lg:col-span-7 bg-white/5 border border-white/10 backdrop-blur-xl rounded-lg relative overflow-hidden group min-h-[600px] lg:min-h-[300px]">
+            <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 " />
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" >
               <motion.div
                 key={focusedIndex}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="p-6 lg:p-12 h-full flex flex-col justify-between"
+                className="p-6 lg:p-12 h-full flex flex-col justify-between "
               >
-                <div>
+                <div className=''>
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
