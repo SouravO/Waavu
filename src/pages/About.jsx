@@ -47,12 +47,12 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20">
+    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20 overflow-hidden">
       {/* HERO SECTION */}
-      <section className="py-24 px-6 border-b border-black/5">
+      <section className="py-24 px-4 md:px-6 border-b border-black/5">
         <div className="max-w-screen-2xl mx-auto">
           <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">About_The_Studio</p>
-          <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
+          <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
             The Vision <br />
             <span className="italic font-light">Behind The Icon.</span>
           </h1>
@@ -62,9 +62,9 @@ const About = () => {
       {/* CONTENT SECTIONS */}
       {sections.map((section, idx) => (
         <section key={section.id} className="border-b border-black/5 overflow-hidden">
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${idx % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2`}>
             {/* Image Block */}
-            <div className={`aspect-square md:aspect-auto md:h-[80vh] overflow-hidden group relative ${idx % 2 === 1 ? 'md:col-start-2' : 'border-r border-black/5'}`}>
+            <div className={`aspect-[4/5] md:aspect-auto md:h-[80vh] overflow-hidden group relative ${idx % 2 === 1 ? 'md:order-2' : 'border-r border-black/5'}`}>
               <motion.img 
                 initial={{ scale: 1.2 }}
                 whileInView={{ scale: 1 }}
@@ -79,14 +79,14 @@ const About = () => {
             </div>
 
             {/* Content Block */}
-            <div className="flex flex-col justify-between p-8 md:p-20 bg-white">
-              <div className="space-y-12">
+            <div className={`flex flex-col justify-between p-8 md:p-20 bg-white ${idx % 2 === 1 ? 'md:order-1' : ''}`}>
+              <div className="space-y-8 md:space-y-12">
                 <div className="text-[#125487] flex items-center gap-4">
                   {section.icon}
                   <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-40">{section.subtitle}</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-serif">{section.header}</h2>
-                <p className="max-w-md text-xl font-light text-black/60 leading-relaxed">
+                <h2 className="text-4xl md:text-7xl font-serif leading-tight">{section.header}</h2>
+                <p className="max-w-md text-lg md:text-xl font-light text-black/60 leading-relaxed">
                   {section.body}
                 </p>
                 

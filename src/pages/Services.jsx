@@ -47,12 +47,12 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20">
+    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20 overflow-hidden">
       {/* HERO SECTION */}
-      <section className="py-24 px-6 border-b border-black/5">
+      <section className="py-24 px-4 md:px-6 border-b border-black/5">
         <div className="max-w-screen-2xl mx-auto">
           <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Ecosystem</p>
-          <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
+          <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
             Strategic <br />
             <span className="italic font-light">Operations.</span>
           </h1>
@@ -63,20 +63,20 @@ const Services = () => {
       <section className="border-b border-black/5">
         <div className="grid grid-cols-1 lg:grid-cols-12">
           {/* List Block */}
-          <div className="lg:col-span-5 border-r border-black/5 flex flex-col">
+          <div className="lg:col-span-5 border-r border-black/5 flex flex-col order-2 lg:order-1">
             {modules.map((module, idx) => (
               <div
                 key={idx}
                 onMouseEnter={() => setFocusedIndex(idx)}
                 onClick={() => navigate(module.path)}
-                className={`relative p-12 cursor-pointer border-b border-black/5 transition-all duration-500 group overflow-hidden ${focusedIndex === idx ? 'bg-[#F5F5F5]' : 'bg-white'}`}
+                className={`relative p-8 md:p-12 cursor-pointer border-b border-black/5 transition-all duration-500 group overflow-hidden ${focusedIndex === idx ? 'bg-[#F5F5F5]' : 'bg-white'}`}
               >
                 <div className={`absolute left-0 top-0 bottom-0 w-[4px] bg-[#125487] transition-transform duration-500 ${focusedIndex === idx ? 'scale-y-100' : 'scale-y-0'}`} />
                 
                 <div className="flex justify-between items-start relative z-10">
                   <div className="space-y-4">
                     <span className="text-[10px] font-mono text-black/30 uppercase tracking-[0.3em]">Ref_{module.id}</span>
-                    <h3 className={`text-3xl font-serif italic transition-colors duration-500 ${focusedIndex === idx ? 'text-[#125487]' : 'text-black/40 group-hover:text-black'}`}>
+                    <h3 className={`text-2xl md:text-3xl font-serif italic transition-colors duration-500 ${focusedIndex === idx ? 'text-[#125487]' : 'text-black/40 group-hover:text-black'}`}>
                       {module.title}
                     </h3>
                   </div>
@@ -89,7 +89,7 @@ const Services = () => {
           </div>
 
           {/* Detail Block */}
-          <div className="lg:col-span-7 bg-[#F5F5F5] min-h-[600px] flex flex-col justify-between p-8 md:p-20 relative overflow-hidden">
+          <div className="lg:col-span-7 bg-[#F5F5F5] min-h-[400px] md:min-h-[600px] flex flex-col justify-between p-8 md:p-20 relative overflow-hidden order-1 lg:order-2 border-b lg:border-b-0 border-black/5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={focusedIndex}
@@ -97,30 +97,30 @@ const Services = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-10 space-y-12"
+                className="relative z-10 space-y-8 md:space-y-12"
               >
-                <div className="space-y-8">
-                  <div className="w-16 h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
+                <div className="space-y-6 md:space-y-8">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
                     {modules[focusedIndex].icon}
                   </div>
-                  <h2 className="text-5xl md:text-7xl font-serif leading-tight">
+                  <h2 className="text-4xl md:text-7xl font-serif leading-tight">
                     {modules[focusedIndex].title}
                   </h2>
-                  <p className="max-w-xl text-xl font-light text-black/60 leading-relaxed">
+                  <p className="max-w-xl text-lg md:text-xl font-light text-black/60 leading-relaxed">
                     {modules[focusedIndex].description}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-black/10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-8 md:pt-12 border-t border-black/10">
                   {modules[focusedIndex].specs.map((spec, i) => (
                     <div key={i} className="space-y-2">
                       <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Parameter_{i+1}</p>
-                      <p className="text-xs font-bold uppercase tracking-widest">{spec}</p>
+                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">{spec}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-12">
+                <div className="pt-8 md:pt-12">
                   <button 
                     onClick={() => navigate(modules[focusedIndex].path)}
                     className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"

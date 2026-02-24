@@ -25,7 +25,7 @@ const StudioNeoWAWU = () => {
      
 
       {/* --- 2. THE HERO --- */}
-      <section className="pt-32 pb-20 border-b border-black/5 px-6">
+      <section className="pt-32 pb-20 border-b border-black/5 px-4 md:px-6 overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-9">
@@ -33,17 +33,17 @@ const StudioNeoWAWU = () => {
                 initial={{ y: 60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[14vw] md:text-[11vw] font-serif leading-[0.8] tracking-tighter"
+                className="text-[14vw] md:text-[11vw] font-serif leading-[0.8] tracking-tighter break-words"
               >
                 Building <br />
                 <span className="italic font-light text-[#125487]">Dreams</span>
               </motion.h1>
             </div>
             <div className="md:col-span-3 pb-4">
-              <p className="text-sm uppercase tracking-widest font-medium text-black/40 mb-6">
+              <p className="text-[10px] md:text-sm uppercase tracking-widest font-medium text-black/40 mb-6">
                 [Since 2017] — Empowering India
               </p>
-              <p className="text-lg leading-relaxed italic">
+              <p className="text-base md:text-lg leading-relaxed italic">
                 A dedicated non-profit ecosystem designed to elevate underprivileged football talent into global icons.
               </p>
             </div>
@@ -54,7 +54,7 @@ const StudioNeoWAWU = () => {
       {/* --- 3. CORE MISSION (Horizontal Shift) --- */}
       <section className="border-b border-black/5 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="aspect-square md:aspect-auto md:h-screen border-r border-black/5 overflow-hidden group relative">
+          <div className="aspect-[4/5] md:aspect-auto md:h-screen border-b md:border-b-0 md:border-r border-black/5 overflow-hidden group relative">
             <motion.img 
               initial={{ scale: 1.2 }}
               whileInView={{ scale: 1 }}
@@ -69,10 +69,10 @@ const StudioNeoWAWU = () => {
           </div>
 
           <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
-            <div className="space-y-12">
+            <div className="space-y-8 md:space-y-12">
               <Target className="text-[#125487]" size={32} />
-              <h2 className="text-5xl md:text-7xl font-serif text-[#125487] ">Bridging the <br/> Opportunity Gap.</h2>
-              <p className="max-w-md text-xl font-light leading-relaxed">
+              <h2 className="text-5xl md:text-7xl font-serif text-[#125487] leading-tight">Bridging the <br className="hidden md:block"/> Opportunity Gap.</h2>
+              <p className="max-w-md text-lg md:text-xl font-light leading-relaxed">
                 We uncover raw talent in rural and underserved areas, ensuring that financial limitations never bench a future star.
               </p>
             </div>
@@ -90,27 +90,27 @@ const StudioNeoWAWU = () => {
       </section>
 
       {/* --- 4. IMPACT METRICS --- */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-px bg-black/5 border border-black/5 shadow-2xl">
+      <section className="py-24 px-4 md:px-6 bg-white overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-black/5 border border-black/5 shadow-2xl">
           {[
             { label: "Youth Reached", value: "1,369+" },
             { label: "Talents Scouted", value: "128+" },
             { label: "Events Conducted", value: "32+" },
             { label: "Districts Covered", value: "9+" }
           ].map((item, i) => (
-            <div key={i} className="bg-white p-12 hover:bg-[#125487] hover:text-white transition-colors group">
+            <div key={i} className="bg-white p-6 md:p-12 hover:bg-[#125487] hover:text-white transition-colors group">
               <p className="text-[10px] font-mono opacity-40 uppercase mb-4 group-hover:text-white/60">{item.label}</p>
-              <p className="text-4xl font-serif italic">{item.value}</p>
+              <p className="text-2xl md:text-4xl font-serif italic">{item.value}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* --- 5. SERVICES & CAPABILITIES --- */}
-      <section className="py-32 px-6 border-b border-black/10">
+      <section className="py-24 md:py-32 px-4 md:px-6 border-b border-black/10 overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">
-          <div className="mb-20">
-            <h2 className="text-8xl font-serif tracking-tighter">Services</h2>
+          <div className="mb-12 md:mb-20">
+            <h2 className="text-6xl md:text-8xl font-serif tracking-tighter">Services</h2>
           </div>
           <div className="divide-y divide-black/10">
             {[
@@ -118,14 +118,14 @@ const StudioNeoWAWU = () => {
               { id: "02", title: "Holistic Support", desc: "Full scholarships covering athletic and educational needs to ensure sustainable growth.", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80" },
               { id: "03", title: "Professional Training", desc: "Mentorship from experienced coaches to guide players toward national club careers.", img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80" }
             ].map((item) => (
-              <div key={item.id} className="group grid grid-cols-1 md:grid-cols-12 py-12 items-center hover:bg-[#F5F5F5] transition-colors px-4">
-                <span className="md:col-span-1 font-mono text-sm opacity-30">{item.id}</span>
+              <div key={item.id} className="group grid grid-cols-1 md:grid-cols-12 py-8 md:py-12 items-center hover:bg-[#F5F5F5] transition-colors px-4">
+                <span className="md:col-span-1 font-mono text-sm opacity-30 mb-2 md:mb-0">{item.id}</span>
                 <div className="md:col-span-4">
-                  <h3 className="text-4xl font-serif">{item.title}</h3>
+                  <h3 className="text-2xl md:text-4xl font-serif">{item.title}</h3>
                 </div>
-                <p className="md:col-span-4 text-black/60 max-w-sm mt-4 md:mt-0">{item.desc}</p>
-                <div className="md:col-span-3 flex justify-end">
-                  <img src={item.img} alt={item.title} className="w-32 h-20 object-cover scale-0 group-hover:scale-100 transition-transform duration-500 rounded-sm" />
+                <p className="md:col-span-4 text-black/60 max-w-sm mt-4 md:mt-0 text-sm md:text-base">{item.desc}</p>
+                <div className="md:col-span-3 flex justify-start md:justify-end mt-6 md:mt-0">
+                  <img src={item.img} alt={item.title} className="w-full md:w-32 h-40 md:h-20 object-cover md:scale-0 md:group-hover:scale-100 transition-transform duration-500 rounded-sm" />
                 </div>
               </div>
             ))}

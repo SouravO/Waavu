@@ -28,10 +28,9 @@ const Navigation = () => {
     <header className={`fixed top-0 w-full z-50 border-b border-black/5 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md h-16' : 'bg-white/50 backdrop-blur-sm h-20'}`}>
       <div className="grid grid-cols-4 md:grid-cols-12 w-full text-[10px] font-bold uppercase tracking-widest h-full items-center px-6">
         {/* LOGO */}
-        <Link to="/" className="col-span-2 md:col-span-3 border-r border-black/5 h-full flex items-center group">
-          <span className="group-hover:text-[#125487] transition-colors">
-            <img src="/assets/logo/Logo.png" alt="WAWU Logo" className="w-1/2 h-full mr-2" />
-          
+        <Link to="/" className="col-span-2 md:col-span-3 border-r border-black/5 h-full flex items-center group overflow-hidden">
+          <span className="group-hover:text-[#125487] transition-colors flex items-center w-full h-full">
+            <img src="/assets/logo/Logo.png" alt="WAWU Logo" className="w-auto h-8 md:h-10 object-contain ml-0" />
           </span>
         </Link>
 
