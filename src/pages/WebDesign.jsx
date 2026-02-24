@@ -26,16 +26,16 @@ const TechnicalINL = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate('/services')}
-            className="flex items-center gap-3 text-black/40 hover:text-[#FF4F00] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
+            className="flex items-center gap-3 text-black/40 hover:text-[#125487] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
           >
             <ArrowLeft size={14} />
             <span>Back_to_Modules</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Flagship_Tournament: INLL_2026</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Flagship_Tournament: INLL_2026</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Elite <br />
-            <span className="italic font-light text-[#FF4F00]">DNA.</span>
+            <span className="italic font-light text-[#125487]">DNA.</span>
           </h1>
         </div>
       </section>
@@ -65,7 +65,7 @@ const TechnicalINL = () => {
       <section className="border-b border-black/5 bg-[#F5F5F5]">
         <div className="grid grid-cols-1 md:grid-cols-12">
           <div className="md:col-span-4 border-r border-black/5 p-12 md:p-20 flex flex-col justify-center">
-             <span className="text-[10px] font-mono text-[#FF4F00] uppercase tracking-[0.3em] block mb-6">Mission Objective</span>
+             <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-6">Mission Objective</span>
              <h3 className="text-5xl font-serif italic mb-8 leading-none">Scout. <br /> Nurture. <br /> Connect.</h3>
              <p className="text-sm font-light text-black/60 leading-relaxed">
                INLL is WAWU's premier platform empowering aspiring players to showcase skills, gain visibility, and receive holistic support.
@@ -74,8 +74,8 @@ const TechnicalINL = () => {
           
           <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-2">
              {features.map((item, i) => (
-               <div key={i} className="p-12 md:p-20 border-b border-r border-black/5 bg-white hover:bg-[#FF4F00] hover:text-white transition-colors group">
-                  <div className="text-[#FF4F00] group-hover:text-white transition-colors mb-8">
+               <div key={i} className="p-12 md:p-20 border-b border-r border-black/5 bg-white hover:bg-[#125487] hover:text-white transition-colors group">
+                  <div className="text-[#125487] group-hover:text-white transition-colors mb-8">
                     {item.icon}
                   </div>
                   <h4 className="text-3xl font-serif italic mb-4">{item.title}</h4>
@@ -89,7 +89,7 @@ const TechnicalINL = () => {
       {/* CTA SECTION */}
       <section className="py-24 px-6 bg-[#0A0A0A] text-white">
         <div className="max-w-screen-2xl mx-auto flex flex-col items-center text-center">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Initiate_Evaluation</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Initiate_Evaluation</p>
           <h2 className="text-6xl md:text-9xl font-serif leading-none tracking-tighter mb-12">
             The First XI <br />
             <span className="italic">Starts Here.</span>
@@ -99,7 +99,7 @@ const TechnicalINL = () => {
             className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
           >
             Enquire Now 
-            <div className="w-16 h-16 rounded-full bg-[#FF4F00] flex items-center justify-center text-white group-hover:scale-110 transition-all">
+            <div className="w-16 h-16 rounded-full bg-[#125487] flex items-center justify-center text-white group-hover:scale-110 transition-all">
               <ArrowUpRight size={24} />
             </div>
           </button>

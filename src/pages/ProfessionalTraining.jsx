@@ -31,16 +31,16 @@ const ProfessionalTraining = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate('/services')}
-            className="flex items-center gap-3 text-black/40 hover:text-[#FF4F00] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
+            className="flex items-center gap-3 text-black/40 hover:text-[#125487] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
           >
             <ArrowLeft size={14} />
             <span>Back_to_Modules</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Service_Module_03</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Module_03</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Professional <br />
-            <span className="italic font-light text-[#FF4F00]">Training.</span>
+            <span className="italic font-light text-[#125487]">Training.</span>
           </h1>
         </div>
       </section>
@@ -66,12 +66,12 @@ const ProfessionalTraining = () => {
           {/* Features Block */}
           <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
             <div className="space-y-12">
-              <Maximize className="text-[#FF4F00]" size={32} />
+              <Maximize className="text-[#125487]" size={32} />
               <h2 className="text-5xl md:text-7xl font-serif italic">Training <br/> Elements.</h2>
               <div className="space-y-8">
                 {features.map((feature, i) => (
                   <div key={i} className="flex gap-6 items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FF4F00] mt-2" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#125487] mt-2" />
                     <div>
                       <p className="text-[10px] font-mono text-black/40 uppercase tracking-widest mb-1">Element_{i+1}</p>
                       <p className="text-xl font-serif italic text-black mb-1">{feature.title}</p>
@@ -89,8 +89,8 @@ const ProfessionalTraining = () => {
       <section className="py-24 px-6 border-b border-black/5 bg-white">
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 border border-black/5">
           {pillars.map((pillar, i) => (
-            <div key={i} className="bg-white p-12 hover:bg-[#FF4F00] hover:text-white transition-colors group">
-              <div className="text-[#FF4F00] group-hover:text-white transition-colors mb-8">
+            <div key={i} className="bg-white p-12 hover:bg-[#125487] hover:text-white transition-colors group">
+              <div className="text-[#125487] group-hover:text-white transition-colors mb-8">
                 <pillar.icon size={32} />
               </div>
               <h4 className="text-3xl font-serif italic mb-4">{pillar.title}</h4>
@@ -103,7 +103,7 @@ const ProfessionalTraining = () => {
       {/* CTA SECTION */}
       <section className="py-24 px-6 bg-[#0A0A0A] text-white">
         <div className="max-w-screen-2xl mx-auto flex flex-col items-center text-center">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Initiate_Excellence</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Initiate_Excellence</p>
           <h2 className="text-6xl md:text-9xl font-serif leading-none tracking-tighter mb-12">
             Elevate Your <br />
             <span className="italic">Performance.</span>
@@ -113,7 +113,7 @@ const ProfessionalTraining = () => {
             className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
           >
             Join Training 
-            <div className="w-16 h-16 rounded-full bg-[#FF4F00] flex items-center justify-center text-white group-hover:scale-110 transition-all">
+            <div className="w-16 h-16 rounded-full bg-[#125487] flex items-center justify-center text-white group-hover:scale-110 transition-all">
               <Zap size={24} />
             </div>
           </button>

@@ -21,16 +21,16 @@ const TechnicalConsulting = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate(-1)}
-            className="flex items-center gap-3 text-black/40 hover:text-[#FF4F00] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
+            className="flex items-center gap-3 text-black/40 hover:text-[#125487] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
           >
             <ArrowLeft size={14} />
             <span>Return_to_Previous</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Consulting_Module: STRATEGY</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Consulting_Module: STRATEGY</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Expert <br />
-            <span className="italic font-light text-[#FF4F00]">Advisory.</span>
+            <span className="italic font-light text-[#125487]">Advisory.</span>
           </h1>
         </div>
       </section>
@@ -47,7 +47,7 @@ const TechnicalConsulting = () => {
              <div className="grid md:grid-cols-2 gap-8">
                 {services.map((service, i) => (
                   <div key={i} className="p-8 border border-black/5 bg-[#F5F5F5]">
-                     <p className="text-xl font-serif italic mb-2 text-[#FF4F00]">{service.title}</p>
+                     <p className="text-xl font-serif italic mb-2 text-[#125487]">{service.title}</p>
                      <p className="text-[10px] font-mono uppercase tracking-widest opacity-40">{service.desc}</p>
                   </div>
                 ))}
@@ -56,7 +56,7 @@ const TechnicalConsulting = () => {
 
           {/* Icon Block */}
           <div className="md:col-span-4 bg-[#F5F5F5] p-12 flex flex-col items-center justify-center gap-8 relative overflow-hidden">
-             <Shield size={64} className="text-[#FF4F00] relative z-10" />
+             <Shield size={64} className="text-[#125487] relative z-10" />
              <p className="text-[10px] font-mono uppercase tracking-[0.5em] opacity-20 relative z-10">Authorized_Only</p>
              
              {/* Decorative Elements */}

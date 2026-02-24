@@ -29,7 +29,10 @@ const Navigation = () => {
       <div className="grid grid-cols-4 md:grid-cols-12 w-full text-[10px] font-bold uppercase tracking-widest h-full items-center px-6">
         {/* LOGO */}
         <Link to="/" className="col-span-2 md:col-span-3 border-r border-black/5 h-full flex items-center group">
-          <span className="group-hover:text-[#FF4F00] transition-colors">WAWU STUDIO®</span>
+          <span className="group-hover:text-[#125487] transition-colors">
+            <img src="/assets/logo/Logo.png" alt="WAWU Logo" className="w-1/2 h-full mr-2" />
+          
+          </span>
         </Link>
 
         {/* DESKTOP NAV */}
@@ -38,7 +41,7 @@ const Navigation = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`cursor-pointer hover:text-[#FF4F00] transition-colors ${location.pathname === link.path ? 'text-[#FF4F00]' : 'text-black/60'}`}
+              className={`cursor-pointer hover:text-[#125487] transition-colors ${location.pathname === link.path ? 'text-[#125487]' : 'text-black/60'}`}
             >
               {link.name}
             </Link>
@@ -54,7 +57,7 @@ const Navigation = () => {
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
-          <div className="w-8 h-8 rounded-full bg-[#FF4F00] flex items-center justify-center text-white cursor-pointer hover:scale-110 transition-transform">
+          <div className="w-8 h-8 rounded-full bg-[#125487] flex items-center justify-center text-white cursor-pointer hover:scale-110 transition-transform">
             <Command size={14} />
           </div>
         </div>
@@ -74,7 +77,7 @@ const Navigation = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-2xl font-serif italic ${location.pathname === link.path ? 'text-[#FF4F00]' : 'text-black'}`}
+                className={`text-2xl font-serif italic ${location.pathname === link.path ? 'text-[#125487]' : 'text-black'}`}
               >
                 {link.name}
               </Link>

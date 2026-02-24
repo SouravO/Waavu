@@ -13,23 +13,16 @@ const StudioNeoWAWU = () => {
   });
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] selection:bg-[#344ca5] selection:text-white antialiased font-sans">
+    <div className="bg-[#FDFDFD] text-[#0A0A0A] selection:bg-[#125487] selection:text-white antialiased font-sans">
       
       {/* --- 0. PROGRESS BAR --- */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-[#344ca5] origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-1 bg-[#125487] origin-left z-[60]"
         style={{ scaleX }}
       />
 
       {/* --- 1. NAVIGATION (Implicit) --- */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference text-white">
-        <span className="font-serif text-2xl tracking-tighter italic">WAWU.</span>
-        <div className="flex gap-8 text-[10px] font-black tracking-widest uppercase">
-          <a href="#about" className="hover:opacity-50 transition-opacity">About</a>
-          <a href="#inll" className="hover:opacity-50 transition-opacity text-[#344ca5]">INLL 2025</a>
-          <a href="#donate" className="hover:opacity-50 transition-opacity">Donate</a>
-        </div>
-      </nav>
+     
 
       {/* --- 2. THE HERO --- */}
       <section className="pt-32 pb-20 border-b border-black/5 px-6">
@@ -43,7 +36,7 @@ const StudioNeoWAWU = () => {
                 className="text-[14vw] md:text-[11vw] font-serif leading-[0.8] tracking-tighter"
               >
                 Building <br />
-                <span className="italic font-light text-[#344ca5]">Dreams</span>
+                <span className="italic font-light text-[#125487]">Dreams</span>
               </motion.h1>
             </div>
             <div className="md:col-span-3 pb-4">
@@ -77,8 +70,8 @@ const StudioNeoWAWU = () => {
 
           <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
             <div className="space-y-12">
-              <Target className="text-[#344ca5]" size={32} />
-              <h2 className="text-5xl md:text-7xl font-serif text-[#344ca5] ">Bridging the <br/> Opportunity Gap.</h2>
+              <Target className="text-[#125487]" size={32} />
+              <h2 className="text-5xl md:text-7xl font-serif text-[#125487] ">Bridging the <br/> Opportunity Gap.</h2>
               <p className="max-w-md text-xl font-light leading-relaxed">
                 We uncover raw talent in rural and underserved areas, ensuring that financial limitations never bench a future star.
               </p>
@@ -87,7 +80,7 @@ const StudioNeoWAWU = () => {
             <div className="pt-12">
               <button className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase">
                 Support Our Mission 
-                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#344ca5] group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#125487] group-hover:text-white transition-all">
                   <ArrowUpRight size={18} />
                 </div>
               </button>
@@ -105,7 +98,7 @@ const StudioNeoWAWU = () => {
             { label: "Events Conducted", value: "32+" },
             { label: "Districts Covered", value: "9+" }
           ].map((item, i) => (
-            <div key={i} className="bg-white p-12 hover:bg-[#344ca5] hover:text-white transition-colors group">
+            <div key={i} className="bg-white p-12 hover:bg-[#125487] hover:text-white transition-colors group">
               <p className="text-[10px] font-mono opacity-40 uppercase mb-4 group-hover:text-white/60">{item.label}</p>
               <p className="text-4xl font-serif italic">{item.value}</p>
             </div>
@@ -145,13 +138,13 @@ const StudioNeoWAWU = () => {
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex flex-col md:flex-row items-stretch gap-0 border border-white/10">
             <div className="flex-1 p-12 md:p-24 space-y-8 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 border border-[#344ca5] text-[#344ca5] text-[10px] font-bold tracking-[0.3em] uppercase w-fit">Foundation Leadership</span>
+              <span className="inline-block px-3 py-1 border border-[#125487] text-[#125487] text-[10px] font-bold tracking-[0.3em] uppercase w-fit">Foundation Leadership</span>
               <h3 className="text-6xl font-serif italic">The Dream Team</h3>
               <p className="text-xl text-white/70 font-light leading-relaxed">
                 Led by visionaries like CK Vineeth (Ambassador), Sharath K (Founder), and Shafi Shoukath (Co-Founder), we drive excellence through dedication.
               </p>
               <div className="pt-8">
-                <p className="font-mono text-sm uppercase tracking-widest text-[#344ca5]">Join the movement to uplift India's football stars.</p>
+                <p className="font-mono text-sm uppercase tracking-widest text-[#125487]">Join the movement to uplift India's football stars.</p>
               </div>
             </div>
             <div className="flex-1 min-h-[500px] relative">
@@ -171,11 +164,11 @@ const StudioNeoWAWU = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[300px]">
             <div className="md:col-span-2 md:row-span-2 bg-[#F5F5F5] p-12 flex flex-col justify-end relative overflow-hidden group">
                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity" alt="INLL Event" />
-               <h4 className="text-5xl font-serif relative z-10 text-[#344ca5]">Next Legend <br/> League 2025.</h4>
+               <h4 className="text-5xl font-serif relative z-10 text-[#125487]">Next Legend <br/> League 2025.</h4>
                <p className="relative z-10 font-mono text-xs mt-4 tracking-widest uppercase">Registration Now Open</p>
             </div>
             <div className="bg-black text-white p-8 flex flex-col justify-between">
-              <Trophy className="text-[#344ca5]" />
+              <Trophy className="text-[#125487]" />
               <p className="text-xs font-mono uppercase tracking-widest">Scholarships <br/> & Academy Placements</p>
             </div>
             <div className="overflow-hidden">
@@ -184,7 +177,7 @@ const StudioNeoWAWU = () => {
             <div className="overflow-hidden">
               <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&q=80" className="w-full h-full object-cover" alt="Football Gear" />
             </div>
-            <div className="bg-[#344ca5] text-white p-8 flex items-center justify-center text-center group cursor-pointer">
+            <div className="bg-[#125487] text-white p-8 flex items-center justify-center text-center group cursor-pointer">
               <p className="text-2xl font-serif italic group-hover:scale-110 transition-transform">Donate Now <ArrowUpRight className="inline ml-2" /></p>
             </div>
           </div>

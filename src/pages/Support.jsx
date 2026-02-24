@@ -37,7 +37,7 @@ export default function SupportPage() {
         email: userData.email,
         contact: userData.contact
       },
-      theme: { color: "#FF4F00" }
+      theme: { color: "#125487" }
     };
 
     const rzp = new window.Razorpay(options);
@@ -62,10 +62,10 @@ export default function SupportPage() {
       {/* HERO SECTION */}
       <section className="py-24 px-6 border-b border-black/5">
         <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Financial_&_Support_Hub</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Financial_&_Support_Hub</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Fuel The <br />
-            <span className="italic font-light text-[#FF4F00]">Movement.</span>
+            <span className="italic font-light text-[#125487]">Movement.</span>
           </h1>
         </div>
       </section>
@@ -77,7 +77,7 @@ export default function SupportPage() {
           <div className="lg:col-span-8 bg-white p-8 md:p-20 space-y-20 border-r border-black/5">
             <div className="space-y-12">
               <div className="flex items-center gap-6">
-                <div className="w-16 h-16 bg-[#FF4F00] flex items-center justify-center text-white shadow-xl">
+                <div className="w-16 h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
                   <Heart size={32} />
                 </div>
                 <div>
@@ -97,20 +97,20 @@ export default function SupportPage() {
                 className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
               >
                 Initiate Donation 
-                <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#FF4F00] transition-all">
+                <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#125487] transition-all">
                   <Zap size={24} />
                 </div>
               </button>
             </div>
 
             <div className="pt-12 border-t border-black/5 space-y-12">
-              <span className="text-[10px] font-mono text-[#FF4F00] uppercase tracking-[0.3em] block">Direct_Transfer_Protocols</span>
+              <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block">Direct_Transfer_Protocols</span>
               <div className="grid md:grid-cols-2 gap-8">
                 <BankDetail label="Account Number" value="10810200024800" onCopy={() => copyToClipboard("10810200024800", 'acc')} active={copied === 'acc'} />
                 <BankDetail label="IFSC Code" value="FDRL0001081" onCopy={() => copyToClipboard("FDRL0001081", 'ifsc')} active={copied === 'ifsc'} />
               </div>
               <div className="p-6 bg-[#F5F5F5] border border-black/5 flex items-center gap-6">
-                <Shield size={24} className="text-[#FF4F00]" />
+                <Shield size={24} className="text-[#125487]" />
                 <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest leading-relaxed">
                   80G Tax Exemption Certified // Secure Encryption Verified
                 </p>
@@ -121,17 +121,17 @@ export default function SupportPage() {
           {/* Impact Panel */}
           <div className="lg:col-span-4 bg-[#F5F5F5] p-8 md:p-12 space-y-12">
             <h2 className="text-3xl font-serif italic flex items-center gap-4">
-              <Target size={24} className="text-[#FF4F00]" />
+              <Target size={24} className="text-[#125487]" />
               Impact Matrix.
             </h2>
             <div className="space-y-6">
               {impactItems.map((item, i) => (
-                <div key={i} className="p-8 bg-white border border-black/5 hover:border-[#FF4F00] transition-colors flex items-center gap-6 group">
-                  <div className="w-12 h-12 flex items-center justify-center bg-[#F5F5F5] text-black group-hover:bg-[#FF4F00] group-hover:text-white transition-colors">
+                <div key={i} className="p-8 bg-white border border-black/5 hover:border-[#125487] transition-colors flex items-center gap-6 group">
+                  <div className="w-12 h-12 flex items-center justify-center bg-[#F5F5F5] text-black group-hover:bg-[#125487] group-hover:text-white transition-colors">
                     <item.icon size={24} />
                   </div>
                   <div>
-                    <p className="text-2xl font-serif italic text-[#FF4F00]">{item.amount}</p>
+                    <p className="text-2xl font-serif italic text-[#125487]">{item.amount}</p>
                     <p className="text-[10px] font-mono uppercase tracking-widest opacity-40">{item.impact}</p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ export default function SupportPage() {
              { label: "Transparency", value: "100%" },
              { label: "Ops Status", value: "Active" }
            ].map((stat, i) => (
-             <div key={i} className="bg-white p-12 text-center hover:bg-[#FF4F00] hover:text-white transition-colors group">
+             <div key={i} className="bg-white p-12 text-center hover:bg-[#125487] hover:text-white transition-colors group">
                <p className="text-[10px] font-mono opacity-40 uppercase tracking-[0.4em] mb-4 group-hover:text-white/60">{stat.label}</p>
                <p className="text-4xl font-serif italic">{stat.value}</p>
              </div>
@@ -163,13 +163,13 @@ export default function SupportPage() {
 
 function BankDetail({ label, value, onCopy, active }) {
   return (
-    <div className="flex justify-between items-center bg-[#F5F5F5] p-6 border border-black/5 hover:border-[#FF4F00] transition-all group">
+    <div className="flex justify-between items-center bg-[#F5F5F5] p-6 border border-black/5 hover:border-[#125487] transition-all group">
       <div>
         <span className="block text-[8px] font-mono opacity-40 uppercase tracking-widest mb-1">{label}</span>
-        <span className="text-xl font-serif italic text-black group-hover:text-[#FF4F00] transition-colors">{value}</span>
+        <span className="text-xl font-serif italic text-black group-hover:text-[#125487] transition-colors">{value}</span>
       </div>
       <button onClick={onCopy} className="p-2 opacity-20 hover:opacity-100 transition-opacity">
-        {active ? <CheckCircle size={20} className="text-[#FF4F00]" /> : <Copy size={20} />}
+        {active ? <CheckCircle size={20} className="text-[#125487]" /> : <Copy size={20} />}
       </button>
     </div>
   );
@@ -184,7 +184,7 @@ function InputField({ label, placeholder, value, onChange }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#FF4F00] outline-none transition-all font-serif italic text-2xl placeholder:text-black/5"
+        className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#125487] outline-none transition-all font-serif italic text-2xl placeholder:text-black/5"
       />
     </div>
   );

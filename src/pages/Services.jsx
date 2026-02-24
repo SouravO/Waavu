@@ -51,7 +51,7 @@ const Services = () => {
       {/* HERO SECTION */}
       <section className="py-24 px-6 border-b border-black/5">
         <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Service_Ecosystem</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Ecosystem</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Strategic <br />
             <span className="italic font-light">Operations.</span>
@@ -71,16 +71,16 @@ const Services = () => {
                 onClick={() => navigate(module.path)}
                 className={`relative p-12 cursor-pointer border-b border-black/5 transition-all duration-500 group overflow-hidden ${focusedIndex === idx ? 'bg-[#F5F5F5]' : 'bg-white'}`}
               >
-                <div className={`absolute left-0 top-0 bottom-0 w-[4px] bg-[#FF4F00] transition-transform duration-500 ${focusedIndex === idx ? 'scale-y-100' : 'scale-y-0'}`} />
+                <div className={`absolute left-0 top-0 bottom-0 w-[4px] bg-[#125487] transition-transform duration-500 ${focusedIndex === idx ? 'scale-y-100' : 'scale-y-0'}`} />
                 
                 <div className="flex justify-between items-start relative z-10">
                   <div className="space-y-4">
                     <span className="text-[10px] font-mono text-black/30 uppercase tracking-[0.3em]">Ref_{module.id}</span>
-                    <h3 className={`text-3xl font-serif italic transition-colors duration-500 ${focusedIndex === idx ? 'text-[#FF4F00]' : 'text-black/40 group-hover:text-black'}`}>
+                    <h3 className={`text-3xl font-serif italic transition-colors duration-500 ${focusedIndex === idx ? 'text-[#125487]' : 'text-black/40 group-hover:text-black'}`}>
                       {module.title}
                     </h3>
                   </div>
-                  <div className={`w-10 h-10 rounded-full border border-black/10 flex items-center justify-center transition-all duration-500 ${focusedIndex === idx ? 'bg-[#FF4F00] text-white border-[#FF4F00]' : 'group-hover:bg-black group-hover:text-white'}`}>
+                  <div className={`w-10 h-10 rounded-full border border-black/10 flex items-center justify-center transition-all duration-500 ${focusedIndex === idx ? 'bg-[#125487] text-white border-[#125487]' : 'group-hover:bg-black group-hover:text-white'}`}>
                     <ArrowUpRight size={18} />
                   </div>
                 </div>
@@ -100,7 +100,7 @@ const Services = () => {
                 className="relative z-10 space-y-12"
               >
                 <div className="space-y-8">
-                  <div className="w-16 h-16 bg-[#FF4F00] flex items-center justify-center text-white shadow-xl">
+                  <div className="w-16 h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
                     {modules[focusedIndex].icon}
                   </div>
                   <h2 className="text-5xl md:text-7xl font-serif leading-tight">
@@ -126,7 +126,7 @@ const Services = () => {
                     className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
                   >
                     Initiate Discovery 
-                    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#FF4F00] transition-all">
+                    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#125487] transition-all">
                       <Zap size={18} />
                     </div>
                   </button>

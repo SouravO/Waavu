@@ -23,16 +23,16 @@ const TechnicalTraining = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate(-1)}
-            className="flex items-center gap-3 text-black/40 hover:text-[#FF4F00] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
+            className="flex items-center gap-3 text-black/40 hover:text-[#125487] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
           >
             <ArrowLeft size={14} />
             <span>Return_to_Previous</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Training_Module: CORE</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Training_Module: CORE</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Skill <br />
-            <span className="italic font-light text-[#FF4F00]">Acquisition.</span>
+            <span className="italic font-light text-[#125487]">Acquisition.</span>
           </h1>
         </div>
       </section>
@@ -49,7 +49,7 @@ const TechnicalTraining = () => {
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 border border-black/5 bg-[#F5F5F5]">
                 {items.map((item, i) => (
                   <div key={i} className="flex items-center gap-4">
-                     <div className="w-1.5 h-1.5 bg-[#FF4F00] rounded-full" />
+                     <div className="w-1.5 h-1.5 bg-[#125487] rounded-full" />
                      <span className="text-[10px] font-mono uppercase tracking-widest opacity-60">{item}</span>
                   </div>
                 ))}
@@ -58,7 +58,7 @@ const TechnicalTraining = () => {
 
           {/* Icon Block */}
           <div className="md:col-span-4 bg-[#F5F5F5] p-12 flex flex-col items-center justify-center gap-8 relative overflow-hidden">
-             <Trophy size={64} className="text-[#FF4F00] relative z-10" />
+             <Trophy size={64} className="text-[#125487] relative z-10" />
              <p className="text-[10px] font-mono uppercase tracking-[0.5em] opacity-20 relative z-10">Active_Session</p>
              
              {/* Decorative Elements */}

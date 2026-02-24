@@ -51,7 +51,7 @@ const About = () => {
       {/* HERO SECTION */}
       <section className="py-24 px-6 border-b border-black/5">
         <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">About_The_Studio</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">About_The_Studio</p>
           <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             The Vision <br />
             <span className="italic font-light">Behind The Icon.</span>
@@ -81,7 +81,7 @@ const About = () => {
             {/* Content Block */}
             <div className="flex flex-col justify-between p-8 md:p-20 bg-white">
               <div className="space-y-12">
-                <div className="text-[#FF4F00] flex items-center gap-4">
+                <div className="text-[#125487] flex items-center gap-4">
                   {section.icon}
                   <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-40">{section.subtitle}</span>
                 </div>
@@ -93,7 +93,7 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-4 pt-6">
                   {section.list.map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#FF4F00]" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#125487]" />
                       <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">{item}</span>
                     </div>
                   ))}

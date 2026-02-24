@@ -16,10 +16,10 @@ const Footer = () => {
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             className="flex items-center gap-12 px-6"
           >
-            <span className="text-[10vw] font-serif italic leading-none tracking-tighter opacity-10 group-hover:opacity-100 group-hover:text-[#FF4F00] transition-all duration-700">
+            <span className="text-[10vw] font-serif italic leading-none tracking-tighter opacity-10 group-hover:opacity-100 group-hover:text-[#125487] transition-all duration-700">
               WAWU STUDIO®
             </span>
-            <Plus size={40} className="text-[#FF4F00] opacity-20" />
+            <Plus size={40} className="text-[#125487] opacity-20" />
           </motion.div>
         ))}
       </div>
@@ -29,7 +29,7 @@ const Footer = () => {
         {/* Left Block: Big CTA */}
         <Link to="/contact" className="md:col-span-7 p-8 md:p-20 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between group cursor-pointer overflow-hidden relative">
           <div className="relative z-10">
-            <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Initiate_Collaboration</p>
+            <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Initiate_Collaboration</p>
             <h2 className="text-6xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
               Let's create <br /> 
               <span className="italic">The Icon.</span>
@@ -37,21 +37,21 @@ const Footer = () => {
           </div>
           
           <div className="mt-20 flex items-center gap-6 group-hover:translate-x-4 transition-transform duration-500 relative z-10">
-            <div className="w-16 h-16 rounded-full bg-[#FF4F00] flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-[#125487] flex items-center justify-center">
               <MoveRight size={24} />
             </div>
             <span className="text-xs font-black tracking-widest uppercase">Start a Project</span>
           </div>
 
           {/* Background Hover Effect */}
-          <div className="absolute inset-0 bg-[#FF4F00]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]" />
+          <div className="absolute inset-0 bg-[#125487]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]" />
         </Link>
 
         {/* Right Block: Contacts & Details */}
         <div className="md:col-span-5 flex flex-col">
           <div className="p-8 md:p-12 border-b border-white/5 h-1/2 flex flex-col justify-end">
             <p className="text-[10px] font-mono opacity-40 uppercase mb-4 tracking-widest">Inquiries</p>
-            <p className="text-3xl md:text-4xl font-serif hover:text-[#FF4F00] transition-colors cursor-pointer">
+            <p className="text-3xl md:text-4xl font-serif hover:text-[#125487] transition-colors cursor-pointer">
               hello@wawu.studio
             </p>
           </div>
@@ -60,9 +60,9 @@ const Footer = () => {
             <div className="space-y-4">
               <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Social</p>
               <ul className="text-xs font-bold tracking-widest uppercase space-y-2">
-                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">Instagram</li>
-                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">LinkedIn</li>
-                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">Are.na</li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">Instagram</li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">LinkedIn</li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">Are.na</li>
               </ul>
             </div>
             <div className="space-y-4">
