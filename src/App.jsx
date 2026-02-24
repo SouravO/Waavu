@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -20,10 +18,8 @@ import ProfessionalTraining from './pages/ProfessionalTraining';
 import MentorshipGuidance from './pages/MentorshipGuidance';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
+    <div className="App bg-black min-h-screen">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

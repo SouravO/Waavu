@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Trophy, Target, Zap, Clock, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Shield, Target, Zap, Activity, CheckCircle2, ArrowRight } from 'lucide-react';
 
-const ContactPage = () => {
+const TechnicalContact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,31 +12,22 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill in all required fields');
-      return;
-    }
+    if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
-
-    // Simulate "Premium" Processing
     setTimeout(() => {
       const subject = encodeURIComponent(formData.subject || 'Contact Form Inquiry');
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
       const mailtoLink = `mailto:contact@waavufoundation.org?subject=${subject}&body=${body}`;
-
-      // This is the fix: window.open is more reliable than location.href for mailto
       window.open(mailtoLink, '_self');
-      
       setIsSubmitting(false);
       setIsSent(true);
-      
-      // Reset after 5 seconds
       setTimeout(() => setIsSent(false), 5000);
     }, 1500);
   };
@@ -46,178 +37,166 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      {/* TACTICAL BACKGROUND */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #224e72 40%, #000000 100%)' }}
-        />
-        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50%" cy="50%" r="200" fill="none" stroke="white" strokeWidth="2" strokeDasharray="10 10" />
-          <rect x="20%" y="30%" width="60%" height="40%" fill="none" stroke="white" strokeWidth="2" />
-          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="white" strokeWidth="4" />
-        </svg>
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#224e72] overflow-x-hidden pt-32 pb-24">
+      {/* BACKGROUND ELEMENTS */}
+      <div className="fixed inset-0 pointer-events-none opacity-10">
+        <Activity size={800} className="absolute -top-40 -left-40 text-white" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_#224e7233_0%,_transparent_70%)]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 md:pt-32">
-        {/* HEADER */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 bg-[#98ff98] text-black px-4 py-2 text-[10px] font-black uppercase italic mb-6 shadow-[0_0_20px_rgba(152,255,152,0.3)]"
-          >
-            <Target size={14} /> Establish Connection
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-9xl font-black text-white italic leading-[0.8] tracking-tighter uppercase mb-4"
-          >
-            PING <span className="text-[#98ff98]">US</span>
-          </motion.h1>
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+        {/* HEADER SECTION */}
+        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-24">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[1px] bg-[#224e72]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72]">Communication Link</span>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter">
+              Establish <br />
+              <span className="text-white/20">Connection</span>
+            </h1>
+          </div>
+          <div className="hidden lg:block pb-4 text-right">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 max-w-xs">
+              SECURE CHANNEL // ENCRYPTED TRANSMISSION // GLOBAL COMMAND CENTER
+            </p>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* FORM CONTAINER */}
-          <motion.div
-            layout
-            className="relative bg-white/5 border border-white/10 p-8 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl"
-          >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/10 border border-white/10">
+          {/* CONTACT INFO PANEL */}
+          <div className="lg:col-span-4 bg-black p-8 lg:p-12 space-y-12">
+            <div className="space-y-8">
+              <div className="group">
+                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
+                <a href="mailto:contact@waavufoundation.org" className="text-xl md:text-2xl font-black italic uppercase tracking-tighter hover:text-[#224e72] transition-colors break-all">
+                  contact@waavufoundation.org
+                </a>
+              </div>
+              
+              <div className="group">
+                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Command Center</span>
+                <p className="text-xl md:text-2xl font-black italic uppercase tracking-tighter">
+                  Global Operations // Remote
+                </p>
+              </div>
+
+              <div className="group">
+                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Availability</span>
+                <p className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-green-500">
+                  24/7/365 // Active
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-white/10">
+              <div className="p-6 bg-white/5 border border-white/10 flex items-center gap-4">
+                <Shield size={24} className="text-[#224e72]" />
+                <div>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Security Status</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-white">Encrypted & Verified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* FORM PANEL */}
+          <div className="lg:col-span-8 bg-black p-8 lg:p-20 relative overflow-hidden">
             <AnimatePresence mode="wait">
               {!isSent ? (
                 <motion.div
                   key="form"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-2xl font-black text-white italic uppercase mb-8 flex items-center gap-3">
-                    <Send size={20} className="text-[#98ff98]" />
-                    Send Transmission
-                  </h2>
-
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Operator Name</label>
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Operator Name</label>
                         <input
                           type="text"
                           name="name"
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#98ff98] outline-none transition-all"
-                          placeholder="S. OROUCH"
+                          className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
+                          placeholder="Your Name"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Return Email</label>
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Return Email</label>
                         <input
                           type="email"
                           name="email"
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#98ff98] outline-none transition-all"
-                          placeholder="agent@waavu.org"
+                          className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
+                          placeholder="Email Address"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Subject Header</label>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Subject Header</label>
                       <input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#98ff98] outline-none transition-all"
+                        className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
+                        placeholder="Purpose of Inquiry"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-white/40 uppercase tracking-widest">Encrypted Message</label>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Message Payload</label>
                       <textarea
                         name="message"
                         required
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white focus:border-[#98ff98] outline-none transition-all resize-none"
+                        className="w-full bg-white/5 border border-white/10 p-6 text-white focus:border-[#224e72] outline-none transition-all font-bold tracking-widest text-xs resize-none"
+                        placeholder="Detailed Transmission..."
                       />
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                    <button
                       disabled={isSubmitting}
-                      className="group relative w-full h-16 bg-[#98ff98] rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(152,255,152,0.2)]"
+                      className="group relative w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#224e72] hover:text-white transition-all duration-500 flex items-center justify-center gap-4 overflow-hidden"
                     >
-                      <span className="relative z-10 text-black text-sm font-black flex items-center justify-center gap-3 uppercase italic">
+                      <span className="relative z-10 flex items-center gap-3">
                         {isSubmitting ? "Processing..." : "Initiate Transfer"}
-                        <Zap size={18} fill="currentColor" className={isSubmitting ? "animate-pulse" : ""} />
+                        <Zap size={14} className={isSubmitting ? "animate-pulse" : ""} />
                       </span>
-                    </motion.button>
+                    </button>
                   </form>
                 </motion.div>
               ) : (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="py-20 text-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="h-full flex flex-col items-center justify-center text-center py-20"
                 >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", damping: 12 }}
-                    className="w-24 h-24 bg-[#98ff98] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(152,255,152,0.4)]"
-                  >
-                    <CheckCircle2 size={48} className="text-black" />
-                  </motion.div>
-                  <h2 className="text-4xl font-black italic uppercase text-[#98ff98] mb-2">Transmission Sent</h2>
-                  <p className="text-white/40 font-bold uppercase tracking-widest text-xs">Opening your secure mail client...</p>
+                  <div className="w-24 h-24 bg-[#224e72] rounded-full flex items-center justify-center mb-10 shadow-[0_0_50px_rgba(34,78,114,0.4)]">
+                    <CheckCircle2 size={48} className="text-white" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-6">Transmission <br /> Successful</h2>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-12">System will reset in 5.0 seconds</p>
                   <button 
                     onClick={() => setIsSent(false)}
-                    className="mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 hover:text-white transition-colors"
+                    className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72] hover:text-white transition-colors"
                   >
-                    Send another message
+                    Send New Transmission <ArrowRight size={14} />
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
-
-          {/* CONTACT INFO GRID */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md">
-                <Clock className="text-[#98ff98] mb-4" size={24} />
-                <p className="text-[10px] font-black text-white/30 uppercase tracking-widest">Uptime</p>
-                <p className="text-2xl font-black italic">24/7/365</p>
-              </div>
-              <div className="bg-[#224e72] p-6 rounded-2xl shadow-xl border border-white/10">
-                <Trophy className="text-[#98ff98] mb-4" size={24} />
-                <p className="text-[10px] font-black text-white/50 uppercase tracking-widest">Status</p>
-                <p className="text-2xl font-black italic text-white uppercase">Operational</p>
-              </div>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md group hover:border-[#98ff98]/50 transition-all cursor-pointer">
-              <Mail className="text-[#98ff98] mb-6" size={32} />
-              <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-2">Direct Access</p>
-              <a href="mailto:contact@waavufoundation.org" className="text-2xl md:text-3xl font-black italic break-all group-hover:text-[#98ff98] transition-colors">
-                contact@waavufoundation.org
-              </a>
-            </div>
-
-            <div className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-8 rounded-2xl">
-              <MapPin className="text-[#98ff98] mb-6" size={32} />
-              <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-2">Command Center</p>
-              <p className="text-2xl font-black italic text-white uppercase">Global Operations / Remote</p>
-            </div>
           </div>
         </div>
       </div>
@@ -225,4 +204,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default TechnicalContact;

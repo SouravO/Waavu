@@ -1,178 +1,178 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Globe, Shield, Star, Zap, Anchor } from 'lucide-react';
+import { Fingerprint, Plus, ArrowRight, Shield, Zap, Star, Globe, Terminal, Anchor, Activity } from 'lucide-react';
 
-/**
- * WAWU Foundation - Home Page
- * Primary Blue: #2c518a
- */
-
-const WAWUVelvet = () => {
-  const containerRef = useRef(null);
+const WAWUStrategicFoundation = () => {
+  const horizontalRef = useRef(null);
+  
+  // Track vertical scroll within the specific horizontal container
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: horizontalRef,
     offset: ["start start", "end end"]
   });
 
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 45, damping: 20 });
+  // Spring for "heavy" mechanical movement
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 50, damping: 20 });
+  
+  // Translate the horizontal div based on vertical scroll depth
+  // -75% assumes 4 panels total (0%, -25%, -50%, -75%)
+  const xTranslate = useTransform(smoothProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <div ref={containerRef} className="bg-white text-[#1a1a1a] font-['Poppins',sans-serif] selection:bg-[#2c518a] selection:text-white">
-      {/* MINIMALIST HUD */}
-
-
-      <section className="relative h-[800vh]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="bg-black text-white selection:bg-[#2c518a] antialiased font-sans">
+      
+      {/* 1. INITIAL VERTICAL HERO (WHITE THEME) */}
+      <section className="relative h-screen flex items-center px-12 md:px-32 bg-[#F5F5F7] text-black overflow-hidden border-b border-black/5">
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        
+        <div className="max-w-6xl z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-4 mb-12"
+          >
+            <div className="p-3 bg-white border border-[#2c518a] shadow-sm">
+              <Anchor size={32} className="text-[#2c518a]" />
+            </div>
+            <div>
+              <span className="text-[10px] font-black tracking-[0.4em] text-[#2c518a] block uppercase text-nowrap">ID_VER_4.0</span>
+              <span className="text-[8px] font-bold text-black/30 uppercase underline decoration-[#2c518a]">Manifesto_Init</span>
+            </div>
+          </motion.div>
           
-          <MonolithHero progress={smoothProgress} />
-          <ExpandingWindow progress={smoothProgress} />
-          <TechnicalGrid progress={smoothProgress} />
-          <LiquidMap progress={smoothProgress} />
+          <h1 className="text-[10vw] leading-[0.85] font-black italic tracking-tighter uppercase mb-12 text-[#1a1a1a]">
+            A Walking <br /> <span className="text-[#2c518a] not-italic">Work of Art.</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl font-bold max-w-xl leading-tight text-black/60 uppercase tracking-tight">
+            Empowering Talent // <span className="text-black">Elevating Communities.</span> 
+          </p>
+        </div>
 
+        {/* SCROLL PROMPT */}
+        <div className="absolute bottom-10 left-12 flex flex-col items-start gap-4">
+            <div className="flex items-center gap-4">
+               <div className="w-12 h-[1px] bg-[#2c518a]" />
+               <span className="text-[8px] font-black tracking-[0.5em] uppercase text-[#2c518a]">Scroll_To_Audit</span>
+            </div>
+            <motion.div 
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-px h-12 bg-black/20 ml-6" 
+            />
         </div>
       </section>
+
+      {/* 2. THE HORIZONTAL PIVOT TRACK */}
+      {/* Container height determines the "speed" of the horizontal scroll */}
+      <section ref={horizontalRef} className="relative h-[500vh] bg-black">
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          
+          <motion.div style={{ x: xTranslate }} className="flex h-full w-[400vw]">
+            
+            {/* PANEL 1: SYSTEM LOG / THE MISSION */}
+            <section className="relative w-screen h-full flex-shrink-0 flex items-center px-12 md:px-32 border-r border-white/5">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center w-full">
+                    <div className="space-y-12">
+                        <div className="flex items-center gap-4">
+                            <div className="w-8 h-8 rounded-full border border-[#2c518a] flex items-center justify-center text-[#2c518a] text-[10px] font-black">01</div>
+                            <span className="text-[10px] font-black tracking-[0.5em] text-[#2c518a]">MISSION_SCRAPE</span>
+                        </div>
+                        <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-none text-white">
+                          Bridging <br/><span className="text-white/20">The Gap.</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl font-bold text-white/70 max-w-lg leading-relaxed uppercase">
+                          Transforming raw talent into real-world <span className="text-[#2c518a]">opportunity</span> for young athletes from underserved clusters.
+                        </p>
+                    </div>
+                    <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 group">
+                        <div className="absolute inset-0 bg-[#2c518a]/10 mix-blend-overlay z-10" />
+                        <img src="https://images.unsplash.com/photo-1526232761682-d26e47ac1740?auto=format&fit=crop&q=80" className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-1000" alt="pitch" />
+                        <div className="absolute bottom-6 left-6 z-20">
+                            <Terminal size={20} className="text-[#2c518a] mb-2" />
+                            <p className="text-[8px] font-black text-white/40 tracking-widest uppercase">System_Entry_Log: OK</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* PANEL 2: TECHNICAL GRID (NAVY THEME) */}
+            <section className="relative w-screen h-full flex-shrink-0 bg-[#2c518a] flex items-center px-12 md:px-32">
+                <div className="max-w-7xl w-full">
+                    <div className="mb-16 flex items-end justify-between">
+                        <h2 className="text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-[0.8] text-white">
+                          Holistic <br /><span className="text-black/40">Empowerment.</span>
+                        </h2>
+                        <Activity className="text-black/20" size={100} />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/20 border border-white/20 shadow-2xl">
+                        {[
+                            { icon: <Shield size={28} />, title: "Integrity", id: "P_01", desc: "Highest moral standards in every match." },
+                            { icon: <Zap size={28} />, title: "Discipline", id: "P_02", desc: "Excellence both on and off the field." },
+                            { icon: <Star size={28} />, title: "Inclusivity", id: "P_03", desc: "A tool for every aspiring athlete." }
+                        ].map((spec, i) => (
+                            <div key={i} className="bg-[#2c518a] p-12 space-y-12 hover:bg-white hover:text-[#2c518a] transition-all duration-500 group">
+                                <div className="flex justify-between items-start">
+                                    <div className="group-hover:scale-110 transition-transform">{spec.icon}</div>
+                                    <span className="text-[8px] font-black opacity-40">[{spec.id}]</span>
+                                </div>
+                                <div className="space-y-4">
+                                    <h3 className="text-4xl font-black italic uppercase leading-none">{spec.title}</h3>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest leading-loose opacity-70 group-hover:opacity-100">{spec.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* PANEL 3: GLOBAL SYNERGY */}
+            <section className="relative w-screen h-full flex-shrink-0 bg-black flex items-center px-12 md:px-32">
+                <div className="grid lg:grid-cols-12 gap-20 w-full items-center">
+                    <div className="lg:col-span-6 space-y-10">
+                        <Globe className="text-[#2c518a]" size={48} />
+                        <h2 className="text-7xl md:text-9xl font-black italic uppercase leading-[0.8] tracking-tighter text-white">
+                          Global <br/><span className="text-white/20">Synergy.</span>
+                        </h2>
+                        <p className="text-sm md:text-lg font-bold text-white/50 uppercase tracking-[0.1em] leading-relaxed border-l-4 border-[#2c518a] pl-8 max-w-md">
+                          Bridging the gap to professional stages on state and national levels.
+                        </p>
+                        <button className="bg-white text-black px-10 py-5 text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-4 hover:bg-[#2c518a] hover:text-white transition-all">
+                            CONNECT_NOW <ArrowRight size={16} />
+                        </button>
+                    </div>
+                    <div className="lg:col-span-6 aspect-video bg-white/5 rounded-[3rem] border border-white/10 flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#2c518a22_0%,_transparent_70%)]" />
+                        <div className="text-center z-10">
+                            <p className="text-[10px] font-black tracking-[0.5em] text-[#2c518a] mb-4">MAP_DATA_REDACTED</p>
+                            <span className="text-[10vw] font-black opacity-10 leading-none">2026</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 3. FINAL VERTICAL FOOTER */}
+      <footer className="relative bg-black border-t border-white/10 p-24">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-16">
+          <div className="text-[12rem] md:text-[20rem] leading-[0.7] font-black text-white/5 italic tracking-tighter select-none">
+            WAWU.
+          </div>
+          <div className="text-right pb-12 space-y-4">
+            <span className="text-[10px] font-black tracking-[0.5em] text-[#2c518a] uppercase">Operational_End_Sequence</span>
+            <div className="text-white/30 text-[9px] font-bold uppercase tracking-widest leading-loose">
+                Nigeria // Lagos <br/>
+                London // HQ <br/>
+                © 2026 All Rights Reserved
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
 
-/* --- 1. MONOLITH HERO --- */
-const MonolithHero = ({ progress }) => {
-  const opacity = useTransform(progress, [0, 0.1, 0.15], [1, 1, 0]);
-  const y = useTransform(progress, [0, 0.15], [0, -100]);
-  const letterSpacing = useTransform(progress, [0, 0.15], ["-0.05em", "0.1em"]);
-  const videoOpacity = useTransform(progress, [0, 0.12], [0.4, 0]);
-
-  // Using a cinematic football background video
-  const videoId = "V-G_m069jS8"; 
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&rel=0`;
-
-  return (
-    <motion.div style={{ opacity, y }} className="absolute inset-0 flex flex-col items-center justify-center">
-      <motion.div style={{ opacity: videoOpacity }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[115%] h-[115%] -translate-x-1/2 -translate-y-1/2">
-          <iframe className="w-full h-full scale-110 grayscale contrast-125 brightness-50" src={embedUrl} title="WAWU Hero" allow="autoplay; encrypted-media" frameBorder="0" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
-      </motion.div>
-
-      <div className="relative z-10 flex flex-col items-center px-10">
-        <motion.h1 style={{ letterSpacing }} className="text-[10vw] font-light italic leading-[0.85] text-center uppercase">
-          A Walking <br /> 
-          <span className="font-black not-italic text-[#2c518a]">Work of Art.</span>
-        </motion.h1>
-        
-        <div className="mt-12 flex flex-col items-center gap-4">
-          <motion.div initial={{ height: 0 }} animate={{ height: 80 }} transition={{ duration: 1.5, ease: "circOut" }} className="w-[1px] bg-[#2c518a]" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-zinc-400">
-            Empowering Talent // Elevating Communities
-          </span>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-/* --- 2. EXPANDING WINDOW: THE MISSION --- */
-const ExpandingWindow = ({ progress }) => {
-  const width = useTransform(progress, [0.15, 0.3, 0.4], ["2px", "80vw", "100vw"]);
-  const height = useTransform(progress, [0.15, 0.3, 0.4], ["20vh", "60vh", "100vh"]);
-  const borderRadius = useTransform(progress, [0.35, 0.4], ["40px", "0px"]);
-  const opacity = useTransform(progress, [0.12, 0.18, 0.45, 0.5], [0, 1, 1, 0]);
-
-  return (
-    <motion.div style={{ width, height, borderRadius, opacity }} className="absolute overflow-hidden bg-[#1a1a1a] z-40 shadow-2xl">
-      <img src="https://images.unsplash.com/photo-1526232761682-d26e47ac1740?auto=format&fit=crop&q=80" className="w-full h-full object-cover grayscale opacity-30 scale-110" alt="Football Pitch" />
-      <div className="absolute inset-0 flex items-center justify-center p-10 md:p-20 text-center">
-        <div className="max-w-4xl space-y-8">
-            <h2 className="text-white text-3xl md:text-5xl font-medium italic leading-tight">
-            "Bridging the gap between <span className="text-[#2c518a] font-bold">raw talent</span> and <span className="text-[#2c518a] font-bold">real opportunity.</span>"
-            </h2>
-            <p className="text-white/60 text-sm md:text-lg uppercase tracking-widest font-light leading-relaxed">
-                WAWU Foundation is dedicated to the upliftment of young players from communities with limited access to opportunities.
-            </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-/* --- 3. TECHNICAL GRID: CORE VALUES --- */
-const TechnicalGrid = ({ progress }) => {
-  const opacity = useTransform(progress, [0.45, 0.5, 0.7, 0.75], [0, 1, 1, 0]);
-  const y = useTransform(progress, [0.45, 0.75], [100, -100]);
-  
-  const specs = [
-    { icon: <Shield size={28} />, title: "Integrity", desc: "Upholding the highest moral standards in every match and mentorship.", coord: "PILLAR_01" },
-    { icon: <Zap size={28} />, title: "Discipline", desc: "Fostering the dedication required to excel both on and off the field.", coord: "PILLAR_02" },
-    { icon: <Star size={28} />, title: "Inclusivity", desc: "Ensuring football remains a powerful tool for every aspiring athlete.", coord: "PILLAR_03" }
-  ];
-
-  return (
-    <motion.div style={{ opacity, y }} className="absolute inset-0 z-50 bg-[#2c518a] flex items-center justify-center overflow-hidden">
-      <div className="relative w-full max-w-7xl h-full flex flex-col justify-center px-10">
-        <div className="grid grid-cols-12 gap-4 items-end mb-20">
-            <div className="col-span-12 lg:col-span-8">
-                <h2 className="text-white text-[7vw] font-black uppercase leading-[0.85] tracking-tighter">
-                    Holistic <br /><span className="text-[#1a1a1a]">Empowerment.</span>
-                </h2>
-            </div>
-            <div className="hidden lg:block col-span-4 border-l border-white/20 pl-8 pb-4">
-                <p className="text-white/60 text-[10px] font-medium tracking-[0.2em] leading-relaxed uppercase">
-                    ACADEMIC ACCESS<br />
-                    CLUB PLACEMENT<br />
-                    NATIONAL PATHWAYS
-                </p>
-            </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
-          {specs.map((spec, i) => (
-            <div key={i} className="bg-[#2c518a] p-10 space-y-8 hover:bg-white group transition-all duration-500">
-               <div className="flex justify-between items-start">
-                  <div className="text-white group-hover:text-[#2c518a] transition-colors">{spec.icon}</div>
-                  <span className="text-[9px] font-bold text-white/40 group-hover:text-[#2c518a]/40 tracking-widest">[{spec.coord}]</span>
-               </div>
-               <div className="space-y-4">
-                  <h3 className="text-3xl font-bold italic text-white group-hover:text-[#1a1a1a] transition-colors leading-none uppercase">
-                    {spec.title}
-                  </h3>
-                  <p className="text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-[#2c518a] leading-loose">
-                    {spec.desc}
-                  </p>
-               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-/* --- 4. LIQUID MAP: GLOBAL REACH --- */
-const LiquidMap = ({ progress }) => {
-  const opacity = useTransform(progress, [0.75, 0.82, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [0.75, 0.9], [0.95, 1]);
-
-  return (
-    <motion.div style={{ opacity, scale }} className="absolute inset-0 flex items-center justify-center z-20 px-10 md:px-20">
-      <div className="grid grid-cols-1 lg:grid-cols-12 w-full items-center gap-10 md:gap-20">
-        <div className="col-span-1 lg:col-span-5 space-y-10">
-          <Globe className="text-[#2c518a]" size={40} />
-          <h2 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter">Global <br/> Synergy.</h2>
-          <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest leading-loose border-l-2 border-[#2c518a] pl-6">
-            From raw talent to professional stages. We represent teams at state and national levels, bridging the gap to excellence.
-          </p>
-        </div>
-        <div className="col-span-1 lg:col-span-7 bg-[#1a1a1a] aspect-video relative rounded-[2rem] overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2c518a]/30 to-transparent opacity-50" />
-            <div className="absolute bottom-10 left-10 space-y-2">
-                <span className="text-[10px] font-bold text-[#2c518a] uppercase tracking-[0.4em]">Mission Status: Active</span>
-                <p className="text-white font-bold text-2xl italic tracking-wide">Transforming Communities Through Football</p>
-            </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-export default WAWUVelvet;
+export default WAWUStrategicFoundation;

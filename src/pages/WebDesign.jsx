@@ -1,242 +1,104 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Users, Zap, ArrowUpRight, BarChart2, Radio, Search, Target, Link as LinkIcon, Globe, Layout, Eye, MapPin } from 'lucide-react';
+import { Trophy, Users, Zap, ArrowUpRight, BarChart2, Radio, Search, Target, Link as LinkIcon, Globe, Layout, Eye, MapPin, Activity, Shield } from 'lucide-react';
 
-const INLLNeoGlass = () => {
+const TechnicalINL = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-cyan-500 selection:text-white">
-      
-      {/* --- NAV BAR --- */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md border-b border-white/5">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center font-black text-white">L</div>
-          <span className="font-black tracking-widest text-sm uppercase">INLL_2026</span>
-        </div>
-        <button className="text-[10px] font-bold uppercase tracking-widest border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all">
-          Enquire Now
-        </button>
-      </nav>
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#224e72] overflow-x-hidden pt-32 pb-24">
+      {/* BACKGROUND ELEMENTS */}
+      <div className="fixed inset-0 pointer-events-none opacity-10">
+        <Activity size={800} className="absolute -top-40 -left-40 text-white" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_#224e7233_0%,_transparent_70%)]" />
+      </div>
 
-      {/* --- HERO: THE VIRTUAL PITCH --- */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* PHOTO 1: THE ATMOSPHERE (Background Depth) */}
-        <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-40">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+        {/* HEADER SECTION */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-24">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[1px] bg-[#224e72]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72]">Flagship Tournament // INLL_2026</span>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter">
+              Elite <br />
+              <span className="text-white/20">DNA.</span>
+            </h1>
+          </div>
+          <div className="hidden lg:block pb-4 text-right">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 max-w-xs">
+              HIGH-PERFORMANCE ECOSYSTEM // SCOUTING hidden TALENTS // NATIONAL STAGE
+            </p>
+          </div>
+        </div>
+
+        {/* HERO IMAGE PANEL */}
+        <div className="relative aspect-[21/9] w-full overflow-hidden border border-white/10 mb-24 group">
            <img 
             src="https://images.unsplash.com/photo-1575361330880-28233383824a?auto=format&fit=crop&q=80&w=1600" 
-            alt="Cinematic stadium background" 
-            className="w-full h-full object-cover"
+            alt="Stadium" 
+            className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-block bg-white/5 border border-white/10 px-6 py-2 rounded-full backdrop-blur-xl mb-6"
-          >
-            <span className="text-cyan-400 font-mono text-xs uppercase tracking-[0.3em]">Status: Decoding Talent</span>
-          </motion.div>
-          <h1 className="text-6xl md:text-[10vw] font-black italic tracking-tighter leading-none uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/20">
-            ELITE DNA<span className="text-cyan-500">.</span>
-          </h1>
-          <p className="mt-8 max-w-2xl mx-auto text-slate-400 text-lg md:text-xl font-light leading-relaxed">
-            The India Next Legend League is a high-performance ecosystem designed to bridge the gap between raw potential and global professional football.
-          </p>
-        </div>
-      </section>
-
-      {/* --- ABOUT THE TOURNAMENT --- */}
-      <section className="px-6 py-12 max-w-5xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-8">
-            About the <span className="text-cyan-500">Tournament</span>
-          </h2>
-          <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
-            India's Next Legend League (INLL) is WAWU's flagship football tournament designed to discover and nurture the best football talents from across the nation. This premier platform empowers aspiring players to showcase their skills, gain national visibility, and receive comprehensive support to achieve their dreams of becoming professional footballers.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* --- WHY INLL? --- */}
-      <section className="px-6 py-20 bg-white/5 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-4">
-              Why <span className="text-cyan-500">INLL?</span>
-            </h2>
-            <p className="text-slate-400 text-lg font-light">
-              Discover what makes INLL the ultimate platform for football excellence.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: <Search className="w-8 h-8" />, 
-                title: "Scout Hidden Talents", 
-                desc: "Identifying promising players from grassroots levels across India." 
-              },
-              { 
-                icon: <Target className="w-8 h-8" />, 
-                title: "Competitive Platform", 
-                desc: "Providing an opportunity for players to showcase their skills on a national stage." 
-              },
-              { 
-                icon: <LinkIcon className="w-8 h-8" />, 
-                title: "Professional Connections", 
-                desc: "Linking talents with professional training, mentors, and sponsors for career growth." 
-              }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-cyan-500/50 transition-all group"
-              >
-                <div className="text-cyan-500 mb-6 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <h4 className="text-xl font-bold uppercase italic mb-3">{item.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- TOURNAMENT HIGHLIGHTS --- */}
-      <section className="px-6 py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black italic uppercase mb-4">
-              Tournament <span className="text-cyan-500">Highlights</span>
-            </h2>
-            <p className="text-slate-400 text-lg font-light">
-              Experience the pinnacle of football competition with unprecedented opportunities.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { 
-                icon: <Globe className="w-6 h-6" />, 
-                title: "Nationwide Reach", 
-                desc: "The tournament will be organized across India, ensuring inclusivity from villages to cities." 
-              },
-              { 
-                icon: <Layout className="w-6 h-6" />, 
-                title: "Competitive Format", 
-                desc: "Teams will compete in a league format to provide maximum exposure to every player." 
-              },
-              { 
-                icon: <Eye className="w-6 h-6" />, 
-                title: "WAWU Representatives", 
-                desc: "WAWU scouts will be present at every tournament to identify and select promising talents." 
-              },
-              { 
-                icon: <MapPin className="w-6 h-6" />, 
-                title: "Multiple Cities", 
-                desc: "Tournaments held across major cities to ensure wide participation and accessibility." 
-              }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-6 p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
-              >
-                <div className="w-12 h-12 shrink-0 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold uppercase italic mb-2">{item.title}</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- SECTION 2: PERFORMANCE METRICS --- */}
-      <section className="px-6 py-20 max-w-7xl mx-auto grid md:grid-cols-12 gap-6">
-        {/* PHOTO 2: THE PLAYER (Floating Card) */}
-        <div className="md:col-span-5 relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-          <div className="relative bg-slate-900 rounded-2xl overflow-hidden border border-white/10">
-            <img 
-              src="https://images.unsplash.com/photo-1526232761682-d26e4fca61d5?auto=format&fit=crop&q=80&w=800" 
-              alt="Young athlete in motion" 
-              className="w-full h-[500px] object-cover"
-            />
-            <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
-              <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-1">Live Tracking</p>
-              <h3 className="text-2xl font-black italic uppercase">Vanguard Trials</h3>
-            </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          <div className="absolute bottom-12 left-12 max-w-2xl">
+             <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6">India Next Legend League</h2>
+             <p className="text-lg text-white/60 font-medium leading-relaxed">
+               Bridging the gap between raw potential and global professional football through a nationwide discovery platform.
+             </p>
           </div>
         </div>
 
-        <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {[
-            { icon: <BarChart2 />, title: "Neuro-Analytics", desc: "Measuring cognitive reaction speed and spatial awareness under fatigue." },
-            { icon: <Users />, title: "Pro Pathway", desc: "Partnerships with top-tier clubs in Spain, Germany, and the UK." },
-            { icon: <Radio />, title: "Broadcasting", desc: "Final stages of trials are broadcast live to global scouting networks." },
-            { icon: <Trophy />, title: "Sponsorship", desc: "Full kit and gear sponsorship for the top 50 selected finalists." }
-          ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all group">
-              <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                {item.icon}
-              </div>
-              <h4 className="text-xl font-bold uppercase italic mb-3">{item.title}</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- SECTION 3: THE GLOBAL REACH --- */}
-      <section className="px-6 py-20 bg-gradient-to-b from-transparent to-cyan-900/10">
-        <div className="max-w-7xl mx-auto rounded-[3rem] overflow-hidden relative">
-          {/* PHOTO 3: THE VISION (Panoramic) */}
-          <img 
-            src="https://images.unsplash.com/photo-1570498839593-e565b39455fc?auto=format&fit=crop&q=80&w=1600" 
-            alt="Football field aerial view" 
-            className="w-full h-[400px] object-cover brightness-50 contrast-125"
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 backdrop-blur-[2px]">
-            <h2 className="text-4xl md:text-6xl font-black italic uppercase mb-8">
-              The Journey to <br /> <span className="text-cyan-400 underline decoration-white/20">The First XI</span>
-            </h2>
-            <button className="bg-cyan-500 hover:bg-cyan-400 text-[#020617] px-10 py-4 rounded-full font-black uppercase tracking-widest flex items-center gap-4 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)]">
-              Start Your Evaluation <ArrowUpRight />
-            </button>
+        {/* INFO GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/10 border border-white/10 mb-24">
+          <div className="lg:col-span-4 bg-black p-12 flex flex-col justify-center">
+             <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-6">Mission Objective</span>
+             <h3 className="text-3xl font-black italic uppercase tracking-tighter mb-8 leading-none">Scout. Nurture. <br />Connect.</h3>
+             <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 leading-loose">
+               INLL is WAWU's premier platform empowering aspiring players to showcase skills, gain visibility, and receive holistic support.
+             </p>
+          </div>
+          
+          <div className="lg:col-span-8 bg-black grid md:grid-cols-2 gap-px bg-white/10">
+             {[
+               { icon: <Search />, title: "Rural Scouting", desc: "Identifying promising players from grassroots levels across the nation." },
+               { icon: <Target />, title: "Competitive Format", desc: "Providing an elite stage for players to showcase skills under pressure." },
+               { icon: <LinkIcon />, title: "Pro Pathways", desc: "Linking talents with professional clubs, mentors, and global sponsors." },
+               { icon: <Shield />, title: "Holistic Support", desc: "Ensuring athletes receive training and education for complete success." }
+             ].map((item, i) => (
+               <div key={i} className="p-12 bg-black hover:bg-white/5 transition-colors group">
+                  <div className="text-[#224e72] mb-8 group-hover:scale-110 transition-transform duration-500">
+                    {React.cloneElement(item.icon, { size: 24 })}
+                  </div>
+                  <h4 className="text-xl font-black italic uppercase tracking-tighter mb-4">{item.title}</h4>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 leading-relaxed">{item.desc}</p>
+               </div>
+             ))}
           </div>
         </div>
-      </section>
 
-      {/* --- FOOTER --- */}
-      <footer className="p-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em]">
-          © 2026 INDIA NEXT LEGEND LEAGUE // ALL SYSTEMS NOMINAL
+        {/* CTA SECTION */}
+        <div className="bg-[#224e72] p-12 lg:p-20 text-center relative overflow-hidden group">
+           <Globe size={400} className="absolute -bottom-40 -right-40 text-white/5 group-hover:rotate-12 transition-transform duration-1000" />
+           <div className="relative z-10 max-w-2xl mx-auto">
+             <h3 className="text-4xl md:text-6xl font-black italic uppercase leading-[0.9] tracking-tighter mb-8">Begin Your <br /> Evaluation</h3>
+             <p className="text-white/70 font-medium text-lg mb-12 uppercase tracking-widest">The journey to the First XI starts here. All systems nominal.</p>
+             <button className="px-12 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all duration-500 flex items-center justify-center gap-4 mx-auto">
+                Enquire Now <ArrowUpRight size={14} />
+             </button>
+           </div>
         </div>
-        <div className="flex gap-12 text-xs font-bold uppercase tracking-widest">
-          <a href="#" className="text-cyan-500">Instagram</a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">Twitter</a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">YouTube</a>
+
+        {/* FOOTER HUD */}
+        <div className="mt-12 flex justify-between items-center text-[8px] font-black uppercase tracking-[0.5em] text-white/20">
+           <span>Status: Decoding Talent // INLL_V4</span>
+           <span>© 2026 INDIA NEXT LEGEND LEAGUE</span>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };
 
-export default INLLNeoGlass;
+export default TechnicalINL;

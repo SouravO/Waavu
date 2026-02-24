@@ -1,37 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useSpring } from 'framer-motion';
-import { Menu, ChevronDown, Trophy, Zap, Activity } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, Zap, Globe, Shield, Activity } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
-const VoltageFootballNav = () => {
-  const [ballX, setBallX] = useState(-100);
-  const [ballRotate, setBallRotate] = useState(0);
-  const [isBouncing, setIsBouncing] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState(true);
+const TechnicalNav = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-  const navRef = useRef(null);
-  const lastScrollY = useRef(0);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
   const PRIMARY_BLUE = "#224e72";
 
-  // Spring physics for the ball trail
-  const trailX = useSpring(ballX, { stiffness: 50, damping: 20 });
-
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 20);
-
-      // Hide on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -48,136 +30,78 @@ const VoltageFootballNav = () => {
   const programItems = [
     { name: 'INL', path: '/services/web-design' },
     { name: 'Quest', path: '/services/app-development' },
-    
   ];
 
-  const handleInteraction = (e) => {
-    if (!navRef.current) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const navRect = navRef.current.getBoundingClientRect();
-    
-    // Exact center calculation
-    const centerPoint = rect.left - navRect.left + rect.width / 2 - 14;
-    setBallX(centerPoint);
-    setBallRotate(prev => prev + 360); 
-    
-    setIsBouncing(true);
-    setTimeout(() => setIsBouncing(false), 400);
-  };
-
   return (
-// Change this line in your VoltageFootballNav component:
-<nav className={`fixed top-0 left-0 right-0 w-full z-[9999] transition-transform duration-300 px-6 ${scrolled ? 'py-2' : 'py-8'} ${!visible ? '-translate-y-full' : 'translate-y-0'}`}>
-      <div
-        ref={navRef}
-        className={`max-w-[1400px] mx-auto relative flex justify-between items-center p-4 rounded-2xl border-b-[6px] transition-all duration-500 overflow-visible ${
-          scrolled
-          ? 'bg-[#0a0f1e]/90 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
-          : 'bg-[#12182d] shadow-[0_15px_30px_rgba(0,0,0,0.4)]'
-        }`}
-        style={{ borderColor: PRIMARY_BLUE }}
-      >
-        {/* --- PHYSICS FOOTBALL & LIGHTING --- */}
-        <motion.div
-          animate={{ 
-            x: ballX, 
-            rotate: ballRotate,
-            y: isBouncing ? -35 : 0,
-            scale: isBouncing ? 1.4 : 1
-          }}
-          transition={{ 
-            x: { type: "spring", stiffness: 80, damping: 12 },
-            y: { type: "spring", stiffness: 500, damping: 15 },
-            scale: { duration: 0.2 }
-          }}
-          className="absolute top-[-22px] z-50 pointer-events-none hidden lg:block"
-        >
-          <div className="relative w-8 h-8 bg-white rounded-full border-2 border-black flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-            <Activity className="absolute text-black/10 w-full h-full p-1" />
-            <div className="w-3 h-3 bg-black rounded-full" />
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
+      <div className="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
+        {/* LOGO AREA */}
+        <Link to="/" className="relative z-50 flex items-center gap-4 group">
+          <div className="relative">
+            <div className="w-10 h-10 border border-white/20 flex items-center justify-center rotate-45 group-hover:rotate-90 transition-transform duration-500">
+              <Activity size={18} className="text-white -rotate-45 group-hover:-rotate-90 transition-transform duration-500" />
+            </div>
+            <div className="absolute inset-0 bg-white/5 blur-sm scale-0 group-hover:scale-150 transition-transform duration-500" />
           </div>
-          
-          {/* Energy Pulse on "Kick" */}
-          <AnimatePresence>
-            {isBouncing && (
-              <motion.div 
-                initial={{ scale: 0, opacity: 1 }}
-                animate={{ scale: 3, opacity: 0 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 rounded-full border-2"
-                style={{ borderColor: PRIMARY_BLUE }}
-              />
-            )}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Floating Trail behind the ball */}
-        <motion.div 
-          className="absolute top-0 h-1 w-12 blur-sm rounded-full pointer-events-none opacity-50"
-          style={{ backgroundColor: PRIMARY_BLUE, x: trailX }}
-        />
-
-        {/* LOGO SECTION */}
-        <Link to="/" className="flex items-center gap-3 group z-20">
-        
-          <div className="flex flex-col">
-            {/* logo */}
-           <img src="/assets/logo/Logo.png" alt="Voltage Football Logo" className="w-30 h-auto -mb-1" />
+          <div className="flex flex-col leading-none">
+            <span className="text-xl font-black italic tracking-tighter text-white">WAWU</span>
+            <span className="text-[8px] font-bold tracking-[0.4em] text-white/40 uppercase">Foundation</span>
           </div>
         </Link>
 
-        {/* MAIN NAVIGATION LINKS */}
-        <div className="hidden lg:flex items-center gap-1 z-20">
+        {/* DESKTOP NAV */}
+        <div className="hidden lg:flex items-center gap-2">
           {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
+            <Link
+              key={link.name}
               to={link.path}
-              onMouseEnter={handleInteraction}
-              className="relative px-5 py-2 group"
+              className={`relative px-4 py-2 group overflow-hidden`}
             >
-              <motion.span 
-                className="relative z-10 text-[11px] font-[900] text-white/50 group-hover:text-white uppercase tracking-widest transition-colors"
-              >
+              <span className={`relative z-10 text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${location.pathname === link.path ? 'text-white' : 'text-white/40 group-hover:text-white'}`}>
                 {link.name}
-              </motion.span>
-              {/* Magnetic Hover Background */}
-              <motion.div 
-                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-10 -z-10 transition-opacity"
-                style={{ backgroundColor: PRIMARY_BLUE }}
-              />
+              </span>
+              {location.pathname === link.path && (
+                <motion.div layoutId="nav-underline" className="absolute bottom-0 left-4 right-4 h-[2px] bg-white" />
+              )}
+              <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-10" />
             </Link>
           ))}
 
-          {/* DYNAMIC DROPWDOWN */}
+          {/* PROGRAMS DROPDOWN */}
           <div 
-            className="relative" 
-            onMouseEnter={(e) => { handleInteraction(e); setDropdownOpen(true); }}
-            onMouseLeave={() => setDropdownOpen(false)}
+            className="relative"
+            onMouseEnter={() => setActiveDropdown('programs')}
+            onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="flex items-center gap-1 px-5 py-2 text-[11px] font-[900] text-white/50 uppercase tracking-widest hover:text-white transition-all">
-              Programs <ChevronDown size={14} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
+            <button className="flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors">
+              Programs <ChevronDown size={12} className={`transition-transform duration-300 ${activeDropdown === 'programs' ? 'rotate-180' : ''}`} />
             </button>
             
             <AnimatePresence>
-              {dropdownOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 20, rotateX: -15 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute top-full left-0 mt-5 bg-[#0a0f1e] border-b-4 p-3 w-60 rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.8)] border-x-2 border-white/5"
-                  style={{ borderBottomColor: PRIMARY_BLUE }}
+              {activeDropdown === 'programs' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full left-0 mt-2 w-56 bg-black border border-white/10 p-2 shadow-2xl"
                 >
-                  <div className="grid grid-cols-1 gap-1">
+                  <div className="grid gap-1">
                     {programItems.map((item) => (
-                      <Link 
-                        key={item.name} 
-                        to={item.path} 
-                        className="group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all"
+                      <Link
+                        key={item.name}
+                        to={item.path}
+                        className="group flex items-center justify-between p-3 hover:bg-white/5 transition-all"
                       >
                         <span className="text-[10px] font-bold text-white/40 group-hover:text-white uppercase tracking-widest">{item.name}</span>
-                        <Zap size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: PRIMARY_BLUE }} />
+                        <Zap size={10} className="text-white/0 group-hover:text-white transition-all" />
                       </Link>
                     ))}
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-white/10 px-3">
+                    <div className="flex items-center justify-between text-[8px] font-bold text-white/20 uppercase tracking-widest">
+                      <span>Status: Active</span>
+                      <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -185,148 +109,63 @@ const VoltageFootballNav = () => {
           </div>
 
           {/* ACTION BUTTON */}
-          <motion.div 
-            className="ml-6"
-            onMouseEnter={handleInteraction}
-            whileHover={{ scale: 1.05, x: 5 }}
-            whileTap={{ scale: 0.95 }}
+          <Link 
+            to="/contact" 
+            className="ml-6 px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#224e72] hover:text-white transition-all duration-300 flex items-center gap-3 group"
           >
-            <Link 
-              to="/donate" 
-              className="relative px-10 py-3.5 rounded-full font-[1000] text-[12px] uppercase tracking-widest italic overflow-hidden flex items-center gap-2 group"
-              style={{ 
-                backgroundColor: scrolled ? PRIMARY_BLUE : 'white',
-                color: scrolled ? 'white' : '#12182d'
-              }}
-            >
-              <Zap size={14} fill="currentColor" className="group-hover:animate-pulse" />
-              <span className="relative z-10">Donate</span>
-              
-              {/* Shine Effect */}
-              <motion.div 
-                animate={{ x: ['-100%', '200%'] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                className="absolute top-0 left-0 w-1/2 h-full bg-white/20 skew-x-12 pointer-events-none"
-              />
-            </Link>
-          </motion.div>
+            <span>Get Involved</span>
+            <Shield size={14} className="group-hover:rotate-12 transition-transform" />
+          </Link>
         </div>
 
-        {/* MOBILE MENU ICON */}
-        <motion.button
-          whileTap={{ scale: 0.8 }}
-          className="lg:hidden p-2 rounded-lg bg-white/5 text-white relative z-50"
+        {/* MOBILE TOGGLE */}
+        <button 
+          className="lg:hidden relative z-50 p-2 text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <AnimatePresence mode="wait">
-            {mobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Activity size={24} style={{ color: PRIMARY_BLUE }} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu size={28} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -20 }}
-            animate={{ opacity: 1, height: 'auto', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden absolute top-full left-0 right-0 mx-6 mt-2 bg-[#0a0f1e]/95 backdrop-blur-xl rounded-2xl border-b-4 overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.8)]"
-            style={{ borderBottomColor: PRIMARY_BLUE }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-black z-40 flex flex-col p-8 pt-32"
           >
-            <div className="flex flex-col p-4 space-y-2">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-[13px] font-[900] text-white/50 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
+                  className="text-4xl font-black italic text-white/40 hover:text-white uppercase tracking-tighter"
                 >
                   {link.name}
                 </Link>
               ))}
-
-              {/* Programs Dropdown for Mobile */}
-              <div className="border-t border-white/10 pt-2">
-                <button
-                  onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                  className="w-full px-4 py-3 flex items-center justify-between rounded-xl text-[13px] font-[900] text-white/50 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
-                >
-                  Programs
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-300 ${mobileDropdownOpen ? 'rotate-180' : ''}`}
-                    style={{ color: PRIMARY_BLUE }}
-                  />
-                </button>
-                <AnimatePresence>
-                  {mobileDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
+            </div>
+            
+            <div className="mt-auto pb-12">
+              <div className="flex flex-col gap-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 border-b border-white/10 pb-4">Special Programs</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {programItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-[10px] font-bold text-white/60 hover:text-white uppercase tracking-widest"
                     >
-                      <div className="pl-4 pt-2 space-y-1">
-                        {programItems.map((item) => (
-                          <Link
-                            key={item.name}
-                            to={item.path}
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setMobileDropdownOpen(false);
-                            }}
-                            className="flex items-center justify-between px-4 py-2 rounded-lg text-[11px] font-bold text-white/40 hover:text-white hover:bg-white/5 uppercase tracking-widest transition-all"
-                          >
-                            {item.name}
-                            <Zap size={12} style={{ color: PRIMARY_BLUE }} />
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
-
-              {/* Donate Button for Mobile */}
-              <motion.div
-                className="pt-2 border-t border-white/10"
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/donate"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full py-4 rounded-full font-[1000] text-[12px] uppercase tracking-widest italic text-center overflow-hidden flex items-center justify-center gap-2"
-                  style={{
-                    backgroundColor: PRIMARY_BLUE,
-                    color: 'white'
-                  }}
-                >
-                  <Zap size={14} fill="currentColor" />
-                  <span>Donate</span>
-                </Link>
-              </motion.div>
             </div>
           </motion.div>
         )}
@@ -335,4 +174,4 @@ const VoltageFootballNav = () => {
   );
 };
 
-export default VoltageFootballNav;
+export default TechnicalNav;
