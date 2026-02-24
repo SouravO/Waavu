@@ -24,8 +24,18 @@ const Contact = () => {
     setTimeout(() => {
       const subject = encodeURIComponent(formData.subject || 'Contact Form Inquiry');
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:hello@wawu.studio?subject=${subject}&body=${body}`;
-      window.open(mailtoLink, '_self');
+      
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        // Triggers the default mail app on mobile
+        window.location.href = `mailto:enq.wawufoundation@gmail.com?subject=${subject}&body=${body}`;
+      } else {
+        // Opens Gmail compose in a new tab on desktop
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=enq.wawufoundation@gmail.com&su=${subject}&body=${body}`;
+        window.open(gmailUrl, '_blank');
+      }
+
       setIsSubmitting(false);
       setIsSent(true);
       setTimeout(() => setIsSent(false), 5000);
@@ -56,25 +66,24 @@ const Contact = () => {
             <div className="space-y-8 md:space-y-12">
               <div className="group">
                 <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
-                <p className="text-2xl md:text-4xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-                  hello@wawu.studio
+                <p className="text-xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
+                  enq.wawufoundation@gmail.com
                 </p>
               </div>
               
               <div className="group">
                 <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Studio Location</span>
-                <p className="text-2xl md:text-4xl font-serif leading-tight">
-                  Lagos / London <br />
-                  Remote Ecosystem
+                <p className="text-xl md:text-2xl font-serif leading-tight">
+                  3rd floor, Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
                 </p>
               </div>
 
               <div className="group">
                 <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Social Presence</span>
                 <div className="flex flex-col gap-2 text-xl font-serif italic">
-                  <span className="hover:text-[#125487] cursor-pointer transition-colors w-fit">Instagram</span>
-                  <span className="hover:text-[#125487] cursor-pointer transition-colors w-fit">LinkedIn</span>
-                  <span className="hover:text-[#125487] cursor-pointer transition-colors w-fit">Are.na</span>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">Instagram</a>
+                  <a href="https://www.linkedin.com/in/wawu-foundation/" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">LinkedIn</a>
+                  <a href="https://youtube.com/@wawu.foundation?si=ttkPTwfNFnR4k06S" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">YouTube</a>
                 </div>
               </div>
             </div>

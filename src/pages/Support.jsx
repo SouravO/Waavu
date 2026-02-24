@@ -1,191 +1,162 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
-  Heart, Target, Users, Zap, Trophy, 
-  CheckCircle, Copy, MoveRight, ArrowUpRight, Shield
+  Heart, Target, Users, Trophy, 
+  CheckCircle, Copy, ArrowRight, ShieldCheck, 
+  Landmark, CreditCard, Send, Sparkles
 } from 'lucide-react';
 
-export default function SupportPage() {
+export default function LegendLedger() {
   const [copied, setCopied] = useState('');
-  const [userData, setUserData] = useState({ name: '', email: '', contact: '' });
+  const [selectedAmount, setSelectedAmount] = useState('500');
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
-  const handleRazorpay = () => {
-    if (!userData.email || !userData.name) {
-      alert("Please provide your details in the form below first.");
-      return;
-    }
-
-    const options = {
-      key: "YOUR_RAZORPAY_KEY_ID",
-      amount: 50000,
-      currency: "INR",
-      name: "WAWU Foundation",
-      description: "Athletic Development Fund",
-      handler: function (response) {
-        alert(`Payment Successful! Transaction ID: ${response.razorpay_payment_id}`);
-      },
-      prefill: {
-        name: userData.name,
-        email: userData.email,
-        contact: userData.contact
-      },
-      theme: { color: "#125487" }
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+  const bankDetails = {
+    bankName: "Federal Bank",
+    accountName: "WAWU Foundation for Sports and Education",
+    accountNumber: "10810200024800",
+    ifscCode: "FDRL0001081",
+    branch: "Palakkad"
   };
 
-  const copyToClipboard = (text, id) => {
+  const copyToClipboard = (text, key) => {
     navigator.clipboard.writeText(text);
-    setCopied(id);
+    setCopied(key);
     setTimeout(() => setCopied(''), 2000);
   };
 
-  const impactItems = [
-    { amount: '₹500', impact: 'Training Kit for 1 Athlete', icon: Trophy },
-    { amount: '₹2,000', impact: 'Monthly Nutrition Support', icon: Heart },
-    { amount: '₹5,000', impact: 'Tournament Participation', icon: Target },
-    { amount: '₹10,000', impact: 'Team Equipment Sponsor', icon: Users },
+  const tiers = [
+    { amount: '500', label: 'Grassroots Support', icon: Trophy },
+    { amount: '1000', label: 'Equipment Module', icon: Target },
+    { amount: '2500', label: 'Nutrition & Gear', icon: Heart },
+    { amount: '5000', label: 'Elite Training', icon: Sparkles },
   ];
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20 overflow-hidden">
-      {/* HERO SECTION */}
-      <section className="py-24 px-4 md:px-6 border-b border-black/5">
-        <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Financial_&_Support_Hub</p>
-          <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
-            Fuel The <br />
-            <span className="italic font-light text-[#125487]">Movement.</span>
-          </h1>
-        </div>
-      </section>
+    <div className="bg-[#F8F9FA] min-h-screen font-sans text-[#1A1A1A]">
+      {/* 1. MINIMAL NAV/BREADCRUMB */}
+      <nav className="p-6 max-w-screen-xl mx-auto flex justify-between items-center text-[10px] font-mono tracking-widest opacity-40 uppercase">
+        <span>Path: Home / Donate</span>
+        <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Secure_Protocol_v4.0</span>
+      </nav>
 
-      {/* MAIN INTERFACE */}
-      <section className="border-b border-black/5">
-        <div className="grid grid-cols-1 lg:grid-cols-12">
-          {/* Donation Panel */}
-          <div className="lg:col-span-8 bg-white p-8 md:p-20 space-y-12 md:space-y-20 border-b lg:border-b-0 lg:border-r border-black/5">
-            <div className="space-y-10 md:space-y-12">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
-                  <Heart size={24} className="md:w-8 md:h-8" />
-                </div>
-                <div>
-                  <h2 className="text-3xl md:text-5xl font-serif italic leading-tight">Support Excellence.</h2>
-                  <p className="text-[10px] font-mono text-black/40 uppercase tracking-widest">Transaction_Ref: v4.0</p>
-                </div>
-              </div>
+      <main className="max-w-screen-xl mx-auto px-6 py-12 grid lg:grid-cols-12 gap-12">
+        
+        {/* LEFT COLUMN: IMPACT SELECTION */}
+        <div className="lg:col-span-7 space-y-12">
+          <header className="space-y-4">
+            <h1 className="text-6xl md:text-8xl font-serif italic tracking-tighter leading-[0.85]">
+              Support the <br /> 
+              <span className="text-[#125487]">Foundation.</span>
+            </h1>
+            <p className="text-lg font-light text-black/40 max-w-lg">
+              Join us in shaping the future of India's youth through sports and education. Every contribution fuels the next legend.
+            </p>
+          </header>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <InputField label="Operator Name" placeholder="Sharath K." value={userData.name} onChange={(v) => setUserData({...userData, name: v})} />
-                <InputField label="Return Email" placeholder="email@studio.com" value={userData.email} onChange={(v) => setUserData({...userData, email: v})} />
-                <InputField label="Contact Line" placeholder="+91 ..." value={userData.contact} onChange={(v) => setUserData({...userData, contact: v})} />
-              </div>
-
-              <button
-                onClick={handleRazorpay}
-                className="group flex items-center gap-6 md:gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
-              >
-                Initiate Donation 
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#125487] transition-all">
-                  <Zap size={20} className="md:w-6 md:h-6" />
-                </div>
-              </button>
-            </div>
-
-            <div className="pt-12 border-t border-black/5 space-y-8 md:space-y-12">
-              <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block">Direct_Transfer_Protocols</span>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <BankDetail label="Account Number" value="10810200024800" onCopy={() => copyToClipboard("10810200024800", 'acc')} active={copied === 'acc'} />
-                <BankDetail label="IFSC Code" value="FDRL0001081" onCopy={() => copyToClipboard("FDRL0001081", 'ifsc')} active={copied === 'ifsc'} />
-              </div>
-              <div className="p-6 bg-[#F5F5F5] border border-black/5 flex items-center gap-6">
-                <Shield size={24} className="text-[#125487] shrink-0" />
-                <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest leading-relaxed">
-                  80G Tax Exemption Certified // Secure Encryption Verified
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Impact Panel */}
-          <div className="lg:col-span-4 bg-[#F5F5F5] p-8 md:p-12 space-y-8 md:space-y-12">
-            <h2 className="text-2xl md:text-3xl font-serif italic flex items-center gap-4">
-              <Target size={24} className="text-[#125487]" />
-              Impact Matrix.
-            </h2>
-            <div className="space-y-6">
-              {impactItems.map((item, i) => (
-                <div key={i} className="p-6 md:p-8 bg-white border border-black/5 hover:border-[#125487] transition-colors flex items-center gap-6 group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center bg-[#F5F5F5] text-black group-hover:bg-[#125487] group-hover:text-white transition-colors">
-                    <item.icon size={20} className="md:w-6 md:h-6" />
+          <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-black/[0.03] shadow-sm">
+            <h2 className="text-[10px] font-mono font-black uppercase tracking-[0.4em] mb-10 text-black/20">01. Choose Your Impact</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {tiers.map((tier) => (
+                <button 
+                  key={tier.amount}
+                  onClick={() => setSelectedAmount(tier.amount)}
+                  className={`p-6 rounded-2xl border-2 transition-all flex items-center gap-6 text-left group
+                    ${selectedAmount === tier.amount ? 'border-[#125487] bg-blue-50/30' : 'border-transparent bg-gray-50 hover:bg-gray-100'}`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors
+                    ${selectedAmount === tier.amount ? 'bg-[#125487] text-white' : 'bg-white text-black/20 group-hover:text-black/40'}`}>
+                    <tier.icon size={24} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <p className="text-xl md:text-2xl font-serif italic text-[#125487]">{item.amount}</p>
-                    <p className="text-[10px] font-mono uppercase tracking-widest opacity-40">{item.impact}</p>
+                    <span className="block text-2xl font-bold tracking-tight">₹{tier.amount}</span>
+                    <span className="block text-[10px] font-mono uppercase tracking-wider opacity-40">{tier.label}</span>
                   </div>
-                </div>
+                </button>
               ))}
+            </div>
+
+            <button className="w-full mt-10 bg-[#125487] text-white py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-blue-900/20 transition-all group">
+              Donate ₹{selectedAmount} <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+            </button>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN: BANKING MODULE */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          <div className="bg-black text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+            <div className="relative z-10">
+              <div className="flex justify-between items-center mb-16">
+                <Landmark size={32} className="text-[#125487]" />
+                <div className="text-right">
+                  <p className="text-[8px] font-mono opacity-40 uppercase tracking-[0.3em]">Institutional_Transfer</p>
+                  <p className="text-xs font-bold">{bankDetails.bankName}</p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <DataField 
+                  label="Account_Name" 
+                  value={bankDetails.accountName} 
+                  onCopy={() => copyToClipboard(bankDetails.accountName, 'name')}
+                  active={copied === 'name'}
+                />
+                <DataField 
+                  label="Account_Number" 
+                  value={bankDetails.accountNumber} 
+                  onCopy={() => copyToClipboard(bankDetails.accountNumber, 'num')}
+                  active={copied === 'num'}
+                />
+                <div className="grid grid-cols-2 gap-8">
+                  <DataField 
+                    label="IFSC_Code" 
+                    value={bankDetails.ifscCode} 
+                    onCopy={() => copyToClipboard(bankDetails.ifscCode, 'ifsc')}
+                    active={copied === 'ifsc'}
+                  />
+                  <DataField label="Branch" value={bankDetails.branch} />
+                </div>
+              </div>
+
+              <div className="mt-16 pt-8 border-t border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <ShieldCheck size={16} className="text-emerald-400" />
+                  <span className="text-[9px] font-mono opacity-40 uppercase tracking-widest">Verified 80G Entity</span>
+                </div>
+                <CreditCard size={20} className="opacity-20" />
+              </div>
+            </div>
+            {/* Soft Ambient Light */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#125487] blur-[120px] rounded-full opacity-20 -mr-32 -mt-32 group-hover:opacity-30 transition-opacity" />
+          </div>
+
+          <div className="bg-white border border-black/[0.03] p-8 rounded-[2rem] flex items-center gap-6 group cursor-help">
+            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+              <Send size={20} />
+            </div>
+            <div>
+              <p className="text-xs font-bold">Done with your donation?</p>
+              <p className="text-[10px] text-black/40 font-mono uppercase tracking-wider">Email your receipt to acknowledge your support.</p>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* STATS SECTION */}
-      <section className="py-24 px-4 md:px-6 bg-white border-b border-black/5 overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-black/5 border border-black/5">
-           {[
-             { label: "Athletes", value: "500+" },
-             { label: "Partner Schools", value: "50+" },
-             { label: "Transparency", value: "100%" },
-             { label: "Ops Status", value: "Active" }
-           ].map((stat, i) => (
-             <div key={i} className="bg-white p-6 md:p-12 text-center hover:bg-[#125487] hover:text-white transition-colors group">
-               <p className="text-[10px] font-mono opacity-40 uppercase tracking-[0.4em] mb-4 group-hover:text-white/60">{stat.label}</p>
-               <p className="text-2xl md:text-4xl font-serif italic">{stat.value}</p>
-             </div>
-           ))}
-        </div>
-      </section>
+      </main>
     </div>
   );
 }
 
-function BankDetail({ label, value, onCopy, active }) {
+// ATOMIC COMPONENTS
+function DataField({ label, value, onCopy, active }) {
   return (
-    <div className="flex justify-between items-center bg-[#F5F5F5] p-6 border border-black/5 hover:border-[#125487] transition-all group">
-      <div>
-        <span className="block text-[8px] font-mono opacity-40 uppercase tracking-widest mb-1">{label}</span>
-        <span className="text-lg md:text-xl font-serif italic text-black group-hover:text-[#125487] transition-colors break-all">{value}</span>
+    <div className="space-y-1">
+      <p className="text-[8px] font-mono opacity-30 uppercase tracking-[0.4em]">{label}</p>
+      <div className="flex justify-between items-center group/field">
+        <p className="text-lg font-serif italic truncate pr-4">{value}</p>
+        {onCopy && (
+          <button onClick={onCopy} className="p-2 hover:bg-white/10 rounded-lg transition-colors">
+            {active ? <CheckCircle size={14} className="text-emerald-400" /> : <Copy size={14} className="opacity-20 group-hover/field:opacity-100" />}
+          </button>
+        )}
       </div>
-      <button onClick={onCopy} className="p-2 opacity-20 hover:opacity-100 transition-opacity shrink-0">
-        {active ? <CheckCircle size={20} className="text-[#125487]" /> : <Copy size={20} />}
-      </button>
-    </div>
-  );
-}
-
-function InputField({ label, placeholder, value, onChange }) {
-  return (
-    <div className="space-y-4">
-      <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">{label}</label>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#125487] outline-none transition-all font-serif italic text-xl md:text-2xl placeholder:text-black/5"
-      />
     </div>
   );
 }

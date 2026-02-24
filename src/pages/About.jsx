@@ -9,9 +9,9 @@ const About = () => {
       title: "The Founder",
       subtitle: "FOUNDER & CHAIRMAN",
       header: "Sharath Kuniyil",
-      body: "A trailblazing Indian goalkeeper who represented Kerala in the Santhosh Trophy and played for elite I-League clubs like Bengaluru FC and Gokulam Kerala FC. As the first Kerala goalkeeper to captain an I-League team, he brings professional discipline and top-tier expertise to the foundation.",
+      body: "Sharath Kuniyil is an Indian goalkeeper who played for Kerala Santhosh Trophy team and Viva Kerala, Chirag United Kerala, Mohammedan Sporting, Bengaluru FC, and Gokulam Kerala FC in the I-League. He made his debut in the I-League against Mahindra United. He is the First Kerala Goalkeeper to hold the captaincy band of an I-League team, and he was skilled and trained under several professional teams and teammates.",
       list: ["I-League Captain", "Kerala Legend", "Elite Goalkeeper", "Pro Mentor"],
-      image: "https://images.unsplash.com/photo-1526232759533-36001e2531d4?auto=format&fit=crop&q=80",
+      image: "src/assets/founder.jpg",
       icon: <Star size={20} />
     },
     {
@@ -64,18 +64,18 @@ const About = () => {
         <section key={section.id} className="border-b border-black/5 overflow-hidden">
           <div className={`grid grid-cols-1 md:grid-cols-2`}>
             {/* Image Block */}
-            <div className={`aspect-[4/5] md:aspect-auto md:h-[80vh] overflow-hidden group relative ${idx % 2 === 1 ? 'md:order-2' : 'border-r border-black/5'}`}>
+            <div className={`aspect-[1/5] md:aspect-auto md:h-[80vh] overflow-hidden group relative ${idx % 2 === 1 ? 'md:order-2' : 'border-r border-black/5'}`}>
               <motion.img 
-                initial={{ scale: 1.2 }}
+                initial={{ scale: 1 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 1.5 }}
                 src={section.image}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-1000"
                 alt={section.title}
               />
-              <div className="absolute top-8 left-8 bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-widest uppercase">
+              {/* <div className="absolute top-8 left-8 bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-widest uppercase">
                 Ref_Identity: {section.id}
-              </div>
+              </div> */}
             </div>
 
             {/* Content Block */}
@@ -101,12 +101,12 @@ const About = () => {
               </div>
               
               <div className="pt-12">
-                <button className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase">
+                {/* <button className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase">
                   Learn More 
                   <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
                     <ArrowUpRight size={18} />
                   </div>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ const Footer = () => {
             className="flex items-center gap-12 px-6"
           >
             <span className="text-[15vw] md:text-[10vw] font-serif italic leading-none tracking-tighter opacity-10 group-hover:opacity-100 group-hover:text-[#125487] transition-all duration-700">
-              WAWU STUDIO®
+             We Are With You (WAWU)
             </span>
             <Plus size={40} className="text-[#125487] opacity-20" />
           </motion.div>
@@ -40,7 +40,6 @@ const Footer = () => {
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#125487] flex items-center justify-center">
               <MoveRight size={20} className="md:w-6 md:h-6" />
             </div>
-            <span className="text-[10px] md:text-xs font-black tracking-widest uppercase">Start a Project</span>
           </div>
 
           {/* Background Hover Effect */}
@@ -51,8 +50,8 @@ const Footer = () => {
         <div className="md:col-span-5 flex flex-col">
           <div className="p-8 md:p-12 border-b border-white/5 md:h-1/2 flex flex-col justify-end">
             <p className="text-[10px] font-mono opacity-40 uppercase mb-4 tracking-widest">Inquiries</p>
-            <p className="text-2xl md:text-4xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-              hello@wawu.studio
+            <p className="text-2xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
+                enq.wawufoundation@gmail.com  
             </p>
           </div>
           
@@ -60,15 +59,21 @@ const Footer = () => {
             <div className="space-y-4">
               <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Social</p>
               <ul className="text-[10px] md:text-xs font-bold tracking-widest uppercase space-y-2">
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">Instagram</li>
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">LinkedIn</li>
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">Are.na</li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">
+                  <a href="https://www.linkedin.com/in/wawu-foundation/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </li>
+                <li className="hover:text-[#125487] cursor-pointer transition-colors">
+                  <a href="https://youtube.com/@wawu.foundation?si=ttkPTwfNFnR4k06S" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </li>
               </ul>
             </div>
             <div className="space-y-4">
               <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Location</p>
               <p className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase leading-relaxed">
-                Lagos / London<br />Remote Ecosystem
+               3rd floor, Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
               </p>
             </div>
           </div>
