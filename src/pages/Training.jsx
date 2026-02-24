@@ -1,62 +1,81 @@
 import React, { useEffect } from 'react';
-import { Activity, Trophy, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Trophy, Zap, MoveRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TechnicalTraining = () => {
   const navigate = useNavigate();
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
+  const items = [
+    "Technical Fundamentals",
+    "Tactical Basics",
+    "Physical Literacy",
+    "Team Dynamics"
+  ];
+
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#224e72] overflow-x-hidden pt-32 pb-24">
-      <div className="fixed inset-0 pointer-events-none opacity-10">
-        <Activity size={800} className="absolute -top-40 -left-40 text-white" />
-      </div>
+    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20">
+      {/* HERO SECTION */}
+      <section className="py-24 px-6 border-b border-black/5">
+        <div className="max-w-screen-2xl mx-auto">
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-3 text-black/40 hover:text-[#FF4F00] transition-colors mb-12 group uppercase text-[10px] font-mono tracking-widest"
+          >
+            <ArrowLeft size={14} />
+            <span>Return_to_Previous</span>
+          </motion.button>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-        <button onClick={() => navigate(-1)} className="flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-12 group">
-          <div className="p-2 border border-white/10 group-hover:border-white/40 transition-colors"><ArrowLeft size={16} /></div>
-          <span className="text-[10px] font-black uppercase tracking-[0.3em]">Return to Previous</span>
-        </button>
-
-        <div className="max-w-4xl mb-24">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-[1px] bg-[#224e72]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72]">Training Module // CORE</span>
-          </div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter">
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Training_Module: CORE</p>
+          <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
             Skill <br />
-            <span className="text-white/20">Acquisition.</span>
+            <span className="italic font-light text-[#FF4F00]">Acquisition.</span>
           </h1>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/10 border border-white/10">
-          <div className="lg:col-span-8 bg-black p-12 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/10">
-             <h2 className="text-3xl font-black italic uppercase tracking-tighter mb-8">Base Training</h2>
-             <p className="text-lg text-white/60 font-medium leading-relaxed mb-12">
+      {/* MAIN CONTENT */}
+      <section className="border-b border-black/5">
+        <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* Content Block */}
+          <div className="md:col-span-8 border-r border-black/5 p-8 md:p-20 flex flex-col justify-center bg-white">
+             <h2 className="text-5xl md:text-7xl font-serif italic mb-8">Base Training.</h2>
+             <p className="text-xl font-light text-black/60 leading-relaxed mb-12 max-w-2xl">
                Foundational training programs designed to upskill teams and individuals in basic technical and tactical football concepts.
              </p>
-             <div className="p-8 border border-white/5 bg-white/2">
-                <ul className="space-y-4">
-                   {[
-                     "Technical Fundamentals",
-                     "Tactical Basics",
-                     "Physical Literacy",
-                     "Team Dynamics"
-                   ].map((item, i) => (
-                     <li key={i} className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/60">
-                        <div className="w-1.5 h-1.5 bg-[#224e72] rotate-45" />
-                        {item}
-                     </li>
-                   ))}
-                </ul>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 border border-black/5 bg-[#F5F5F5]">
+                {items.map((item, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                     <div className="w-1.5 h-1.5 bg-[#FF4F00] rounded-full" />
+                     <span className="text-[10px] font-mono uppercase tracking-widest opacity-60">{item}</span>
+                  </div>
+                ))}
              </div>
           </div>
-          <div className="lg:col-span-4 bg-black p-12 flex flex-col items-center justify-center gap-8">
-             <Trophy size={48} className="text-[#224e72]" />
-             <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20">Active Session</p>
+
+          {/* Icon Block */}
+          <div className="md:col-span-4 bg-[#F5F5F5] p-12 flex flex-col items-center justify-center gap-8 relative overflow-hidden">
+             <Trophy size={64} className="text-[#FF4F00] relative z-10" />
+             <p className="text-[10px] font-mono uppercase tracking-[0.5em] opacity-20 relative z-10">Active_Session</p>
+             
+             {/* Decorative Elements */}
+             <div className="absolute inset-0 opacity-[0.03] flex items-center justify-center">
+                <span className="text-[40vw] font-serif italic">T</span>
+             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* FOOTER DATA */}
+      <section className="py-12 px-6 bg-white border-b border-black/5">
+        <div className="max-w-screen-2xl mx-auto flex justify-between items-center text-[8px] font-mono uppercase tracking-[0.5em] opacity-30">
+           <span>Module: Skill_Acquisition // CORE_v1</span>
+           <span>Status: Base_System_Active</span>
+        </div>
+      </section>
     </div>
   );
 };

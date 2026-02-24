@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Shield, Target, Zap, Activity, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Zap, MoveRight } from 'lucide-react';
 
-const TechnicalContact = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +24,7 @@ const TechnicalContact = () => {
     setTimeout(() => {
       const subject = encodeURIComponent(formData.subject || 'Contact Form Inquiry');
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:contact@waavufoundation.org?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:hello@wawu.studio?subject=${subject}&body=${body}`;
       window.open(mailtoLink, '_self');
       setIsSubmitting(false);
       setIsSent(true);
@@ -37,72 +37,57 @@ const TechnicalContact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#224e72] overflow-x-hidden pt-32 pb-24">
-      {/* BACKGROUND ELEMENTS */}
-      <div className="fixed inset-0 pointer-events-none opacity-10">
-        <Activity size={800} className="absolute -top-40 -left-40 text-white" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_#224e7233_0%,_transparent_70%)]" />
-      </div>
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-        {/* HEADER SECTION */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-24">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[1px] bg-[#224e72]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72]">Communication Link</span>
-            </div>
-            <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter">
-              Establish <br />
-              <span className="text-white/20">Connection</span>
-            </h1>
-          </div>
-          <div className="hidden lg:block pb-4 text-right">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 max-w-xs">
-              SECURE CHANNEL // ENCRYPTED TRANSMISSION // GLOBAL COMMAND CENTER
-            </p>
-          </div>
+    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20">
+      {/* HERO SECTION */}
+      <section className="py-24 px-6 border-b border-black/5">
+        <div className="max-w-screen-2xl mx-auto">
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Communication_Link</p>
+          <h1 className="text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12">
+            Establish <br />
+            <span className="italic font-light">Connection.</span>
+          </h1>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-white/10 border border-white/10">
-          {/* CONTACT INFO PANEL */}
-          <div className="lg:col-span-4 bg-black p-8 lg:p-12 space-y-12">
-            <div className="space-y-8">
+      <section className="border-b border-black/5">
+        <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* Info Block */}
+          <div className="md:col-span-5 border-r border-black/5 p-8 md:p-20 space-y-20 bg-white">
+            <div className="space-y-12">
               <div className="group">
-                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
-                <a href="mailto:contact@waavufoundation.org" className="text-xl md:text-2xl font-black italic uppercase tracking-tighter hover:text-[#224e72] transition-colors break-all">
-                  contact@waavufoundation.org
-                </a>
+                <span className="text-[10px] font-mono text-[#FF4F00] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
+                <p className="text-3xl md:text-4xl font-serif hover:text-[#FF4F00] transition-colors cursor-pointer">
+                  hello@wawu.studio
+                </p>
               </div>
               
               <div className="group">
-                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Command Center</span>
-                <p className="text-xl md:text-2xl font-black italic uppercase tracking-tighter">
-                  Global Operations // Remote
+                <span className="text-[10px] font-mono text-[#FF4F00] uppercase tracking-[0.3em] block mb-4">Studio Location</span>
+                <p className="text-3xl md:text-4xl font-serif">
+                  Lagos / London <br />
+                  Remote Ecosystem
                 </p>
               </div>
 
               <div className="group">
-                <span className="text-[10px] font-black text-[#224e72] uppercase tracking-[0.3em] block mb-4">Availability</span>
-                <p className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-green-500">
-                  24/7/365 // Active
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-12 border-t border-white/10">
-              <div className="p-6 bg-white/5 border border-white/10 flex items-center gap-4">
-                <Shield size={24} className="text-[#224e72]" />
-                <div>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Security Status</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-white">Encrypted & Verified</p>
+                <span className="text-[10px] font-mono text-[#FF4F00] uppercase tracking-[0.3em] block mb-4">Social Presence</span>
+                <div className="flex flex-col gap-2 text-xl font-serif italic">
+                  <span className="hover:text-[#FF4F00] cursor-pointer transition-colors w-fit">Instagram</span>
+                  <span className="hover:text-[#FF4F00] cursor-pointer transition-colors w-fit">LinkedIn</span>
+                  <span className="hover:text-[#FF4F00] cursor-pointer transition-colors w-fit">Are.na</span>
                 </div>
               </div>
             </div>
+
+            <div className="pt-12 border-t border-black/5">
+              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest leading-relaxed">
+                WE ARE ALWAYS OPEN TO CONVERSATION WITH VISIONARIES, BUILDERS, AND TALENTED INDIVIDUALS READY TO DEFINE THE FUTURE.
+              </p>
+            </div>
           </div>
 
-          {/* FORM PANEL */}
-          <div className="lg:col-span-8 bg-black p-8 lg:p-20 relative overflow-hidden">
+          {/* Form Block */}
+          <div className="md:col-span-7 p-8 md:p-20 bg-[#F5F5F5] relative overflow-hidden">
             <AnimatePresence mode="wait">
               {!isSent ? (
                 <motion.div
@@ -112,67 +97,67 @@ const TechnicalContact = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Operator Name</label>
+                  <form onSubmit={handleSubmit} className="space-y-12">
+                    <div className="grid md:grid-cols-2 gap-12">
+                      <div className="space-y-4">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Your Name</label>
                         <input
                           type="text"
                           name="name"
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
-                          placeholder="Your Name"
+                          className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#FF4F00] outline-none transition-all font-serif italic text-2xl placeholder:text-black/5"
+                          placeholder="Sharath K."
                         />
                       </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Return Email</label>
+                      <div className="space-y-4">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Return Email</label>
                         <input
                           type="email"
                           name="email"
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
-                          placeholder="Email Address"
+                          className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#FF4F00] outline-none transition-all font-serif italic text-2xl placeholder:text-black/5"
+                          placeholder="email@studio.com"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Subject Header</label>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Subject Header</label>
                       <input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border-b border-white/10 p-4 text-white focus:border-[#224e72] outline-none transition-all font-bold uppercase tracking-widest text-xs"
-                        placeholder="Purpose of Inquiry"
+                        className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#FF4F00] outline-none transition-all font-serif italic text-2xl placeholder:text-black/5"
+                        placeholder="Project Inquiry"
                       />
                     </div>
 
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Message Payload</label>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Message Payload</label>
                       <textarea
                         name="message"
                         required
                         value={formData.message}
                         onChange={handleChange}
-                        rows={5}
-                        className="w-full bg-white/5 border border-white/10 p-6 text-white focus:border-[#224e72] outline-none transition-all font-bold tracking-widest text-xs resize-none"
-                        placeholder="Detailed Transmission..."
+                        rows={4}
+                        className="w-full bg-transparent border border-black/10 p-6 text-black focus:border-[#FF4F00] outline-none transition-all font-sans text-lg placeholder:text-black/5 resize-none"
+                        placeholder="Tell us about your vision..."
                       />
                     </div>
 
                     <button
                       disabled={isSubmitting}
-                      className="group relative w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#224e72] hover:text-white transition-all duration-500 flex items-center justify-center gap-4 overflow-hidden"
+                      className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
                     >
-                      <span className="relative z-10 flex items-center gap-3">
-                        {isSubmitting ? "Processing..." : "Initiate Transfer"}
-                        <Zap size={14} className={isSubmitting ? "animate-pulse" : ""} />
-                      </span>
+                      {isSubmitting ? "Processing..." : "Initiate Transfer"}
+                      <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#FF4F00] transition-all">
+                        {isSubmitting ? <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full" /> : <MoveRight size={24} />}
+                      </div>
                     </button>
                   </form>
                 </motion.div>
@@ -183,25 +168,25 @@ const TechnicalContact = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="h-full flex flex-col items-center justify-center text-center py-20"
                 >
-                  <div className="w-24 h-24 bg-[#224e72] rounded-full flex items-center justify-center mb-10 shadow-[0_0_50px_rgba(34,78,114,0.4)]">
-                    <CheckCircle2 size={48} className="text-white" />
+                  <div className="w-24 h-24 bg-[#FF4F00] rounded-full flex items-center justify-center mb-10 text-white shadow-2xl">
+                    <CheckCircle2 size={48} />
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-6">Transmission <br /> Successful</h2>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-12">System will reset in 5.0 seconds</p>
+                  <h2 className="text-5xl md:text-7xl font-serif mb-6">Transmission <br /> Successful.</h2>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] opacity-40 mb-12">System will reset shortly</p>
                   <button 
                     onClick={() => setIsSent(false)}
-                    className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72] hover:text-white transition-colors"
+                    className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.5em] hover:text-[#FF4F00] transition-colors"
                   >
-                    Send New Transmission <ArrowRight size={14} />
+                    Send New Transmission <ArrowUpRight size={14} />
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default TechnicalContact;
+export default Contact;

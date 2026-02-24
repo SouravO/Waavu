@@ -1,128 +1,93 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Target, Trophy, ArrowUpRight, Linkedin, Youtube, Activity, Globe } from 'lucide-react';
+import { Plus, MoveRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const TechnicalFooter = () => {
+const Footer = () => {
   return (
-    <footer className="relative w-full bg-black text-white font-sans border-t border-white/5 pt-24 pb-12 overflow-hidden">
-      {/* DECORATIVE BACKGROUND ELEMENTS */}
-      <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-        <Activity size={400} className="text-white" />
+    <footer className="bg-[#0A0A0A] text-white border-t border-white/5 selection:bg-white selection:text-black">
+      {/* 5a. The Infinite Marquee */}
+      <div className="py-12 border-b border-white/5 overflow-hidden whitespace-nowrap flex group cursor-default">
+        {[1, 2, 3, 4].map((i) => (
+          <motion.div 
+            key={i}
+            initial={{ x: 0 }}
+            animate={{ x: "-100%" }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="flex items-center gap-12 px-6"
+          >
+            <span className="text-[10vw] font-serif italic leading-none tracking-tighter opacity-10 group-hover:opacity-100 group-hover:text-[#FF4F00] transition-all duration-700">
+              WAWU STUDIO®
+            </span>
+            <Plus size={40} className="text-[#FF4F00] opacity-20" />
+          </motion.div>
+        ))}
       </div>
-      
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-        {/* UPPER SECTION: IMPACT MESSAGE */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-24">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[1px] bg-[#224e72]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#224e72]">Strategic Impact</span>
-            </div>
-            <h2 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
-              Empowering <br />
-              <span className="text-white/20">The Next</span> <br />
-              Generation.
+
+      {/* 5b. Main Footer Body */}
+      <div className="grid grid-cols-1 md:grid-cols-12 w-full">
+        {/* Left Block: Big CTA */}
+        <Link to="/contact" className="md:col-span-7 p-8 md:p-20 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between group cursor-pointer overflow-hidden relative">
+          <div className="relative z-10">
+            <p className="text-[10px] font-mono tracking-[0.5em] text-[#FF4F00] mb-8 uppercase">Initiate_Collaboration</p>
+            <h2 className="text-6xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
+              Let's create <br /> 
+              <span className="italic">The Icon.</span>
             </h2>
           </div>
           
-          <Link 
-            to="/contact" 
-            className="group relative bg-white text-black p-10 md:p-14 hover:bg-[#224e72] hover:text-white transition-all duration-500 flex flex-col gap-4"
-          >
-            <ArrowUpRight className="absolute top-6 right-6 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
-            <span className="text-3xl font-black italic uppercase leading-none tracking-tighter">Join The <br />Mission</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest opacity-50">Discovery Mode Active</span>
-          </Link>
-        </div>
-
-        {/* MIDDLE SECTION: CORE PILLARS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 mb-24">
-          {[
-            { icon: <Target size={24} />, title: "Precision Training", desc: "Elite coaching for promising talents." },
-            { icon: <Shield size={24} />, title: "Holistic Support", desc: "Education and life skills development." },
-            { icon: <Trophy size={24} />, title: "Legacy Building", desc: "Creating future leaders in football." }
-          ].map((pillar, i) => (
-            <div key={i} className="p-10 bg-black hover:bg-white/5 transition-colors group">
-              <div className="text-[#224e72] mb-8 group-hover:scale-110 transition-transform duration-500">
-                {pillar.icon}
-              </div>
-              <h3 className="text-xl font-black italic uppercase tracking-tighter mb-4">{pillar.title}</h3>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 leading-relaxed">{pillar.desc}</p>
+          <div className="mt-20 flex items-center gap-6 group-hover:translate-x-4 transition-transform duration-500 relative z-10">
+            <div className="w-16 h-16 rounded-full bg-[#FF4F00] flex items-center justify-center">
+              <MoveRight size={24} />
             </div>
-          ))}
-        </div>
+            <span className="text-xs font-black tracking-widest uppercase">Start a Project</span>
+          </div>
 
-        {/* BOTTOM SECTION: LINKS & LEGAL */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-white/10">
-          <div className="lg:col-span-4 space-y-8">
-            <div className="flex flex-col gap-1">
-              <span className="text-2xl font-black italic tracking-tighter">WAWU</span>
-              <span className="text-[10px] font-bold tracking-[0.5em] text-white/30 uppercase">Foundation</span>
-            </div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 leading-loose max-w-xs">
-              A walking work of art. Bridging the gap between raw talent and real opportunity.
+          {/* Background Hover Effect */}
+          <div className="absolute inset-0 bg-[#FF4F00]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]" />
+        </Link>
+
+        {/* Right Block: Contacts & Details */}
+        <div className="md:col-span-5 flex flex-col">
+          <div className="p-8 md:p-12 border-b border-white/5 h-1/2 flex flex-col justify-end">
+            <p className="text-[10px] font-mono opacity-40 uppercase mb-4 tracking-widest">Inquiries</p>
+            <p className="text-3xl md:text-4xl font-serif hover:text-[#FF4F00] transition-colors cursor-pointer">
+              hello@wawu.studio
             </p>
-            <div className="flex gap-6">
-              <a href="https://www.linkedin.com/in/wawu-foundation" className="text-white/40 hover:text-white transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://youtube.com/@wawu.foundation" className="text-white/40 hover:text-white transition-colors">
-                <Youtube size={18} />
-              </a>
-              <a href="#" className="text-white/40 hover:text-white transition-colors">
-                <Globe size={18} />
-              </a>
-            </div>
           </div>
-
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
-            <div className="space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#224e72]">Navigation</h4>
-              <ul className="flex flex-col gap-3">
-                {['Home', 'About', 'Services', 'Support', 'Contact'].map(link => (
-                  <li key={link}>
-                    <Link to={`/${link === 'Home' ? '' : link.toLowerCase()}`} className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors">{link}</Link>
-                  </li>
-                ))}
+          
+          <div className="p-8 md:p-12 h-1/2 grid grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Social</p>
+              <ul className="text-xs font-bold tracking-widest uppercase space-y-2">
+                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">Instagram</li>
+                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">LinkedIn</li>
+                <li className="hover:text-[#FF4F00] cursor-pointer transition-colors">Are.na</li>
               </ul>
             </div>
-            
-            <div className="space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#224e72]">Resources</h4>
-              <ul className="flex flex-col gap-3">
-                {['Programs', 'Impact Report', 'Privacy Policy', 'Terms of Service'].map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="col-span-2 md:col-span-1 space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#224e72]">System Status</h4>
-              <div className="p-4 border border-white/10 bg-white/5 flex flex-col gap-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-[8px] font-bold uppercase tracking-widest text-white/40">Operation</span>
-                  <span className="text-[8px] font-black text-green-500 uppercase">Online</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[8px] font-bold uppercase tracking-widest text-white/40">Regions</span>
-                  <span className="text-[8px] font-black text-white uppercase">Global</span>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Location</p>
+              <p className="text-[11px] font-bold tracking-widest uppercase leading-relaxed">
+                Lagos / London<br />Remote Ecosystem
+              </p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* COPYRIGHT */}
-        <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-6 text-[8px] font-bold uppercase tracking-[0.5em] text-white/20">
-          <p>© 2026 WAWU FOUNDATION. ALL RIGHTS RESERVED.</p>
-          <p>BUILT FOR EXCELLENCE // REFINING THE GAME</p>
+      {/* 5c. The Grid Bottom Bar */}
+      <div className="grid grid-cols-4 md:grid-cols-12 w-full text-[9px] font-bold uppercase tracking-[0.3em] h-20 items-center px-6 border-t border-white/5 opacity-40">
+        <div className="col-span-2 md:col-span-3">©2026 WAWU STUDIO</div>
+        <div className="hidden md:block md:col-span-6 text-center italic font-serif lowercase tracking-normal text-lg">
+          "A walking work of art."
+        </div>
+        <div className="col-span-2 md:col-span-3 text-right flex justify-end gap-4">
+          <span>Privacy</span>
+          <span>Terms</span>
         </div>
       </div>
     </footer>
   );
 };
 
-export default TechnicalFooter;
+export default Footer;

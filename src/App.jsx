@@ -19,7 +19,7 @@ import MentorshipGuidance from './pages/MentorshipGuidance';
 
 function App() {
   return (
-    <div className="App bg-black min-h-screen">
+    <div className="App bg-[#FDFDFD] min-h-screen">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
