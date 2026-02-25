@@ -33,6 +33,7 @@ const Home = () => {
               WAWU FOUNDATION
             </span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              
               Bridging <span className="text-[#4cb5e5]">talent</span> and <span className="text-[#4cb5e5]">opportunity</span> through football.
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
@@ -102,9 +103,9 @@ const Home = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80" 
+                src="/assets/logo/home.jpg" 
                 alt="Young footballers" 
-                className="w-full h-full object-cover aspect-[4/3]"
+                className="w-full h-full object-cover aspect-[3/3]"
               />
             </div>
           </div>

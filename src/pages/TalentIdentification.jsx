@@ -58,9 +58,9 @@ const TalentIdentification = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
              
              {/* Image Block */}
-             <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] bg-gray-100 relative w-full">
+             <div className="rounded-2xl overflow-hidden shadow-lg aspect-[3/3] bg-gray-100 relative w-full">
                <img 
-                 src="https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80"
+                 src="/assets/logo/Talent.jpg"
                  className="w-full h-full object-cover"
                  alt="Elite Talent Scouting"
                />

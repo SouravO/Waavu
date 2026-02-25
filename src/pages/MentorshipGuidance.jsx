@@ -48,7 +48,7 @@ const MentorshipGuidance = () => {
              {/* Image Block */}
              <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] bg-gray-100 relative w-full">
                <img
-                 src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80"
+                 src="/assets/logo/mentor.jpg"
                  className="w-full h-full object-cover"
                  alt="Mentorship Session"
                />
