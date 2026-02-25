@@ -89,7 +89,7 @@ const About = () => {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-gray-100 relative">
                 <img 
-                  src="/src/assets/founder.jpg" 
+                  src="/assets/logo/founder.jpg" 
                   alt="Sharath Kuniyil - Founder of WAWU Foundation" 
                   className="w-full h-full object-cover"
                 />
