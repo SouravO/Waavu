@@ -1,330 +1,300 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { ArrowUpRight, Plus, Hash, Command, MoveRight, Users, Trophy, MapPin, Target } from 'lucide-react';
+import React from 'react';
+import { Target, Trophy, Shield, Heart, Users, MapPin, ChevronRight, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BrochurePDF from '../assets/brochure.pdf';
 
-const StudioNeoWAWU = () => {
-  const containerRef = useRef(null);
+const Home = () => {
   const navigate = useNavigate();
-  
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+
+  const coreValues = [
+    { name: "Inclusivity", icon: <Users size={32} className="text-[#11698d]" /> },
+    { name: "Integrity", icon: <Shield size={32} className="text-[#11698d]" /> },
+    { name: "Dedication", icon: <Heart size={32} className="text-[#11698d]" /> },
+    { name: "Empowerment", icon: <Trophy size={32} className="text-[#11698d]" /> }
+  ];
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] selection:bg-[#125487] selection:text-white antialiased font-sans">
+    <div className="bg-gray-50 text-gray-900 font-sans">
       
-      {/* --- 0. PROGRESS BAR --- */}
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-[#125487] origin-left z-[60]"
-        style={{ scaleX }}
-      />
-
-      {/* --- 1. NAVIGATION (Implicit) --- */}
-     
-
-      {/* --- 2. THE HERO --- */}
-      <section className="pt-32 pb-20 border-b border-black/5 px-4 md:px-6 overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
-            <div className="md:col-span-9">
-              <motion.h1 
-                initial={{ y: 60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[14vw] md:text-[11vw] font-serif leading-[0.8] tracking-tighter break-words"
-              >
-                Building <br />
-                <span className="italic font-light text-[#125487]">Dreams</span>
-              </motion.h1>
-            </div>
-            <div className="md:col-span-3 pb-4">
-              <p className="text-[10px] md:text-sm uppercase tracking-widest font-medium text-black/40 mb-6">
-                [Since 2017] — Empowering India
-              </p>
-              <p className="text-base md:text-lg leading-relaxed italic">
-                A dedicated non-profit ecosystem designed to elevate underprivileged football talent into global icons.
-              </p>
-            </div>
-          </div>
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/assets/logo/Banner.png" 
+            alt="Children playing football" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/40"></div>
         </div>
-      </section>
-  {/* --- 4. CORE MISSION (Horizontal Shift) --- */}
-      <section className="border-b border-black/5 overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="aspect-[4/5] md:aspect-auto md:h-screen border-b md:border-b-0 md:border-r border-black/5 overflow-hidden group relative">
-            <motion.img
-              initial={{ scale: 1.2 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 1.5 }}
-              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-              alt="Indian Football Talent"
-            />
-            <div className="absolute top-8 left-8 bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-widest uppercase">
-              Mission_Ref: 01_Talent_Discovery
-            </div>
-          </div>
 
-          <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
-            <div className="space-y-8 md:space-y-12">
-              <Target className="text-[#125487]" size={32} />
-              <h2 className="text-5xl md:text-7xl font-serif text-[#125487] leading-tight">Bridging the <br className="hidden md:block"/> Opportunity Gap.</h2>
-              <p className="max-w-md text-lg md:text-xl font-light leading-relaxed">
-                We uncover raw talent in rural and underserved areas, ensuring that financial limitations never bench a future star.
-              </p>
-            </div>
-
-            <div className="pt-12">
-              <button className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase">
-                Support Our Mission
-                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#125487] group-hover:text-white transition-all">
-                  <ArrowUpRight size={18} />
-                </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="inline-block py-1 px-3 rounded-full bg-[#11698d]/20 text-blue-200 text-sm font-semibold tracking-wider mb-6">
+              WAWU FOUNDATION
+            </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              Bridging <span className="text-[#4cb5e5]">talent</span> and <span className="text-[#4cb5e5]">opportunity</span> through football.
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
+              We are a dedicated non-profit organisation committed to the upliftment and empowerment of young, talented football players from communities with limited access to opportunities.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button 
+                onClick={() => navigate('/program')}
+                className="bg-[#11698d] hover:bg-[#0c4e69] text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors flex items-center gap-2 shadow-lg"
+              >
+                Our Initiatives <ArrowRight size={20} />
+              </button>
+              <button 
+                onClick={() => navigate('/about')}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+              >
+                Learn More
               </button>
             </div>
           </div>
         </div>
       </section>
-      {/* --- 3. OUR MISSION --- */}
-      <section className="py-24 md:py-32 px-4 md:px-6 border-b border-black/5 bg-white overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-5">
-              <motion.div
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="relative"
+
+      {/* --- QUICK STATS / INTRO STRIP --- */}
+      <section className="bg-[#11698d] py-12 relative z-20 -mt-8 mx-4 sm:mx-6 lg:mx-auto max-w-7xl rounded-2xl shadow-xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20 px-8">
+          <div className="py-6 md:py-0 md:px-8 text-center flex flex-col items-center justify-center">
+            <Trophy className="text-white mb-3 opacity-80" size={32} />
+            <h3 className="text-3xl font-bold text-white mb-1">1000+</h3>
+            <p className="text-blue-100 font-medium">Youth Reached</p>
+          </div>
+          <div className="py-6 md:py-0 md:px-8 text-center flex flex-col items-center justify-center">
+            <Target className="text-white mb-3 opacity-80" size={32} />
+            <h3 className="text-3xl font-bold text-white mb-1">14</h3>
+            <p className="text-blue-100 font-medium">Districts Covered</p>
+          </div>
+          <div className="py-6 md:py-0 md:px-8 text-center flex flex-col items-center justify-center">
+            <MapPin className="text-white mb-3 opacity-80" size={32} />
+            <h3 className="text-3xl font-bold text-white mb-1">1</h3>
+            <p className="text-blue-100 font-medium">Unified Mission</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- ABOUT INTRO --- */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-[#11698d] font-bold tracking-wider uppercase text-sm mb-3">Who We Are</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                More than just a game. A tool for community transformation.
+              </h3>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                WAWU Foundation believes football is a powerful tool for personal growth, social mobility, and community transformation. Through structured programs, mentorship, and holistic support, we enable aspiring footballers to realise their full potential both on and off the field.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Our initiatives have helped numerous young players gain access to academic institutions, professional club environments, and opportunities to represent teams at state and national levels.
+              </p>
+              <button 
+                onClick={() => navigate('/about')}
+                className="text-[#11698d] font-bold text-lg hover:text-[#0c4e69] flex items-center gap-2 group"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80"
-                  alt="Our Mission - Young Footballers"
-                  className="w-full h-[500px] md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                />
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#125487]/10 -z-10" />
-              </motion.div>
+                Read our full story 
+                <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
-
-            <div className="md:col-span-7 md:pl-12">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center gap-4 mb-8">
-                  <Target className="text-[#125487]" size={40} />
-                  <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-black/40">Our Mission</span>
-                </div>
-
-                <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-8">
-                  To bridge the gap between <span className="italic text-[#125487]">talent</span> and <span className="italic text-[#125487]">access</span>.
-                </h2>
-
-                <p className="text-lg md:text-xl font-light leading-relaxed text-black/70 max-w-2xl mb-12">
-                  We identify and nurture promising young footballers through world-class training, educational support, and life skills development.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { icon: Trophy, label: "World-Class Training" },
-                    { icon: Users, label: "Educational Support" },
-                    { icon: MapPin, label: "Life Skills Development" }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#125487]/10 flex items-center justify-center text-[#125487]">
-                        <item.icon size={18} />
-                      </div>
-                      <span className="text-sm font-medium uppercase tracking-wider">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80" 
+                alt="Young footballers" 
+                className="w-full h-full object-cover aspect-[4/3]"
+              />
             </div>
           </div>
         </div>
       </section>
 
-    
-
-      {/* --- 4. IMPACT METRICS --- */}
-      <section className="py-24 px-4 md:px-6 bg-white overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-black/5 border border-black/5 shadow-2xl">
-          {[
-            { label: "Youth Reached", value: "1,369+" },
-            { label: "Talents Scouted", value: "128+" },
-            { label: "Events Conducted", value: "32+" },
-            { label: "Districts Covered", value: "9+" }
-          ].map((item, i) => (
-            <div key={i} className="bg-white p-6 md:p-12 hover:bg-[#125487] hover:text-white transition-colors group">
-              <p className="text-[10px] font-mono opacity-40 uppercase mb-4 group-hover:text-white/60">{item.label}</p>
-              <p className="text-2xl md:text-4xl font-serif italic">{item.value}</p>
+      {/* --- MISSION & VISION --- */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Mission */}
+            <div className="bg-gray-50 rounded-2xl p-10 md:p-14 shadow-sm border border-gray-100">
+              <div className="w-16 h-16 bg-[#11698d]/10 rounded-full flex items-center justify-center mb-8">
+                <Target className="text-[#11698d]" size={32} />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h3>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                To bridge the gap between talent and access by identifying and nurturing promising young footballers through world-class training, educational support, and life skills development.
+              </p>
             </div>
-          ))}
+
+            {/* Vision */}
+            <div className="bg-[#11698d] rounded-2xl p-10 md:p-14 shadow-lg text-white">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-8">
+                <Trophy className="text-white" size={32} />
+              </div>
+              <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
+              <p className="text-xl text-blue-50 leading-relaxed">
+                To bridge social and economic gaps through football by building a new generation of sports leaders who inspire positive change within their communities.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* --- 5. SERVICES & CAPABILITIES --- */}
-      <section className="py-24 md:py-32 px-4 md:px-6 border-b border-black/10 overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="mb-12 md:mb-20">
-            <h2 className="text-6xl md:text-8xl font-serif tracking-tighter">Services</h2>
-          </div>
-          <div className="divide-y divide-black/10">
-            {[
-              { id: "01", title: "Talent Identification", desc: "Camps and high-quality coaching programs that uncover raw potential in rural regions.", img: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&q=80" },
-              { id: "02", title: "Holistic Support", desc: "Full scholarships covering athletic and educational needs to ensure sustainable growth.", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80" },
-             
-            ].map((item) => (
-              <div key={item.id} className="group grid grid-cols-1 md:grid-cols-12 py-8 md:py-12 items-center hover:bg-[#F5F5F5] transition-colors px-4">
-                <span className="md:col-span-1 font-mono text-sm opacity-30 mb-2 md:mb-0">{item.id}</span>
-                <div className="md:col-span-4">
-                  <h3 className="text-2xl md:text-4xl font-serif">{item.title}</h3>
+      {/* --- CORE VALUES --- */}
+      <section className="py-24 bg-gray-50 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-[#11698d] font-bold tracking-wider uppercase text-sm mb-3">Our Foundation</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-16">Core Values</h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {coreValues.map((value, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col items-center">
+                <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                  {value.icon}
                 </div>
-                <p className="md:col-span-4 text-black/60 max-w-sm mt-4 md:mt-0 text-sm md:text-base">{item.desc}</p>
-                <div className="md:col-span-3 flex justify-start md:justify-end mt-6 md:mt-0">
-                  <img src={item.img} alt={item.title} className="w-full md:w-32 h-40 md:h-20 object-cover md:scale-0 md:group-hover:scale-100 transition-transform duration-500 rounded-sm" />
-                </div>
+                <h4 className="text-xl font-bold text-gray-900">{value.name}</h4>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- 6. LEADERSHIP SPOTLIGHT --- */}
-      {/* <section className="py-24 px-6 bg-[#0A0A0A] text-white overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="flex flex-col md:flex-row items-stretch gap-0 border border-white/10">
-            <div className="flex-1 p-12 md:p-24 space-y-8 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 border border-[#125487] text-[#125487] text-[10px] font-bold tracking-[0.3em] uppercase w-fit">Foundation Leadership</span>
-              <h3 className="text-6xl font-serif italic">The Dream Team</h3>
-              <p className="text-xl text-white/70 font-light leading-relaxed">
-                Led by visionaries like CK Vineeth (Ambassador), Sharath K (Founder), and Shafi Shoukath (Co-Founder), we drive excellence through dedication.
-              </p>
-              <div className="pt-8">
-                <p className="font-mono text-sm uppercase tracking-widest text-[#125487]">Join the movement to uplift India's football stars.</p>
+      {/* --- INITIATIVES --- */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-[#11698d] font-bold tracking-wider uppercase text-sm mb-3">What We Do</h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-gray-900">Flagship Initiatives</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* INLL */}
+            <div className="group rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full">
+              <div className="h-64 overflow-hidden relative bg-gray-100">
+                <img 
+                  src="/src/assets/Inll.png" 
+                  alt="INLL" 
+                  className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500" 
+                />
+              </div>
+              <div className="p-10 flex-1 flex flex-col justify-between bg-white">
+                <div>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">India's Next Legend League</h4>
+                  <p className="text-[#11698d] font-semibold mb-6">INLL</p>
+                  <p className="text-gray-600 leading-relaxed mb-8">
+                    A comprehensive talent identification and development ecosystem. Following a highly successful pilot in Kerala engaging over 2,000 participants, the program identifies elite talent and provides a fully funded pathway to success.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => navigate('/program')}
+                  className="w-full py-4 border-2 border-[#11698d] text-[#11698d] font-bold rounded-lg hover:bg-[#11698d] hover:text-white transition-colors"
+                >
+                  Discover INLL
+                </button>
               </div>
             </div>
-            <div className="flex-1 min-h-[500px] relative">
-              <img 
-                src="https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?auto=format&fit=crop&q=80" 
-                alt="Leadership Vision" 
-                className="absolute inset-0 w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 transition-all duration-1000"
-              />
-            </div>
-          </div>
-        </div>
-      </section> */}
 
-      {/* --- 6. INLL 2026 --- */}
-      <section className="py-24 md:py-32 px-4 md:px-6 border-b border-black/5 bg-[#F5F5F5] overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute -inset-4 bg-[#125487]/5 rounded-full blur-3xl group-hover:bg-[#125487]/10 transition-colors" />
+            {/* GoalQuest */}
+            <div className="group rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full">
+              <div className="h-64 overflow-hidden relative">
                 <img 
-                  src="src/assets/Inll.png" 
-                  alt="India's Next Legend League" 
-                  className="relative z-10 w-full max-w-lg mx-auto transform group-hover:scale-105 transition-transform duration-700" 
+                  src="https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80" 
+                  alt="WAWU GoalQuest" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
-              </motion.div>
-            </div>
-
-            <div className="md:col-span-6 md:pl-12">
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-black/40">Event Spotlight</span>
-                  <div className="h-px w-12 bg-[#125487]/30" />
-                </div>
-
-                <h2 className="text-4xl md:text-6xl font-serif leading-tight mb-8">
-                  India's Next <br />
-                  <span className="italic text-[#125487]">Legend</span> League <span className="text-black/20">2026</span>
-                </h2>
-
-                <div className="space-y-6 mb-12">
-                  <p className="text-lg md:text-xl font-light leading-relaxed text-black/70 italic border-l-2 border-[#125487]/30 pl-6">
-                    "The hunt for India's next football sensation begins! WAWU Foundation brings you the ultimate scouting event where raw talent meets opportunity."
-                  </p>
-                  <p className="text-lg md:text-xl font-light leading-relaxed text-black/70 italic border-l-2 border-[#125487]/30 pl-6">
-                    "Top 10 players will receive scholarships & direct academy placements! Don't miss this chance to take your football dreams to the next level."
+              </div>
+              <div className="p-10 flex-1 flex flex-col justify-between bg-white">
+                <div>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">WAWU GoalQuest 2026</h4>
+                  <p className="text-[#11698d] font-semibold mb-6">Internal Charity League</p>
+                  <p className="text-gray-600 leading-relaxed mb-8">
+                    An internal charity football league organised within the iQue Ventures ecosystem. It aims to create a strong sports environment while simultaneously supporting children who lack access to basic sports and educational facilities.
                   </p>
                 </div>
-
-                <div className="flex flex-wrap gap-8 items-center">
-                  <button className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase">
-                    Register Now
-                    <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#125487] group-hover:text-white transition-all">
-                      <ArrowUpRight size={18} />
-                    </div>
-                  </button>
-                  
-                  <button className="text-[10px] font-bold tracking-[0.2em] uppercase border-b border-black/10 pb-1 hover:border-[#125487] transition-colors flex items-center gap-2">
-                    Download Brochure
-                  </button>
-                </div>
-              </motion.div>
+                <button 
+                  onClick={() => navigate('/program')}
+                  className="w-full py-4 border-2 border-[#11698d] text-[#11698d] font-bold rounded-lg hover:bg-[#11698d] hover:text-white transition-colors"
+                >
+                  Learn More
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-    
-      <section className="py-32 px-6">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[300px]">
-            <div className="md:col-span-2 md:row-span-2 bg-[#F5F5F5] p-12 flex flex-col justify-end relative overflow-hidden group">
-               <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity" alt="INLL Event" />
-               <h4 className="text-5xl font-serif relative z-10 text-[#125487]">Next Legend <br/> League 2025.</h4>
-               <p className="relative z-10 font-mono text-xs mt-4 tracking-widest uppercase">Registration Now Open</p>
+      {/* --- DONATE & ACCOUNTABILITY SECTION --- */}
+      <section id="donate-section" className="py-24 bg-[#11698d] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                 <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="currentColor" fillOpacity="1"/>
+                 </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#pattern)"/>
+           </svg>
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            Support Our Mission
+          </h2>
+          <p className="text-xl text-blue-100 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Your support provides essential training, education, and resources to talented youth who need it most. Join us in making a lasting impact.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-left">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-2xl">
+              <h3 className="text-white text-xl font-bold mb-4 flex items-center gap-2">
+                <Shield size={24} className="text-[#4cb5e5]" /> Accountability
+              </h3>
+              <p className="text-blue-50 mb-4">We are committed to full transparency and integrity in our operations.</p>
+              <ul className="space-y-3 text-white/90">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#4cb5e5]" />
+                  <span>80G Certificate Certified</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#4cb5e5]" />
+                  <span>12A Registration Certified</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#4cb5e5]" />
+                  <span>Annual Impact Reports</span>
+                </li>
+              </ul>
             </div>
-            <div className="bg-black text-white p-8 flex flex-col justify-between">
-              <Trophy className="text-[#125487]" />
-              <p className="text-xs font-mono uppercase tracking-widest">Scholarships <br/> & Academy Placements</p>
-            </div>
-            <div className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" alt="Training" />
-            </div>
-            <div className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&q=80" className="w-full h-full object-cover" alt="Football Gear" />
-            </div>
-            <div  
-              onClick={() => navigate('/contact')}
-              className="bg-[#125487] text-white p-8 flex items-center justify-center text-center group cursor-pointer"
-            >
-              <p className="text-2xl font-serif italic group-hover:scale-110 transition-transform">Donate Now <ArrowUpRight className="inline ml-2" /></p>
+
+            <div className="bg-white p-8 rounded-2xl shadow-xl">
+              <h3 className="text-gray-900 text-xl font-bold mb-4 flex items-center gap-2">
+                <Heart size={24} className="text-[#11698d]" /> Make a Donation
+              </h3>
+              <p className="text-gray-600 mb-6">Contact us directly for bank details or collaboration opportunities.</p>
+              <div className="space-y-4">
+                <button 
+                  onClick={() => navigate('/support')}
+                  className="w-full bg-[#11698d] hover:bg-[#0c4e69] text-white font-bold py-4 rounded-lg transition-colors flex justify-center items-center gap-2"
+                >
+                  <Heart size={20} /> Donate Now
+                </button>
+                <button 
+                  onClick={() => navigate('/accountability')}
+                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-4 rounded-lg transition-colors flex justify-center items-center gap-2"
+                >
+                  View Certificates
+                </button>
+              </div>
             </div>
           </div>
+          
+          <p className="text-blue-200 text-sm italic">
+            "Bridging the gap between raw talent and real opportunity."
+          </p>
         </div>
       </section>
-
-      {/* --- FOOTER --- */}
-      <footer className="py-12 px-6 border-t border-black/5 text-center">
-        <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">
-          © 2025 WAWU Foundation | Bengaluru, Karnataka | info@wawu.foundation
-        </p>
-      </footer>
 
     </div>
   );
 };
 
-export default StudioNeoWAWU;
+export default Home;

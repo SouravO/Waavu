@@ -1,164 +1,126 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Dna, Target, Maximize, Trophy, ArrowUpRight, Zap } from 'lucide-react';
+import React from 'react';
+import { Target, Shield, Users, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const navigate = useNavigate();
-  const [focusedIndex, setFocusedIndex] = useState(0);
 
-  const modules = [
+  const services = [
     {
       id: "01",
       title: "Talent Identification",
-      description: "Advanced scouting and player assessment using biometric data and AI-driven analytics to find the next generation of football stars.",
-      icon: <Dna size={24} />,
+      description: "Identifying elite talent aged 12–14 through professional scouting and providing them with a fully funded pathway to success.",
+      icon: <Target size={40} className="text-[#11698d]" />,
       image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80",
-      specs: ["Biometric Tracking", "Mechanical Analysis", "Growth Projection"],
+      specs: ["Professional Scouting", "Elite Selection", "Aged 12-14"],
       path: "/services/talent-identification"
     },
     {
       id: "02",
       title: "Comprehensive Support",
-      description: "Holistic player development programs encompassing physical, mental, and tactical growth to ensure long-term success.",
-      icon: <Target size={24} />,
+      description: "Integrating professional coaching, academic support, and holistic nutritional care to ensure economic status is no longer a deterrent to sporting excellence.",
+      icon: <Shield size={40} className="text-[#11698d]" />,
       image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80",
-      specs: ["Positioning IQ", "Set-Piece Logic", "Decision Matrix"],
+      specs: ["Academic Support", "Nutritional Care", "Financial Aid"],
       path: "/services/comprehensive-support"
     },
     {
       id: "03",
-      title: "Professional Training",
-      description: "Elite coaching and skill enhancement sessions led by former professionals and experts to refine your game.",
-      icon: <Maximize size={24} />,
-      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80",
-      specs: ["Technical Drills", "Tactical Workshops", "Physical Conditioning"],
-      path: "/services/professional-training"
-    },
-    {
-      id: "04",
-      title: "Mentorship & Guidance",
-      description: "Career guidance and mentorship from industry veterans to navigate the complex path to professional football.",
-      icon: <Trophy size={24} />,
+      title: "Mentorship",
+      description: "Guiding young athletes through structured mentorship programs to realise their full potential both on and off the field.",
+      icon: <Users size={40} className="text-[#11698d]" />,
       image: "https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?auto=format&fit=crop&q=80",
-      specs: ["Career Pathways", "Mental Resilience", "Networking"],
+      specs: ["Life Skills", "Career Guidance", "Personal Growth"],
       path: "/services/mentorship-guidance"
     }
   ];
 
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20 overflow-hidden">
-      {/* HERO SECTION */}
-      <section className="py-24 px-4 md:px-6 border-b border-black/5">
-        <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Ecosystem</p>
-          <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
-            Strategic <br />
-            <span className="italic font-light">Operations.</span>
+    <div className="bg-gray-50 text-gray-900 font-sans pt-24 pb-20 min-h-screen">
+      
+      {/* PAGE HEADER */}
+      <section className="bg-white py-16 md:py-24 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#11698d]/10 text-[#11698d] text-sm font-bold tracking-wider uppercase mb-4">
+            Our Service Ecosystem
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Nurturing Potential.
           </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Our structured programs provide young athletes with the holistic support they need to succeed in sports and in life.
+          </p>
         </div>
       </section>
 
-      {/* MAIN INTERFACE */}
-      <section className="border-b border-black/5">
-        <div className="grid grid-cols-1 lg:grid-cols-12">
-          {/* List Block */}
-          <div className="lg:col-span-5 border-r border-black/5 flex flex-col order-2 lg:order-1">
-            {modules.map((module, idx) => (
-              <div
-                key={idx}
-                onMouseEnter={() => setFocusedIndex(idx)}
-                onClick={() => navigate(module.path)}
-                className={`relative p-8 md:p-12 cursor-pointer border-b border-black/5 transition-all duration-500 group overflow-hidden ${focusedIndex === idx ? 'bg-[#F5F5F5]' : 'bg-white'}`}
-              >
-                <div className={`absolute left-0 top-0 bottom-0 w-[4px] bg-[#125487] transition-transform duration-500 ${focusedIndex === idx ? 'scale-y-100' : 'scale-y-0'}`} />
+      {/* SERVICES LIST */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+          {services.map((service, idx) => (
+            <div key={service.id} className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-16 items-center bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100`}>
+              
+              {/* Content Side */}
+              <div className="flex-1 space-y-8">
+                <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+                  {service.icon}
+                </div>
                 
-                <div className="flex justify-between items-start relative z-10">
-                  <div className="space-y-4">
-                    <span className="text-[10px] font-mono text-black/30 uppercase tracking-[0.3em]">Ref_{module.id}</span>
-                    <h3 className={`text-2xl md:text-3xl font-serif italic transition-colors duration-500 ${focusedIndex === idx ? 'text-[#125487]' : 'text-black/40 group-hover:text-black'}`}>
-                      {module.title}
-                    </h3>
-                  </div>
-                  <div className={`w-10 h-10 rounded-full border border-black/10 flex items-center justify-center transition-all duration-500 ${focusedIndex === idx ? 'bg-[#125487] text-white border-[#125487]' : 'group-hover:bg-black group-hover:text-white'}`}>
-                    <ArrowUpRight size={18} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Detail Block */}
-          <div className="lg:col-span-7 bg-[#F5F5F5] min-h-[400px] md:min-h-[600px] flex flex-col justify-between p-8 md:p-20 relative overflow-hidden order-1 lg:order-2 border-b lg:border-b-0 border-black/5">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={focusedIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6 }}
-                className="relative z-10 space-y-8 md:space-y-12"
-              >
-                <div className="space-y-6 md:space-y-8">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-[#125487] flex items-center justify-center text-white shadow-xl">
-                    {modules[focusedIndex].icon}
-                  </div>
-                  <h2 className="text-4xl md:text-7xl font-serif leading-tight">
-                    {modules[focusedIndex].title}
-                  </h2>
-                  <p className="max-w-xl text-lg md:text-xl font-light text-black/60 leading-relaxed">
-                    {modules[focusedIndex].description}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-8 md:pt-12 border-t border-black/10">
-                  {modules[focusedIndex].specs.map((spec, i) => (
-                    <div key={i} className="space-y-2">
-                      <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Parameter_{i+1}</p>
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">{spec}</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{service.title}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+                  {service.description}
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100">
+                  {service.specs.map((spec, i) => (
+                    <div key={i} className="flex flex-col gap-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Focus {i+1}</span>
+                      <span className="text-sm font-semibold text-gray-800">{spec}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="pt-8 md:pt-12">
+                <div className="pt-8">
                   <button 
-                    onClick={() => navigate(modules[focusedIndex].path)}
-                    className="group flex items-center gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
+                    onClick={() => navigate(service.path)}
+                    className="inline-flex items-center gap-3 bg-[#11698d] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#0c4e69] transition-colors shadow-md group"
                   >
-                    Initiate Discovery 
-                    <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#125487] transition-all">
-                      <Zap size={18} />
-                    </div>
+                    Learn More <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
 
-            {/* Background Image Preview */}
-            <motion.div 
-              key={`img-${focusedIndex}`}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 0.05, scale: 1 }}
-              className="absolute inset-0 pointer-events-none"
-            >
-              <img src={modules[focusedIndex].image} alt="" className="w-full h-full object-cover grayscale" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+              {/* Image Side */}
+              <div className="flex-1 w-full">
+                <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] bg-gray-100">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
 
-      {/* DATA STRIP */}
-      <section className="py-12 px-6 bg-white border-b border-black/5 overflow-hidden whitespace-nowrap">
-        <div className="flex items-center gap-24">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-24 opacity-20">
-              <span className="text-[8px] font-black tracking-[1em] uppercase">System_Active_v4.0</span>
-              <span className="text-[8px] font-black tracking-[1em] uppercase">Global_Command_Center</span>
-              <span className="text-[8px] font-black tracking-[1em] uppercase">Auth_Verified</span>
             </div>
           ))}
         </div>
       </section>
+
+      {/* CTA SECTION */}
+      <section className="py-20 bg-gray-100 border-t border-gray-200 mt-8">
+         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Ready to support our mission?</h2>
+            <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Every contribution helps us provide better coaching, resources, and mentorship to young talents.
+            </p>
+            <button 
+              onClick={() => navigate('/support')}
+              className="bg-[#11698d] text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#0c4e69] transition-colors shadow-sm inline-flex items-center gap-3"
+            >
+              Get Involved
+            </button>
+         </div>
+      </section>
+
     </div>
   );
 };

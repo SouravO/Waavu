@@ -17,6 +17,7 @@ import ComprehensiveSupport from './pages/ComprehensiveSupport';
 import ProfessionalTraining from './pages/ProfessionalTraining';
 import MentorshipGuidance from './pages/MentorshipGuidance';
 import Programmes from './pages/Programmes';
+import Accountability from './pages/Accountability';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/INLL" element={<WebDesign />} />
         <Route path="/program" element={<Programmes />} />
+        <Route path="/accountability" element={<Accountability />} />
         <Route path="/services/app-development" element={<AppDevelopment />} />
         <Route path="/services/consulting" element={<Consulting />} />
         <Route path="/services/training" element={<Training />} />

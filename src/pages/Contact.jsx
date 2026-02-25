@@ -1,209 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, CheckCircle2, Zap, MoveRight } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      const subject = encodeURIComponent(formData.subject || 'Contact Form Inquiry');
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        // Triggers the default mail app on mobile
-        window.location.href = `mailto:info@wawu.foundation?subject=${subject}&body=${body}`;
-      } else {
-        // Opens Gmail compose in a new tab on desktop
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@wawu.foundation&su=${subject}&body=${body}`;
-        window.open(gmailUrl, '_blank');
-      }
-
-      setIsSubmitting(false);
-      setIsSent(true);
-      setTimeout(() => setIsSent(false), 5000);
-    }, 1500);
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   return (
-    <div className="bg-[#FDFDFD] text-[#0A0A0A] antialiased font-sans pt-20 overflow-hidden">
-      {/* HERO SECTION */}
-      <section className="py-24 px-4 md:px-6 border-b border-black/5">
-        <div className="max-w-screen-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Communication_Link</p>
-          <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
-            Establish <br />
-            <span className="italic font-light">Connection.</span>
+    <div className="bg-gray-50 text-gray-900 font-sans pt-24 pb-20 min-h-screen">
+      
+      {/* PAGE HEADER */}
+      <section className="bg-white py-16 md:py-24 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#11698d]/10 text-[#11698d] text-sm font-bold tracking-wider uppercase mb-4">
+            Contact Us
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Get in Touch.
           </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Have questions about our programs or want to support our mission? Reach out to our team, and we'll be happy to connect with you.
+          </p>
         </div>
       </section>
 
-      <section className="border-b border-black/5">
-        <div className="grid grid-cols-1 md:grid-cols-12">
-          {/* Info Block */}
-          <div className="md:col-span-5 border-r border-black/5 p-8 md:p-20 space-y-12 md:space-y-20 bg-white">
-            <div className="space-y-8 md:space-y-12">
-              <div className="group">
-                <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
-                <p className="text-xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-                  info@wawu.foundation
+      {/* CONTACT INFO & FORM */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+            
+            {/* Contact Details */}
+            <div className="lg:col-span-5 space-y-12">
+              <div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-8">Reach Out</h3>
+                <p className="text-lg text-gray-600 leading-relaxed mb-10">
+                  Whether you're interested in our flagship INLL program, exploring partnership opportunities, or just want to learn more, we're here for you.
                 </p>
               </div>
 
-              <div className="group">
-                <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Phone</span>
-                <p className="text-xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer">
-                  9035140187
-                </p>
-              </div>
+              <div className="space-y-8">
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                    <Mail size={24} className="text-[#11698d]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Email Us</h4>
+                    <a href="mailto:info@wawu.foundation" className="text-xl font-medium text-gray-600 hover:text-[#11698d] transition-colors">
+                      info@wawu.foundation
+                    </a>
+                  </div>
+                </div>
 
-              <div className="group">
-                <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Studio Location</span>
-                <p className="text-xl md:text-2xl font-serif leading-tight">
-                  WAWU Foundation<br />
-                  Startup Park, Opp.Madiwala Police Station,<br />
-                  Hosur Road, Madiwala,<br />
-                  Bengaluru, Karnataka
-                </p>
-              </div>
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                    <Phone size={24} className="text-[#11698d]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Call Us</h4>
+                    <a href="tel:9035140187" className="text-xl font-medium text-gray-600 hover:text-[#11698d] transition-colors">
+                      9035140187
+                    </a>
+                  </div>
+                </div>
 
-              <div className="group">
-                <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Social Presence</span>
-                <div className="flex flex-col gap-2 text-xl font-serif italic">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">Instagram</a>
-                  <a href="https://www.linkedin.com/in/wawu-foundation/" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">LinkedIn</a>
-                  <a href="https://youtube.com/@wawu.foundation?si=ttkPTwfNFnR4k06S" target="_blank" rel="noopener noreferrer" className="hover:text-[#125487] cursor-pointer transition-colors w-fit">YouTube</a>
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                    <MapPin size={24} className="text-[#11698d]" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Visit Us</h4>
+                    <address className="text-lg text-gray-600 leading-relaxed not-italic">
+                      WAWU Foundation<br />
+                      Startup Park, Opp. Madiwala Police Station,<br />
+                      Hosur Road, Madiwala,<br />
+                      Bengaluru, Karnataka
+                    </address>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-12 border-t border-black/5">
-              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest leading-relaxed">
-                WE ARE ALWAYS OPEN TO CONVERSATION WITH VISIONARIES, BUILDERS, AND TALENTED INDIVIDUALS READY TO DEFINE THE FUTURE.
-              </p>
-            </div>
-          </div>
-
-          {/* Form Block */}
-          <div className="md:col-span-7 p-8 md:p-20 bg-[#F5F5F5] relative overflow-hidden">
-            <AnimatePresence mode="wait">
-              {!isSent ? (
-                <motion.div
-                  key="form"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Your Name</label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#125487] outline-none transition-all font-serif italic text-xl md:text-2xl placeholder:text-black/5"
-                          placeholder="Sharath K."
+            {/* Contact Form */}
+            <div className="lg:col-span-7">
+               <div className="bg-white p-10 md:p-14 rounded-2xl shadow-xl border border-gray-100">
+                 <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a message</h2>
+                 
+                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-gray-700">First Name</label>
+                        <input 
+                          type="text" 
+                          className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#11698d]/20 focus:border-[#11698d] transition-all" 
+                          placeholder="Jane" 
                         />
                       </div>
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Return Email</label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#125487] outline-none transition-all font-serif italic text-xl md:text-2xl placeholder:text-black/5"
-                          placeholder="email@studio.com"
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-gray-700">Last Name</label>
+                        <input 
+                          type="text" 
+                          className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#11698d]/20 focus:border-[#11698d] transition-all" 
+                          placeholder="Doe" 
                         />
                       </div>
                     </div>
-
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Subject Header</label>
-                      <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full bg-transparent border-b border-black/10 py-4 text-black focus:border-[#125487] outline-none transition-all font-serif italic text-xl md:text-2xl placeholder:text-black/5"
-                        placeholder="Project Inquiry"
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-gray-700">Email Address</label>
+                      <input 
+                        type="email" 
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#11698d]/20 focus:border-[#11698d] transition-all" 
+                        placeholder="jane@example.com" 
                       />
                     </div>
-
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Message Payload</label>
-                      <textarea
-                        name="message"
-                        required
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={4}
-                        className="w-full bg-transparent border border-black/10 p-6 text-black focus:border-[#125487] outline-none transition-all font-sans text-base md:text-lg placeholder:text-black/5 resize-none"
-                        placeholder="Tell us about your vision..."
-                      />
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-gray-700">How can we help?</label>
+                      <textarea 
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#11698d]/20 focus:border-[#11698d] transition-all min-h-[160px] resize-y" 
+                        placeholder="Tell us about your inquiry..."
+                      ></textarea>
                     </div>
-
-                    <button
-                      disabled={isSubmitting}
-                      className="group flex items-center gap-6 md:gap-8 text-[10px] font-black tracking-[0.4em] uppercase"
+                    
+                    <button 
+                      type="submit"
+                      className="w-full bg-[#11698d] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#0c4e69] transition-colors shadow-md flex justify-center items-center gap-3 mt-4"
                     >
-                      {isSubmitting ? "Processing..." : "Initiate Transfer"}
-                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#125487] transition-all">
-                        {isSubmitting ? <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full" /> : <MoveRight size={20} className="md:w-6 md:h-6" />}
-                      </div>
+                      <Send size={20} /> Send Message
                     </button>
-                  </form>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="h-full flex flex-col items-center justify-center text-center py-20"
-                >
-                  <div className="w-16 h-16 md:w-24 md:h-24 bg-[#125487] rounded-full flex items-center justify-center mb-8 md:mb-10 text-white shadow-2xl">
-                    <CheckCircle2 size={32} className="md:w-12 md:h-12" />
-                  </div>
-                  <h2 className="text-4xl md:text-7xl font-serif mb-6 leading-tight">Transmission <br /> Successful.</h2>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] opacity-40 mb-10 md:mb-12">System will reset shortly</p>
-                  <button 
-                    onClick={() => setIsSent(false)}
-                    className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.5em] hover:text-[#125487] transition-colors"
-                  >
-                    Send New Transmission <ArrowUpRight size={14} />
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                 </form>
+               </div>
+            </div>
+
           </div>
         </div>
       </section>
+
     </div>
   );
 };

@@ -1,98 +1,98 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Plus, MoveRight, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Youtube, Facebook, Twitter, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const partners = [
+    "iQue Ventures",
+    "Ofioh Sporty",
+    "Decathlon",
+    "Azeezia Healthcare"
+  ];
+
   return (
-    <footer className="bg-[#0A0A0A] text-white border-t border-white/5 selection:bg-white selection:text-black overflow-hidden">
-      {/* 5a. The Infinite Marquee */}
-      <div className="py-12 border-b border-white/5 overflow-hidden whitespace-nowrap flex group cursor-default">
-        {[1, 2, 3, 4].map((i) => (
-          <motion.div 
-            key={i}
-            initial={{ x: 0 }}
-            animate={{ x: "-100%" }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-12 px-6"
-          >
-            <span className="text-[15vw] md:text-[10vw] font-serif italic leading-none tracking-tighter opacity-10 group-hover:opacity-100 group-hover:text-[#125487] transition-all duration-700">
-             We Are With You (WAWU)
-            </span>
-            <Plus size={40} className="text-[#125487] opacity-20" />
-          </motion.div>
-        ))}
-      </div>
-
-      {/* 5b. Main Footer Body */}
-      <div className="grid grid-cols-1 md:grid-cols-12 w-full">
-        {/* Left Block: Big CTA */}
-        <Link to="/contact" className="md:col-span-7 p-8 md:p-20 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between group cursor-pointer overflow-hidden relative">
-          <div className="relative z-10">
-            <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Initiate_Collaboration</p>
-            <h2 className="text-5xl md:text-8xl font-serif leading-[0.9] tracking-tighter">
-              Let's create <br /> 
-              <span className="italic">The Icon.</span>
-            </h2>
-          </div>
+    <footer className="bg-gray-900 text-gray-300 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* TOP SECTION: LOGO & ABOUT */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          <div className="mt-12 md:mt-20 flex items-center gap-6 group-hover:translate-x-4 transition-transform duration-500 relative z-10">
-            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#125487] flex items-center justify-center">
-              <MoveRight size={20} className="md:w-6 md:h-6" />
-            </div>
-          </div>
-
-          {/* Background Hover Effect */}
-          <div className="absolute inset-0 bg-[#125487]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.22, 1, 0.36, 1]" />
-        </Link>
-
-        {/* Right Block: Contacts & Details */}
-        <div className="md:col-span-5 flex flex-col">
-          <div className="p-8 md:p-12 border-b border-white/5 md:h-1/2 flex flex-col justify-end">
-            <p className="text-[10px] font-mono opacity-40 uppercase mb-4 tracking-widest">Inquiries</p>
-            <p className="text-2xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-                info@wawu.foundation
+          {/* Brand Col */}
+          <div className="lg:col-span-1 flex flex-col gap-6">
+            <Link to="/" className="flex items-center gap-2">
+               <img src="/assets/logo/Logo.png" alt="WAWU Logo" className="h-12 w-auto object-contain bg-white/10 p-2 rounded-lg" />
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Bridging the gap between raw talent and real opportunity through structured football programs and comprehensive support ecosystems.
             </p>
+            <Link to="/support" className="inline-flex items-center gap-2 text-[#4cb5e5] font-semibold hover:text-white transition-colors text-sm">
+               <Heart size={16} /> Donate to our mission
+            </Link>
+          </div>
+
+          {/* Links Col */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-lg">Quick Links</h4>
+            <ul className="space-y-4 text-sm font-medium">
+              <li><Link to="/about" className="hover:text-[#4cb5e5] transition-colors">About Us</Link></li>
+              <li><Link to="/program" className="hover:text-[#4cb5e5] transition-colors">Initiatives</Link></li>
+              <li><Link to="/services/talent-identification" className="hover:text-[#4cb5e5] transition-colors">Our Services</Link></li>
+              <li><Link to="/support" className="hover:text-[#4cb5e5] transition-colors">Get Involved</Link></li>
+              <li><Link to="/accountability" className="hover:text-[#4cb5e5] transition-colors">Accountability</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Col */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-lg">Contact Us</h4>
+            <ul className="space-y-4 text-sm text-gray-400">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-[#4cb5e5] mt-0.5 shrink-0" />
+                <span>WAWU Foundation<br/>Startup Park, Opp.Madiwala Police Station,<br/>Hosur Road, Madiwala,<br/>Bengaluru, Karnataka</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-[#4cb5e5] shrink-0" />
+                <a href="tel:9035140187" className="hover:text-white transition-colors">9035140187</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-[#4cb5e5] shrink-0" />
+                <a href="mailto:info@wawu.foundation" className="hover:text-white transition-colors">info@wawu.foundation</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Partners & Social Col */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-lg">Our Partners</h4>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {partners.map((partner, index) => (
+                <span key={index} className="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full border border-gray-700">
+                  {partner}
+                </span>
+              ))}
+            </div>
+            
+            <h4 className="text-white font-bold mb-4 text-lg">Follow Us</h4>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#11698d] hover:text-white transition-all"><Instagram size={18} /></a>
+              <a href="https://www.linkedin.com/in/wawu-foundation/" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#11698d] hover:text-white transition-all"><Linkedin size={18} /></a>
+              <a href="https://youtube.com/@wawu.foundation" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#11698d] hover:text-white transition-all"><Youtube size={18} /></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#11698d] hover:text-white transition-all"><Facebook size={18} /></a>
+            </div>
           </div>
           
-          <div className="p-8 md:p-12 md:h-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Social</p>
-              <ul className="text-[10px] md:text-xs font-bold tracking-widest uppercase space-y-2">
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                </li>
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">
-                  <a href="https://www.linkedin.com/in/wawu-foundation/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </li>
-                <li className="hover:text-[#125487] cursor-pointer transition-colors">
-                  <a href="https://youtube.com/@wawu.foundation?si=ttkPTwfNFnR4k06S" target="_blank" rel="noopener noreferrer">YouTube</a>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Location</p>
-              <p className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase leading-relaxed">
-                WAWU Foundation<br />
-                Startup Park, Opp.Madiwala Police Station,<br />
-                Hosur Road, Madiwala,<br />
-                Bengaluru, Karnataka
-              </p>
-            </div>
+        </div>
+
+        {/* BOTTOM STRIP */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+          <p>© {new Date().getFullYear()} WAWU Foundation. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link to="/accountability" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/accountability" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/accountability" className="hover:text-white transition-colors">80G & 12A Certified</Link>
           </div>
         </div>
-      </div>
 
-      {/* 5c. The Grid Bottom Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-12 w-full text-[9px] font-bold uppercase tracking-[0.3em] min-h-20 py-6 md:py-0 items-center px-6 border-t border-white/5 opacity-40">
-        <div className="col-span-1 md:col-span-3">©2026 WAWU STUDIO</div>
-        <div className="hidden md:block md:col-span-6 text-center italic font-serif lowercase tracking-normal text-lg">
-          "A walking work of art."
-        </div>
-        <div className="col-span-1 md:col-span-3 text-right flex justify-end gap-4">
-          <span>Privacy</span>
-          <span>Terms</span>
-        </div>
       </div>
     </footer>
   );

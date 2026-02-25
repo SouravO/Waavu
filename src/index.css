@@ -11,5 +11,5 @@ body {
 }
 
 ::selection {
-  @apply bg-[#125487] text-white;
+  @apply bg-[#11698d] text-white;
 }
