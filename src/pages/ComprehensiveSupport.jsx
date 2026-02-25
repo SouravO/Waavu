@@ -5,21 +5,22 @@ import { useNavigate } from 'react-router-dom';
 
 const ComprehensiveSupport = () => {
   const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const features = [
-    { title: 'Positioning IQ', desc: 'Developing advanced spatial awareness and tactical positioning intelligence.' },
-    { title: 'Set-Piece Logic', desc: 'Strategic corner and free-kick methodologies for game-changing impact.' },
-    { title: 'Decision Matrix', desc: 'Real-time analysis and optimized response protocols for high-pressure situations.' },
+    { title: 'Nutrition & Fitness', desc: 'Personalized nutrition plans and access to fitness equipment tailored for young athletes.' },
+    { title: 'Wellness & Counseling', desc: 'Emotional wellness support and academic counseling to ensure holistic growth.' },
+    { title: 'Travel & Recovery', desc: 'Support for travel arrangements, injury recovery, and psychological mentoring.' },
   ];
 
   const pillars = [
-    { icon: Brain, title: 'Mental Resilience', desc: 'Psychological conditioning to maintain peak performance under extreme competition pressure.' },
-    { icon: Heart, title: 'Wellness Protocols', desc: 'Comprehensive nutrition, recovery, and physiological monitoring for long-term health.' },
-    { icon: Shield, title: 'Career Guidance', desc: 'Educational support and professional networking to build a sustainable career beyond the pitch.' },
+    { icon: Heart, title: 'On-Field Excellence', desc: 'Building resilience and unlocking potential through a 360-degree support ecosystem.' },
+    { icon: Brain, title: 'Off-Field Growth', desc: 'Empowering children to manage their lives and careers with confidence and awareness.' },
+    { icon: Shield, title: 'Balanced Individuals', desc: 'Raising not only champions, but balanced and aware individuals who excel on and off the field.' },
   ];
 
   return (
@@ -37,10 +38,10 @@ const ComprehensiveSupport = () => {
             <span>Back_to_Modules</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Module_02</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Comprehensive_Support_Program</p>
           <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
-            Comprehensive <br />
-            <span className="italic font-light text-[#125487]">Support.</span>
+            Empowering Athletes <br />
+            <span className="italic font-light text-[#125487]">On and Off the Field.</span>
           </h1>
         </div>
       </section>
@@ -64,21 +65,32 @@ const ComprehensiveSupport = () => {
           </div>
 
           {/* Features Block */}
-          <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
+          <div className="flex flex-col justify-center p-8 md:p-20 bg-[#F5F5F5]">
             <div className="space-y-8 md:space-y-12">
               <Target className="text-[#125487]" size={32} />
-              <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Development <br/> Pillars.</h2>
-              <div className="space-y-6 md:space-y-8">
-                {features.map((feature, i) => (
-                  <div key={i} className="flex gap-4 md:gap-6 items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#125487] mt-2 shrink-0" />
-                    <div>
-                      <p className="text-[10px] font-mono text-black/40 uppercase tracking-widest mb-1">Module_{i+1}</p>
-                      <p className="text-lg md:text-xl font-serif italic text-black mb-1">{feature.title}</p>
-                      <p className="text-sm font-light text-black/60 leading-relaxed">{feature.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Holistic <br/> Support System.</h2>
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#125487] via-[#125487]/60 to-[#125487]/20 rounded-full" />
+                <div className={`text-base md:text-lg font-light text-black/70 leading-loose italic transition-all duration-500 ${isExpanded ? '' : 'line-clamp-3'}`}>
+                  <p>
+                    At WAWU Foundation, we believe that excellence in sports stems from balance. Our Comprehensive Support program goes beyond traditional coaching to provide an all-rounded structure that takes care of every young athlete's needs.
+                  </p>
+                  <br />
+                  <p>
+                    From personalized nutrition plans and access to fitness equipment, to emotional wellness and academic counseling, we ensure players grow as individuals—not just performers. We also support travel arrangements, injury recovery, and psychological mentoring.
+                  </p>
+                  <br />
+                  <p>
+                    This 360-degree ecosystem helps unlock potential, build resilience, and empower children to manage their lives and careers more confidently. We aim to raise not only champions, but balanced and aware individuals who excel on and off the field.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#125487] hover:text-black transition-colors group"
+                >
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                  <MoveRight size={14} className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                </button>
               </div>
             </div>
           </div>

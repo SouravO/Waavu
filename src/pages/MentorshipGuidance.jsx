@@ -5,21 +5,22 @@ import { useNavigate } from 'react-router-dom';
 
 const MentorshipGuidance = () => {
   const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const features = [
-    { title: 'Career Pathways', desc: 'Strategic planning and roadmap development for professional football careers.' },
-    { title: 'Mental Resilience', desc: 'Building confidence and psychological protocols for high-pressure situations.' },
-    { title: 'Networking', desc: 'Connecting athletes with key industry stakeholders, clubs, and professional agents.' },
+    { title: 'Professional Mentors', desc: 'Seasoned professionals including former players, coaches, and sports psychologists.' },
+    { title: 'Performance Support', desc: 'Goal setting, performance advice, and handling pressure through regular check-ins.' },
+    { title: 'Career Navigation', desc: 'Contract negotiations, brand building, and maintaining mental health guidance.' },
   ];
 
   const pillars = [
-    { icon: UserCheck, title: '1-on-1 Access', desc: 'Direct, personalized guidance from industry veterans who have successfully navigated the professional path.' },
-    { icon: Briefcase, title: 'Career Dev', desc: 'Comprehensive support including resume building, trial prep, and professional contract advisory.' },
-    { icon: Lightbulb, title: 'Life Skills', desc: 'Financial literacy, media relations, and personal brand management for holistic success beyond football.' },
+    { icon: UserCheck, title: 'Expert Guidance', desc: 'Connecting young footballers with industry veterans for crucial support and long-term aspirations.' },
+    { icon: Briefcase, title: 'Career Planning', desc: 'Navigating the sports industry from choosing academies to dealing with performance anxiety.' },
+    { icon: Lightbulb, title: 'Holistic Development', desc: 'Developing better players and responsible individuals equipped for life beyond football.' },
   ];
 
   return (
@@ -37,10 +38,10 @@ const MentorshipGuidance = () => {
             <span>Back_to_Modules</span>
           </motion.button>
 
-          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Service_Module_04</p>
+          <p className="text-[10px] font-mono tracking-[0.5em] text-[#125487] mb-8 uppercase">Mentorship_Program</p>
           <h1 className="text-[14vw] md:text-[10vw] font-serif leading-[0.8] tracking-tighter mb-12 break-words">
-            Mentorship <br />
-            <span className="italic font-light text-[#125487]">& Guidance.</span>
+            Empowering Athletes <br />
+            <span className="italic font-light text-[#125487]">Through Real-World Experience.</span>
           </h1>
         </div>
       </section>
@@ -50,7 +51,7 @@ const MentorshipGuidance = () => {
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Image Block */}
           <div className="aspect-[4/5] md:aspect-auto md:h-[80vh] border-b md:border-b-0 md:border-r border-black/5 overflow-hidden group relative">
-            <motion.img 
+            <motion.img
               initial={{ scale: 1.2 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 1.5 }}
@@ -64,21 +65,36 @@ const MentorshipGuidance = () => {
           </div>
 
           {/* Features Block */}
-          <div className="flex flex-col justify-between p-8 md:p-20 bg-[#F5F5F5]">
+          <div className="flex flex-col justify-center p-8 md:p-20 bg-[#F5F5F5]">
             <div className="space-y-8 md:space-y-12">
               <ShieldCheck className="text-[#125487]" size={32} />
-              <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">System <br/> Pillars.</h2>
-              <div className="space-y-6 md:space-y-8">
-                {features.map((feature, i) => (
-                  <div key={i} className="flex gap-4 md:gap-6 items-start">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#125487] mt-2 shrink-0" />
-                    <div>
-                      <p className="text-[10px] font-mono text-black/40 uppercase tracking-widest mb-1">Pillar_{i+1}</p>
-                      <p className="text-lg md:text-xl font-serif italic text-black mb-1">{feature.title}</p>
-                      <p className="text-sm font-light text-black/60 leading-relaxed">{feature.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Guidance <br/> Ecosystem.</h2>
+              <div className="relative pl-8 md:pl-10">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#125487] via-[#125487]/60 to-[#125487]/20 rounded-full" />
+                <div className={`text-base md:text-lg font-light text-black/70 leading-loose italic transition-all duration-500 ${isExpanded ? '' : 'line-clamp-3'}`}>
+                  <p>
+                    At the heart of every successful athlete lies strong guidance. Our Mentorship and Guidance program connects young footballers with seasoned professionals—former players, coaches, sports psychologists, and industry veterans.
+                  </p>
+                  <br />
+                  <p>
+                    These mentors provide crucial support ranging from goal setting and performance advice to handling pressure and career planning. Through regular check-ins, motivational sessions, and workshops, mentees are empowered to tackle setbacks and stay focused on their long-term aspirations.
+                  </p>
+                  <br />
+                  <p>
+                    Our mentors also help navigate the less-visible aspects of the sports industry—contract negotiations, brand building, and maintaining mental health. We believe that mentorship not only develops better players but also responsible individuals equipped for life beyond football.
+                  </p>
+                  <br />
+                  <p>
+                    Whether it's choosing the right academy or dealing with performance anxiety, our network ensures no athlete feels alone in their journey.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#125487] hover:text-black transition-colors group"
+                >
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                  <MoveRight size={14} className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                </button>
               </div>
             </div>
           </div>

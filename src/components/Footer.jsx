@@ -51,7 +51,7 @@ const Footer = () => {
           <div className="p-8 md:p-12 border-b border-white/5 md:h-1/2 flex flex-col justify-end">
             <p className="text-[10px] font-mono opacity-40 uppercase mb-4 tracking-widest">Inquiries</p>
             <p className="text-2xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-                enq.wawufoundation@gmail.com  
+                info@wawu.foundation
             </p>
           </div>
           
@@ -73,7 +73,10 @@ const Footer = () => {
             <div className="space-y-4">
               <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">Location</p>
               <p className="text-[10px] md:text-[11px] font-bold tracking-widest uppercase leading-relaxed">
-               3rd floor, Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
+                WAWU Foundation<br />
+                Startup Park, Opp.Madiwala Police Station,<br />
+                Hosur Road, Madiwala,<br />
+                Bengaluru, Karnataka
               </p>
             </div>
           </div>

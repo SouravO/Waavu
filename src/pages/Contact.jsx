@@ -29,10 +29,10 @@ const Contact = () => {
       
       if (isMobile) {
         // Triggers the default mail app on mobile
-        window.location.href = `mailto:enq.wawufoundation@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:info@wawu.foundation?subject=${subject}&body=${body}`;
       } else {
         // Opens Gmail compose in a new tab on desktop
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=enq.wawufoundation@gmail.com&su=${subject}&body=${body}`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@wawu.foundation&su=${subject}&body=${body}`;
         window.open(gmailUrl, '_blank');
       }
 
@@ -67,14 +67,24 @@ const Contact = () => {
               <div className="group">
                 <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Direct Email</span>
                 <p className="text-xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer break-all">
-                  enq.wawufoundation@gmail.com
+                  info@wawu.foundation
                 </p>
               </div>
-              
+
+              <div className="group">
+                <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Phone</span>
+                <p className="text-xl md:text-2xl font-serif hover:text-[#125487] transition-colors cursor-pointer">
+                  9035140187
+                </p>
+              </div>
+
               <div className="group">
                 <span className="text-[10px] font-mono text-[#125487] uppercase tracking-[0.3em] block mb-4">Studio Location</span>
                 <p className="text-xl md:text-2xl font-serif leading-tight">
-                  3rd floor, Startup Park, Sidharata Colony, Santhosapuram, Koramangala 2nd Block, Koramangala, Bengaluru, Karnataka 560068
+                  WAWU Foundation<br />
+                  Startup Park, Opp.Madiwala Police Station,<br />
+                  Hosur Road, Madiwala,<br />
+                  Bengaluru, Karnataka
                 </p>
               </div>
 

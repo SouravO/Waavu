@@ -319,7 +319,7 @@ const StudioNeoWAWU = () => {
       {/* --- FOOTER --- */}
       <footer className="py-12 px-6 border-t border-black/5 text-center">
         <p className="text-[10px] font-mono opacity-40 uppercase tracking-widest">
-          © 2025 WAWU Foundation | Bengaluru, Karnataka | enq.wawufoundation@gmail.com
+          © 2025 WAWU Foundation | Bengaluru, Karnataka | info@wawu.foundation
         </p>
       </footer>
 
