@@ -29,8 +29,7 @@ const Navigation = () => {
   const servicesSubItems = [
     { name: 'Talent Identification', path: '/services/talent-identification' },
     { name: 'Comprehensive Support', path: '/services/comprehensive-support' },
-    { name: 'Professional Training', path: '/services/professional-training' },
-    { name: 'Mentorship & Guidance', path: '/services/mentorship-guidance' },
+    { name: 'Mentorship ', path: '/services/mentorship-guidance' },
   ];
 
   return (

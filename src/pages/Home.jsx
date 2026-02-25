@@ -180,7 +180,7 @@ const StudioNeoWAWU = () => {
             {[
               { id: "01", title: "Talent Identification", desc: "Camps and high-quality coaching programs that uncover raw potential in rural regions.", img: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&q=80" },
               { id: "02", title: "Holistic Support", desc: "Full scholarships covering athletic and educational needs to ensure sustainable growth.", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80" },
-              { id: "03", title: "Professional Training", desc: "Mentorship from experienced coaches to guide players toward national club careers.", img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80" }
+             
             ].map((item) => (
               <div key={item.id} className="group grid grid-cols-1 md:grid-cols-12 py-8 md:py-12 items-center hover:bg-[#F5F5F5] transition-colors px-4">
                 <span className="md:col-span-1 font-mono text-sm opacity-30 mb-2 md:mb-0">{item.id}</span>
@@ -198,7 +198,7 @@ const StudioNeoWAWU = () => {
       </section>
 
       {/* --- 6. LEADERSHIP SPOTLIGHT --- */}
-      <section className="py-24 px-6 bg-[#0A0A0A] text-white overflow-hidden">
+      {/* <section className="py-24 px-6 bg-[#0A0A0A] text-white overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex flex-col md:flex-row items-stretch gap-0 border border-white/10">
             <div className="flex-1 p-12 md:p-24 space-y-8 flex flex-col justify-center">
@@ -220,7 +220,7 @@ const StudioNeoWAWU = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* --- 6. INLL 2026 --- */}
       <section className="py-24 md:py-32 px-4 md:px-6 border-b border-black/5 bg-[#F5F5F5] overflow-hidden">

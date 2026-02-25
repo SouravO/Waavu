@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Target, Trophy, Shield, ArrowUpRight } from 'lucide-react';
 
 const About = () => {
+  const [readMore, setReadMore] = useState(false);
+
+  const founderBody = "Sharath Kuniyil is an accomplished Indian goalkeeper who proudly represented Kerala in the Santosh Trophy and went on to captain Viva Kerala in the I-League. Over the course of his professional career, he featured for distinguished clubs such as Chirag United, Mohammedan Sporting Club, Mumbai FC, and Bengaluru FC, demonstrating consistency and leadership at the highest levels of domestic football Extending his impact beyond his playing days, he played a significant role in advancing the sport by serving as the goalkeeping coach for Thrissur Magic FC in the Kerala Super League. He is the first goalkeeper from Kerala to hold the captaincy band of an I-League team, and he was highly skilled, having trained with several professional teams over the years. Throughout his career, he was known for his skill, leadership qualities, and professional training experience with various top teams and accomplished teammates. Notably, across every phase of his journey, he has been widely recognised for his technical ability, composed leadership, and the depth of professional experience gained alongside accomplished teammates and top-tier clubs ";
+
   const sections = [
     {
       id: "01",
       title: "The Founder",
       subtitle: "FOUNDER & CHAIRMAN",
       header: "Sharath Kuniyil",
-      body: "Sharath Kuniyil is an Indian goalkeeper who played for Kerala Santhosh Trophy team and Viva Kerala, Chirag United Kerala, Mohammedan Sporting, Bengaluru FC, and Gokulam Kerala FC in the I-League. He made his debut in the I-League against Mahindra United. He is the First Kerala Goalkeeper to hold the captaincy band of an I-League team, and he was skilled and trained under several professional teams and teammates.",
+      body: readMore ? founderBody : founderBody.slice(0, 280) + "...",
       list: ["I-League Captain", "Kerala Legend", "Elite Goalkeeper", "Pro Mentor"],
       image: "src/assets/founder.jpg",
-      icon: <Star size={20} />
+      icon: <Star size={20} />,
+      isFounder: true
     },
     {
       id: "02",
@@ -86,10 +91,19 @@ const About = () => {
                   <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-40">{section.subtitle}</span>
                 </div>
                 <h2 className="text-4xl md:text-7xl font-serif leading-tight">{section.header}</h2>
-                <p className="max-w-md text-lg md:text-xl font-light text-black/60 leading-relaxed">
+                <p className="max-w-xl text-lg md:text-xl font-light text-black/60 leading-relaxed">
                   {section.body}
                 </p>
-                
+
+                {section.isFounder && (
+                  <button
+                    onClick={() => setReadMore(!readMore)}
+                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#125487] hover:underline transition-all"
+                  >
+                    {readMore ? 'Read Less' : 'Read More'}
+                  </button>
+                )}
+
                 <div className="grid grid-cols-2 gap-4 pt-6">
                   {section.list.map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
