@@ -63,7 +63,7 @@ const Navigation = () => {
             <button
               className={`flex items-center gap-1 cursor-pointer hover:text-[#125487] transition-colors ${location.pathname?.startsWith('/services/') ? 'text-[#125487]' : 'text-black/60'}`}
             >
-              Services
+              Programmes and Services
               <ChevronDown
                 size={14}
                 className={`transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`}
