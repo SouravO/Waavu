@@ -18,7 +18,7 @@ const Programmes = () => {
         "Holistic Nutritional Care",
         "Fully Funded Pathway"
       ],
-      image: "/src/assets/Inll.png"
+      image: "/assets/logo/Inll.png"
     },
     {
       id: "GoalQuest",

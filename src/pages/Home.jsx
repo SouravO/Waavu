@@ -173,7 +173,7 @@ const Home = () => {
             <div className="group rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full">
               <div className="h-64 overflow-hidden relative bg-gray-100">
                 <img 
-                  src="/src/assets/Inll.png" 
+                  src="/assets/logo/Inll.png" 
                   alt="INLL" 
                   className="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500" 
                 />
