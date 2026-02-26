@@ -11,6 +11,7 @@ import Consulting from './pages/Consulting';
 import Training from './pages/Training';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Support from './pages/Support';
 import TalentIdentification from './pages/TalentIdentification';
 import ComprehensiveSupport from './pages/ComprehensiveSupport';
@@ -22,6 +23,7 @@ import Accountability from './pages/Accountability';
 function App() {
   return (
     <div className="App bg-[#FDFDFD] min-h-screen">
+      <ScrollToTop />
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
