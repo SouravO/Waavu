@@ -3,21 +3,37 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <div className="bg-gray-50 text-gray-900 font-sans pt-24 pb-20 min-h-screen">
+    <div className="bg-white text-gray-900 font-sans pt-24 pb-20 min-h-screen">
       
       {/* PAGE HEADER */}
-      <section className="bg-white py-16 md:py-24 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block py-1 px-3 rounded-full bg-[#11698d]/10 text-[#11698d] text-sm font-bold tracking-wider uppercase mb-4">
-            Contact Us
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Get in Touch.
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Have questions about our programs or want to support our mission? Reach out to our team, and we'll be happy to connect with you.
-          </p>
+      <section className="relative py-20 md:py-32 overflow-hidden bg-gray-900">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/assets/logo/contact.jpg" 
+            alt="Contact Background" 
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent" />
         </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-block py-1 px-4 rounded-full bg-[#11698d] text-white text-sm font-bold tracking-wider uppercase mb-6 shadow-lg">
+              Get In Touch
+            </span>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
+              Let's Start a <br />
+              <span className="text-blue-400">Conversation.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed font-medium">
+              Have questions about our programs or want to support our mission? Reach out to our team, and we'll be happy to connect with you.
+            </p>
+          </div>
+        </div>
+
+        {/* Decorative Element */}
+        <div className="absolute bottom-0 right-0 w-1/3 h-px bg-gradient-to-l from-[#11698d] to-transparent opacity-50" />
       </section>
 
       {/* CONTACT INFO & FORM */}

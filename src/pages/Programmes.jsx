@@ -32,7 +32,7 @@ const Programmes = () => {
         "Community Development",
         "Charity Driven"
       ],
-      image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80"
+      image: "/assets/logo/img1.jpg"
     }
   ];
 
@@ -86,7 +86,7 @@ const Programmes = () => {
 
               {/* Image Side */}
               <div className="flex-1 w-full">
-                <div className={`rounded-2xl overflow-hidden shadow-lg aspect-[4/3] bg-gray-100 ${item.id === 'INLL' ? 'p-12 border border-gray-100 bg-white' : ''}`}>
+                <div className={`rounded-2xl overflow-hidden shadow-lg aspect-[3/3] bg-gray-100 ${item.id === 'INLL' ? 'p-12 border border-gray-100 bg-white' : ''}`}>
                   <img 
                     src={item.image} 
                     alt={item.title} 
