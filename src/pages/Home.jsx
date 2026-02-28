@@ -62,7 +62,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20 px-8">
           <div className="py-6 md:py-0 md:px-8 text-center flex flex-col items-center justify-center">
             <Trophy className="text-white mb-3 opacity-80" size={32} />
-            <h3 className="text-3xl font-bold text-white mb-1">1000+</h3>
+            <h3 className="text-3xl font-bold text-white mb-1">4000+</h3>
             <p className="text-blue-100 font-medium">Youth Reached</p>
           </div>
           <div className="py-6 md:py-0 md:px-8 text-center flex flex-col items-center justify-center">
@@ -134,7 +134,9 @@ const Home = () => {
               </div>
               <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
               <p className="text-xl text-blue-50 leading-relaxed">
-                To bridge social and economic gaps through football by building a new generation of sports leaders who inspire positive change within their communities.
+                To bridge saa
+                
+                ocial and economic gaps through football by building a new generation of sports leaders who inspire positive change within their communities.
               </p>
             </div>
           </div>
