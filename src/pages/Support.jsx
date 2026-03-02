@@ -68,7 +68,7 @@ const Support = () => {
               
               <p className="mt-8 text-gray-500 text-sm italic flex items-start gap-2">
                 <CheckCircle2 size={16} className="text-green-500 shrink-0 mt-0.5" />
-                Please share a screenshot of the transaction at <strong>info@wawu.foundation</strong> or via WhatsApp at <strong>9035140187</strong> so we can issue your tax receipt.
+                Please share a screenshot of the transaction at <strong>info@wawu.foundation</strong> or via WhatsApp at <strong>+91 9035140187</strong> so we can issue your tax receipt.
               </p>
             </div>
 
@@ -142,8 +142,8 @@ const Support = () => {
             info@wawu.foundation
           </a>
           <span className="hidden sm:inline text-gray-300">|</span>
-          <a href="tel:9035140187" className="inline-flex items-center gap-2 text-[#11698d] font-bold hover:underline">
-            9035140187
+          <a href="tel:+91 9035140187" className="inline-flex items-center gap-2 text-[#11698d] font-bold hover:underline">
+            +91 9035140187
           </a>
         </div>
       </section>
