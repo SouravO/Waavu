@@ -66,7 +66,7 @@ const About = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
                 <p className="text-gray-600 text-lg leading-relaxed text-justify">
-                  To bridge aaathe gap between talent and opportunity by identifying and nurturing promising young footballers through world-class training, educational support, and holistic life skills development.
+                  To bridge the gap between talent and opportunity by identifying and nurturing promising young footballers through world-class training, educational support, and holistic life skills development.
 
 We are committed to empowering teenagers through structured football programs that promote discipline, resilience, mental well-being, and drug-free lifestyles — creating a safe and supportive environment where young individuals can grow into confident, responsible leaders.
 
