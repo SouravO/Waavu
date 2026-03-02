@@ -24,8 +24,8 @@ const Programmes = () => {
       id: "GoalQuest",
       title: "WAWU GoalQuest 2026",
       subtitle: "Internal Charity League",
-      description: "WAWU GoalQuest 2026 is an internal charity football league organised by WAWU Foundation within the iQue Ventures ecosystem to promote football culture, employee well-being, and social responsibility through sport.",
-      details: "The league brings together employees from different companies under iQue to participate in a structured and competitive football tournament while contributing to a meaningful social cause. This initiative was designed to create a strong sports environment within the workplace and support children who lack access to basic sports and educational facilities.",
+      description: " WAWU GoalQuest is a structured corporate football tournament organised by WAWU Foundation to promote football culture, employee well-being, and meaningful workplace engagement through sport. The league brings together employees from participating organisations to compete in a professionally managed and competitive football environment. ",
+      details: "This initiative goes beyond recreational activity. It is designed to create a strong sports culture within corporate environments, encouraging teamwork, collaboration, leadership, and healthy competition among employees. By stepping outside traditional work settings and onto the football field, participants experience stronger team bonding, improved communication, and enhanced collective performance.",
       features: [
         "Employee Well-being",
         "Social Responsibility",
