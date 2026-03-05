@@ -211,7 +211,7 @@ const Home = () => {
                   <h4 className="text-2xl font-bold text-gray-900 mb-2">WAWU GoalQuest 2026</h4>
                   <p className="text-[#11698d] font-semibold mb-6">Internal Charity League</p>
                   <p className="text-gray-600 leading-relaxed mb-8">
-                    An internal charity football league organised within the iQue Ventures ecosystem. It aims to create a strong sports environment while simultaneously supporting children who lack access to basic sports and educational facilities.
+WAWU GoalQuest is a structured corporate football tournament organised by WAWU Foundation to promote football culture, employee well-being, and meaningful workplace engagement through sport.
                   </p>
                 </div>
                 <button 
