@@ -123,8 +123,7 @@ const Home = () => {
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h3>
               <p className="text-xl text-gray-600 leading-relaxed">
-                To bridge the gap between talent and access by identifying and nurturing promising young footballers through world-class training, educational support, and life skills development.
-              </p>
+To bridge the gap between talent and opportunity by identifying and nurturing promising young footballers through world-class training, educational support, and holistic life skills development.We are committed to empowering teenagers through structured football programs that promote discipline, resilience, mental well-being, and drug-free lifestyles creating a safe and supportive environment where young individuals can grow into confident, responsible leaders.              </p>
             </div>
 
             {/* Vision */}
@@ -134,9 +133,7 @@ const Home = () => {
               </div>
               <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
               <p className="text-xl text-blue-50 leading-relaxed">
-                To bridge saa
-                
-                ocial and economic gaps through football by building a new generation of sports leaders who inspire positive change within their communities.
+                To build an inclusive and empowered generation where football becomes a powerful catalyst for social transformation breaking social and economic barriers, strengthening mental health, preventing substance abuse, and inspiring young people to lead positive change within their communities.
               </p>
             </div>
           </div>
